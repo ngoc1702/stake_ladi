@@ -513,7 +513,7 @@ add_action('acf/init', function () {
                 hotel_landing_acf_text('field_hotel_intro_review_logo_text', 'Text logo fallback', 'logo_text'),
                 hotel_landing_acf_text('field_hotel_intro_review_rating', 'Rating', 'rating'),
                 hotel_landing_acf_text('field_hotel_intro_review_label', 'Label', 'label'),
-                hotel_landing_acf_text('field_hotel_intro_review_description', 'Tên kênh OTA', 'description'),
+                // hotel_landing_acf_text('field_hotel_intro_review_description', 'Tên kênh OTA', 'description'),
                 hotel_landing_acf_text('field_hotel_intro_review_url', 'Link OTA', 'url', '#'),
             ),
         ),
@@ -528,7 +528,7 @@ add_action('acf/init', function () {
 
     hotel_landing_register_group('group_hotel_landing_footer', 'Landing - Footer', array(
         hotel_landing_acf_image('field_hotel_footer_logo', 'Logo footer', 'hotel_footer_logo'),
-        hotel_landing_acf_text('field_hotel_footer_title', 'Tiêu đề cột liên hệ', 'hotel_footer_title', hotel_landing_default('hotel_footer_title')),
+        // hotel_landing_acf_text('field_hotel_footer_title', 'Tiêu đề cột liên hệ', 'hotel_footer_title', hotel_landing_default('hotel_footer_title')),
         hotel_landing_acf_text('field_hotel_footer_description', 'Mô tả', 'hotel_footer_description', hotel_landing_default('hotel_footer_description'), 'textarea'),
         array(
             'key' => 'field_hotel_footer_contacts',
@@ -584,6 +584,7 @@ if (!function_exists('hotel_landing_render_parts')) {
         get_template_part('template-parts/quick-features');
         get_template_part('template-parts/hotel-intro');
         get_template_part('template-parts/featured-rooms');
+        get_template_part('template-parts/hotel-amenities-card-grid');
         get_template_part('template-parts/hotel-amenities');
         get_template_part('template-parts/offers-section');
         get_template_part('template-parts/reviews-section');

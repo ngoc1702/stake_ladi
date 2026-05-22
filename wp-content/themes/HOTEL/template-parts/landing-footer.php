@@ -46,9 +46,9 @@ if ($footer_map_embed && preg_match('/src=["\']([^"\']+)["\']/', $footer_map_emb
                     <?php endif; ?>
                 </a>
 
-                <?php if ($footer_title) : ?>
+                <!-- <?php if ($footer_title) : ?>
                     <h3 class="hotel-footer__brand-title"><?php echo esc_html($footer_title); ?></h3>
-                <?php endif; ?>
+                <?php endif; ?> -->
 
                 <?php if ($footer_description) : ?>
                     <p class="hotel-footer__description"><?php echo nl2br(esc_html($footer_description)); ?></p>
