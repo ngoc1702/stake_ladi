@@ -585,7 +585,7 @@ if (!function_exists('hotel_landing_render_parts')) {
         get_template_part('template-parts/hotel-intro');
         get_template_part('template-parts/featured-rooms');
         get_template_part('template-parts/hotel-amenities-card-grid');
-        get_template_part('template-parts/hotel-amenities');
+        // get_template_part('template-parts/hotel-amenities');
         get_template_part('template-parts/offers-section');
         get_template_part('template-parts/reviews-section');
         get_template_part('template-parts/video-section');

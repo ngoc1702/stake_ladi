@@ -18,7 +18,7 @@ if (empty($amenities)) {
 }
 ?>
 
-<section class="hotel-section hotel-amenities-card-grid" aria-label="<?php echo esc_attr($amenities_title ?: __('Hotel amenities', 'hotel')); ?>">
+<section id="tienich" class="hotel-section hotel-amenities-card-grid" aria-label="<?php echo esc_attr($amenities_title ?: __('Hotel amenities', 'hotel')); ?>">
     <div class="hotel-container">
         <div class="hotel-section-heading hotel-section-heading--amenities-card-grid">
             <?php if ($amenities_eyebrow) : ?>

@@ -14,7 +14,7 @@ if (count($amenities) < 6 && $dining_items) {
 $amenities = array_slice($amenities, 0, 6);
 ?>
 
-<section class="hotel-section hotel-amenities" id="tienich">
+<section class="hotel-section hotel-amenities" >
     <span class="hotel-anchor-alias" id="nhahang" aria-hidden="true"></span>
     <div class="hotel-container">
         <div class="hotel-section-heading hotel-section-heading--amenities">
