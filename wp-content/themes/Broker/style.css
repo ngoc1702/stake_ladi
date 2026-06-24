@@ -1,11 +1,23 @@
  /*
-	Theme Name: HOTEL
+	Theme Name: Broker
 	Description: Themes há»— trá»£ Genesis Theme v2.7.3 and Wordpress v5.0 trá»Ÿ lÃªn
 	Template: genesis
 */
 
 /* Defaults
 ------------------------------------------------------------ */
+@font-face {
+  font-family: 'Bookman';
+  src: url('/wp-content/themes/HOTEL/fonts/URWBookman-Light.otf') format('opentype');
+}
+
+
+@font-face {
+  font-family: 'Windsor';
+  src: url('/wp-content/themes/HOTEL/fonts/WindsorProBold.TTF') format('truetype');
+}
+
+
 body {
   overflow-x: hidden !important;
   background-color: #f5f9ff !important;
@@ -37,7 +49,7 @@ p,
 select,
 textarea {
   color: #413E3B;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 16px;
   font-weight: 300;
   line-height: 1.8;
@@ -62,7 +74,7 @@ label,
 select,
 textarea {
   color: #333;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 15px;
   font-weight: 500;
 }
@@ -183,7 +195,7 @@ body {
 }
 
 .site-title {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 36px;
   line-height: 1.35;
   margin: 0;
@@ -576,7 +588,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Raleway", sans-serif;
   line-height: 1.35;
   margin: 0 0 10px;
 }
@@ -598,7 +610,7 @@ h2 a:visited {
 h2 a,
 h2 a:visited {
   color: #333;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 h2 a:hover {
@@ -1665,8 +1677,8 @@ input#submit {
   --hotel-gold: #67100F;
   --hotel-gold-dark: #a7774b;
   --hotel-line: rgba(77, 62, 49, 0.13);
-  --hotel-heading-font:"Quicksand", serif;
-  --hotel-body-font: "Quicksand", sans-serif;
+  --hotel-heading-font:"Raleway", serif;
+  --hotel-body-font: "Raleway", sans-serif;
   background: var(--hotel-bg);
   color: var(--hotel-ink);
   font-family: var(--hotel-body-font);
