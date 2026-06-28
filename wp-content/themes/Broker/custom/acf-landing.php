@@ -19,6 +19,7 @@ if ( ! function_exists( 'hotel_landing_render_parts' ) ) {
 		// Mỗi section là 1 file trong /template-parts
 		get_template_part( 'template-parts/header' );
 		get_template_part( 'template-parts/banner' );
+		get_template_part( 'template-parts/discounts' );
 		get_template_part( 'template-parts/firms-table' );
 		get_template_part( 'template-parts/footer' );
 	}
@@ -255,6 +256,118 @@ function caia_register_landing_banner_fields() {
 /**
  * Đăng ký nhóm trường ACF cho Section Bảng xếp hạng (Top 25 Prop Firms).
  */
+/**
+ * Dang ky nhom truong ACF cho Section Discounts.
+ */
+add_action( 'acf/init', 'caia_register_landing_discounts_fields' );
+function caia_register_landing_discounts_fields() {
+
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		return;
+	}
+
+	acf_add_local_field_group( array(
+		'key'      => 'group_landing_discounts',
+		'title'    => 'Landing Page - Section Discounts',
+		'fields'   => array(
+			array(
+				'key'           => 'field_discounts_title',
+				'label'         => 'Tieu de section',
+				'name'          => 'discounts_title',
+				'type'          => 'text',
+				'default_value' => 'Best Prop Firm Discounts',
+			),
+			array(
+				'key'          => 'field_discounts_list',
+				'label'        => 'Danh sach discount',
+				'name'         => 'discounts_list',
+				'type'         => 'repeater',
+				'instructions' => 'Moi dong la 1 card discount. Upload logo va anh coupon neu co; de trong se dung fallback mac dinh.',
+				'layout'       => 'row',
+				'button_label' => 'Them discount',
+				'sub_fields'   => array(
+					array(
+						'key'           => 'field_discount_logo',
+						'label'         => 'Logo',
+						'name'          => 'logo',
+						'type'          => 'image',
+						'return_format' => 'array',
+						'preview_size'  => 'medium',
+						'library'       => 'all',
+						'wrapper'       => array( 'width' => '30' ),
+					),
+					array(
+						'key'     => 'field_discount_name',
+						'label'   => 'Ten firm',
+						'name'    => 'name',
+						'type'    => 'text',
+						'wrapper' => array( 'width' => '35' ),
+					),
+					array(
+						'key'         => 'field_discount_amount',
+						'label'       => 'Muc giam',
+						'name'        => 'amount',
+						'type'        => 'text',
+						'placeholder' => '90%',
+						'wrapper'     => array( 'width' => '15' ),
+					),
+					array(
+						'key'         => 'field_discount_code',
+						'label'       => 'Coupon code',
+						'name'        => 'code',
+						'type'        => 'text',
+						'placeholder' => 'FUNDEDPROGRAM',
+						'wrapper'     => array( 'width' => '20' ),
+					),
+					array(
+						'key'           => 'field_discount_image',
+						'label'         => 'Anh coupon',
+						'name'          => 'image',
+						'type'          => 'image',
+						'return_format' => 'array',
+						'preview_size'  => 'medium',
+						'library'       => 'all',
+						'instructions'  => 'Ty le khuyen nghi 16:9 hoac gan 750x395 nhu anh mau.',
+						'wrapper'       => array( 'width' => '50' ),
+					),
+					array(
+						'key'           => 'field_discount_button_label',
+						'label'         => 'Text nut',
+						'name'          => 'button_label',
+						'type'          => 'text',
+						'default_value' => 'Get Discount',
+						'wrapper'       => array( 'width' => '25' ),
+					),
+					array(
+						'key'         => 'field_discount_url',
+						'label'       => 'Link nut',
+						'name'        => 'url',
+						'type'        => 'text',
+						'placeholder' => '#',
+						'wrapper'     => array( 'width' => '25' ),
+					),
+				),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param'    => 'page_template',
+					'operator' => '==',
+					'value'    => 'page-landing.php',
+				),
+			),
+		),
+		'menu_order'            => 1,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'active'                => true,
+		'description'           => 'Quan tri section Best Prop Firm Discounts.',
+	) );
+}
+
 add_action( 'acf/init', 'caia_register_landing_firms_fields' );
 function caia_register_landing_firms_fields() {
 
@@ -377,7 +490,7 @@ function caia_register_landing_firms_fields() {
 				),
 			),
 		),
-		'menu_order'            => 1,
+		'menu_order'            => 2,
 		'position'              => 'normal',
 		'style'                 => 'default',
 		'label_placement'       => 'top',

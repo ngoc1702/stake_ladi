@@ -1645,6 +1645,14 @@ input#submit {
 #main-landing {
   margin: 0 auto;
   width: 100%;
+  --lp-navy: #1f3440;
+  --lp-navy-2: #16222b;
+  --lp-navy-3: #101a22;
+  --lp-mint: #8ff0dd;
+  --lp-mint-soft: #aef3e4;
+  --lp-text: #cdd8dc;
+  --lp-text-dim: #9fb0b6;
+  --lp-line: rgba(143, 240, 221, 0.18);
 }
 
 .page-template-page-landing .site-header,
@@ -1661,9 +1669,281 @@ input#submit {
 
 
 .hotel-container {
+  box-sizing: border-box;
   margin: 0 auto;
   max-width: 1200px;
   width: 100%;
+}
+
+/* ====== HEADER + FOOTER (Landing) ====== */
+.lp-header,
+.lp-footer {
+  color: var(--lp-text);
+  font-family: var(--hotel-body-font, "Inter", sans-serif);
+}
+
+.lp-header {
+  position: relative;
+  z-index: 20;
+  background: linear-gradient(180deg, var(--lp-navy) 0%, var(--lp-navy-2) 100%);
+  border-bottom: 1px solid var(--lp-line);
+}
+
+.lp-header__inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.lp-header__brand,
+.lp-footer__brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  color: var(--lp-mint-soft);
+  text-decoration: none;
+}
+
+.lp-header__brand img,
+.lp-footer__brand img {
+  display: block;
+  width: auto;
+  max-width: 210px;
+  object-fit: contain;
+}
+
+.lp-header__brand img {
+  max-height: 44px;
+}
+
+.lp-footer__brand img {
+  max-height: 48px;
+}
+
+.lp-header__brand-text,
+.lp-footer__brand-text {
+  font-family: var(--hotel-heading-font, "Inter", sans-serif);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--lp-mint-soft);
+}
+
+.lp-header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 22px;
+  min-width: 0;
+}
+
+.lp-header__menu {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  list-style: none;
+}
+
+.lp-header__menu a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  color: var(--lp-text);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: color .2s, background .2s;
+}
+
+.lp-header__menu a:hover {
+  color: #fff;
+  background: rgba(143, 240, 221, 0.08);
+}
+
+.lp-header__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 11px 24px;
+  border-radius: 999px;
+  color: #103039;
+  background: var(--lp-mint);
+  box-shadow: 0 8px 22px rgba(143, 240, 221, 0.24);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.lp-header__cta:hover {
+  color: #103039;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(143, 240, 221, 0.34);
+}
+
+.lp-header__toggle {
+  display: none;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid var(--lp-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+}
+
+.lp-header__toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--lp-mint);
+}
+
+.lp-footer {
+  background: linear-gradient(180deg, var(--lp-navy-2) 0%, var(--lp-navy-3) 100%);
+  border-top: 1px solid var(--lp-line);
+}
+
+.lp-footer__inner {
+  display: grid;
+  grid-template-columns: minmax(260px, 1.35fr) minmax(170px, .75fr) minmax(230px, 1fr);
+  gap: 42px;
+  align-items: start;
+  padding-top: 56px;
+  padding-bottom: 46px;
+}
+
+.lp-footer__col {
+  min-width: 0;
+}
+
+.lp-footer__about {
+  max-width: 430px;
+  margin-top: 18px;
+  color: var(--lp-text-dim);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.lp-footer__socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.lp-footer__socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--lp-line);
+  border-radius: 999px;
+  color: var(--lp-mint);
+  background: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+  transition: color .2s, border-color .2s, background .2s, transform .2s;
+}
+
+.lp-footer__socials a:hover {
+  color: #103039;
+  border-color: var(--lp-mint);
+  background: var(--lp-mint);
+  transform: translateY(-2px);
+}
+
+.lp-footer__title {
+  position: relative;
+  margin: 0 0 22px;
+  padding-bottom: 12px;
+  color: var(--lp-mint-soft);
+  font-family: var(--hotel-heading-font, "Inter", sans-serif);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.lp-footer__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 42px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--lp-mint);
+}
+
+.lp-footer__links,
+.lp-footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+}
+
+.lp-footer__links a,
+.lp-footer__contact a {
+  color: var(--lp-text);
+  font-size: 15px;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.lp-footer__links a:hover,
+.lp-footer__contact a:hover {
+  color: var(--lp-mint);
+}
+
+.lp-footer__contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  color: var(--lp-text);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.lp-footer__contact i {
+  flex: 0 0 18px;
+  margin-top: 4px;
+  color: var(--lp-mint);
+  text-align: center;
+}
+
+.lp-footer__bottom {
+  border-top: 1px solid rgba(143, 240, 221, 0.12);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.lp-footer__bottom .hotel-container {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.lp-footer__bottom p {
+  color: var(--lp-text-dim);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
 }
 
 
@@ -1936,6 +2216,220 @@ input#submit {
 }
 
 /* ====== SECTION BẢNG XẾP HẠNG (Top Firms) ====== */
+/* ====== SECTION DISCOUNTS (Landing) ====== */
+.lp-discounts {
+  position: relative;
+  overflow: hidden;
+  padding: 70px 0 78px;
+  background: linear-gradient(180deg, #101a22 0%, #1a2440 100%);
+  color: var(--lp-text);
+  font-family: var(--hotel-body-font, "Inter", sans-serif);
+}
+
+.lp-discounts__title {
+  margin: 0 0 34px;
+  text-align: center;
+  font-family: var(--hotel-heading-font, "Inter", sans-serif);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: var(--lp-mint-soft);
+}
+
+.lp-discounts__viewport {
+  overflow: visible;
+}
+
+.lp-discounts__track {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.lp-discount-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 28px 28px 30px;
+  border: 1px solid rgba(143, 240, 221, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 0 0 1px rgba(143, 240, 221, 0.04);
+}
+
+.lp-discount-card__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 76px;
+  margin-bottom: 18px;
+}
+
+.lp-discount-card__logo img {
+  display: block;
+  max-width: 82%;
+  max-height: 76px;
+  object-fit: contain;
+}
+
+.lp-discount-card__logo-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  border: 1px solid var(--lp-line);
+  border-radius: 18px;
+  color: var(--lp-mint-soft);
+  background: rgba(143, 240, 221, 0.08);
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.lp-discount-card__name {
+  margin: 0 0 24px;
+  color: #fff;
+  font-family: var(--hotel-heading-font, "Inter", sans-serif);
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.lp-discount-card__name::first-letter {
+  color: var(--lp-mint-soft);
+}
+
+.lp-discount-card__media {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  aspect-ratio: 16 / 9;
+  background: #132437;
+}
+
+.lp-discount-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lp-discount-card__coupon {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 22px 46% 22px 24px;
+  background:
+    linear-gradient(115deg, rgba(16, 26, 34, 0.96) 0%, rgba(16, 26, 34, 0.86) 45%, rgba(143, 240, 221, 0.90) 45%, rgba(143, 240, 221, 0.72) 100%),
+    linear-gradient(135deg, #18253a, #101a22);
+}
+
+.lp-discount-card__mini-name {
+  max-width: 230px;
+  color: var(--lp-mint-soft);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.lp-discount-card__coupon strong {
+  display: flex;
+  flex-direction: column;
+  margin: 6px 0 8px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.lp-discount-card__coupon strong span {
+  font-size: 58px;
+  line-height: 0.9;
+}
+
+.lp-discount-card__coupon-label {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.lp-discount-card__code {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 5px;
+  padding: 5px 9px;
+  border: 1px solid rgba(16, 26, 34, 0.5);
+  border-radius: 4px;
+  color: #103039;
+  background: var(--lp-mint);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.lp-discount-card__qr {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  width: 108px;
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  border: 9px solid #fff;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, #111 50%, transparent 0) 0 0 / 14px 14px,
+    linear-gradient(#111 50%, transparent 0) 0 0 / 14px 14px,
+    #fff;
+  box-shadow: 0 6px 0 rgba(16, 26, 34, 0.22);
+}
+
+.lp-discount-card__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  min-width: 220px;
+  min-height: 58px;
+  margin-top: auto;
+  padding: 14px 24px;
+  border: 1px solid var(--lp-mint);
+  color: var(--lp-mint-soft);
+  background: transparent;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color .2s, background .2s, box-shadow .2s, transform .2s;
+}
+
+.lp-discount-card__button:hover {
+  color: #103039;
+  background: var(--lp-mint);
+  box-shadow: 0 10px 24px rgba(143, 240, 221, 0.25);
+  transform: translateY(-2px);
+}
+
 .lp-firms {
   --lp-navy: #16222b;
   --lp-mint: #8ff0dd;
@@ -2099,6 +2593,63 @@ input#submit {
 }
 
 @media (max-width: 1180px) {
+  .lp-header .hotel-container,
+  .lp-footer .hotel-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .lp-header__inner {
+    gap: 18px;
+  }
+
+  .lp-header__nav {
+    gap: 14px;
+  }
+
+  .lp-header__menu a {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .lp-header__cta {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .lp-footer__inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px;
+  }
+
+  .lp-footer__col--brand {
+    grid-column: 1 / -1;
+  }
+
+  .lp-discounts .hotel-container {
+    padding-left: 24px;
+    padding-right: 0;
+  }
+
+  .lp-discounts__viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: rgba(143, 240, 221, 0.5) rgba(255, 255, 255, 0.06);
+    scrollbar-width: thin;
+  }
+
+  .lp-discounts__track {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(340px, calc((100% - 48px) / 2));
+    grid-template-columns: none;
+    gap: 24px;
+    padding-right: 24px;
+  }
+
+  .lp-discount-card {
+    scroll-snap-align: start;
+  }
+
   .lp-banner__grid {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -2113,6 +2664,168 @@ input#submit {
   body, h1, h2, h2 a, h2 a:visited, h3, h4, h5, h6, p, select, textarea {
     font-size: 15px;
 }
+
+  .lp-header .hotel-container,
+  .lp-footer .hotel-container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .lp-header__inner {
+    min-height: 68px;
+  }
+
+  .lp-header__brand img {
+    max-width: 180px;
+    max-height: 38px;
+  }
+
+  .lp-header__brand-text,
+  .lp-footer__brand-text {
+    font-size: 21px;
+  }
+
+  .lp-header__toggle {
+    display: inline-flex;
+  }
+
+  .lp-header__nav {
+    position: absolute;
+    top: 100%;
+    left: 18px;
+    right: 18px;
+    display: none;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+    padding: 14px;
+    border: 1px solid var(--lp-line);
+    border-top: 0;
+    border-radius: 0 0 16px 16px;
+    background: linear-gradient(180deg, var(--lp-navy-2) 0%, var(--lp-navy-3) 100%);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+  }
+
+  .lp-header__toggle-input:checked ~ .lp-header__nav {
+    display: flex;
+  }
+
+  .lp-header__menu {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .lp-header__menu a {
+    justify-content: flex-start;
+    width: 100%;
+    padding: 12px 14px;
+  }
+
+  .lp-header__cta {
+    width: 100%;
+  }
+
+  .lp-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 40px;
+    padding-bottom: 34px;
+  }
+
+  .lp-footer__col--brand {
+    grid-column: auto;
+  }
+
+  .lp-footer__about {
+    max-width: none;
+  }
+
+  .lp-footer__bottom p {
+    text-align: left;
+  }
+
+  .lp-discounts {
+    padding: 46px 0 54px;
+  }
+
+  .lp-discounts .hotel-container {
+    padding-left: 18px;
+    padding-right: 0;
+  }
+
+  .lp-discounts__title {
+    margin-bottom: 26px;
+    padding-right: 18px;
+    font-size: clamp(26px, 8vw, 36px);
+  }
+
+  .lp-discounts__track {
+    grid-auto-columns: calc(100vw - 54px);
+    gap: 18px;
+    padding-right: 18px;
+  }
+
+  .lp-discount-card {
+    padding: 22px 18px 22px;
+  }
+
+  .lp-discount-card__logo {
+    height: 58px;
+    margin-bottom: 14px;
+  }
+
+  .lp-discount-card__logo img {
+    max-height: 58px;
+  }
+
+  .lp-discount-card__logo-fallback {
+    width: 58px;
+    height: 58px;
+    border-radius: 15px;
+    font-size: 19px;
+  }
+
+  .lp-discount-card__name {
+    font-size: 20px;
+  }
+
+  .lp-discount-card__name {
+    margin-bottom: 18px;
+  }
+
+  .lp-discount-card__media {
+    margin-bottom: 22px;
+  }
+
+  .lp-discount-card__coupon {
+    padding: 18px 42% 18px 18px;
+  }
+
+  .lp-discount-card__mini-name {
+    font-size: 10px;
+  }
+
+  .lp-discount-card__coupon strong {
+    font-size: 28px;
+  }
+
+  .lp-discount-card__coupon strong span {
+    font-size: 46px;
+  }
+
+  .lp-discount-card__qr {
+    right: 14px;
+    width: 82px;
+    border-width: 7px;
+  }
+
+  .lp-discount-card__button {
+    width: 100%;
+    min-width: 0;
+    min-height: 52px;
+    font-size: 14px;
+  }
 
   .lp-banner { padding: 48px 0 40px; }
   .lp-banner__inner { padding-left: 18px; padding-right: 18px; }
