@@ -19,9 +19,12 @@ if ( ! function_exists( 'hotel_landing_render_parts' ) ) {
 		// Mỗi section là 1 file trong /template-parts
 		get_template_part( 'template-parts/header' );
 		get_template_part( 'template-parts/banner' );
+		get_template_part( 'template-parts/featured-offer' );
 		get_template_part( 'template-parts/discounts' );
 		get_template_part( 'template-parts/firms-table' );
+		get_template_part( 'template-parts/reviews' );
 		get_template_part( 'template-parts/footer' );
+		get_template_part( 'template-parts/popup' );
 	}
 }
 
@@ -259,6 +262,247 @@ function caia_register_landing_banner_fields() {
 /**
  * Dang ky nhom truong ACF cho Section Discounts.
  */
+add_action( 'acf/init', 'caia_register_landing_featured_offer_fields' );
+function caia_register_landing_featured_offer_fields() {
+
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		return;
+	}
+
+	acf_add_local_field_group( array(
+		'key'      => 'group_landing_featured_offer',
+		'title'    => 'Landing Page - Featured Offer',
+		'fields'   => array(
+			array(
+				'key'           => 'field_featured_offer_enabled',
+				'label'         => 'Hien section',
+				'name'          => 'featured_offer_enabled',
+				'type'          => 'true_false',
+				'default_value' => 1,
+				'ui'            => 1,
+			),
+			array(
+				'key'           => 'field_featured_offer_eyebrow',
+				'label'         => 'Nhan nho',
+				'name'          => 'featured_offer_eyebrow',
+				'type'          => 'text',
+				'default_value' => '#1 Trader-Rated Prop Firm',
+			),
+			array(
+				'key'           => 'field_featured_offer_highlight',
+				'label'         => 'Dong tieu de mau mint',
+				'name'          => 'featured_offer_highlight',
+				'type'          => 'text',
+				'default_value' => 'Apex Trader Funding',
+				'wrapper'       => array( 'width' => '40' ),
+			),
+			array(
+				'key'           => 'field_featured_offer_title',
+				'label'         => 'Tieu de chinh',
+				'name'          => 'featured_offer_title',
+				'type'          => 'textarea',
+				'rows'          => 2,
+				'default_value' => 'The Smartest Way To Get Funded In 2026',
+				'wrapper'       => array( 'width' => '60' ),
+			),
+			array(
+				'key'          => 'field_featured_offer_desc',
+				'label'        => 'Mo ta',
+				'name'         => 'featured_offer_desc',
+				'type'         => 'wysiwyg',
+				'tabs'         => 'visual',
+				'toolbar'      => 'basic',
+				'media_upload' => 0,
+			),
+			array(
+				'key'           => 'field_featured_offer_coupon_label',
+				'label'         => 'Label coupon',
+				'name'          => 'featured_offer_coupon_label',
+				'type'          => 'text',
+				'default_value' => 'Apex Trader Funding Code',
+				'wrapper'       => array( 'width' => '35' ),
+			),
+			array(
+				'key'           => 'field_featured_offer_coupon_badge',
+				'label'         => 'Badge coupon',
+				'name'          => 'featured_offer_coupon_badge',
+				'type'          => 'text',
+				'default_value' => 'Up To 90% Off',
+				'wrapper'       => array( 'width' => '25' ),
+			),
+			array(
+				'key'           => 'field_featured_offer_coupon_code',
+				'label'         => 'Coupon code',
+				'name'          => 'featured_offer_coupon_code',
+				'type'          => 'text',
+				'default_value' => 'ONKAGNVZ',
+				'wrapper'       => array( 'width' => '20' ),
+			),
+			array(
+				'key'         => 'field_featured_offer_coupon_url',
+				'label'       => 'Link nut discount',
+				'name'        => 'featured_offer_coupon_url',
+				'type'        => 'text',
+				'placeholder' => '#',
+				'wrapper'     => array( 'width' => '20' ),
+			),
+			array(
+				'key'           => 'field_featured_offer_coupon_button',
+				'label'         => 'Text nut discount',
+				'name'          => 'featured_offer_coupon_button',
+				'type'          => 'text',
+				'default_value' => 'Get Apex Trader Funding Discount',
+			),
+			array(
+				'key'          => 'field_featured_offer_prices',
+				'label'        => 'Gia trong coupon card',
+				'name'         => 'featured_offer_prices',
+				'type'         => 'repeater',
+				'layout'       => 'table',
+				'button_label' => 'Them gia',
+				'sub_fields'   => array(
+					array(
+						'key'   => 'field_featured_offer_price_label',
+						'label' => 'Ten goi',
+						'name'  => 'label',
+						'type'  => 'text',
+					),
+					array(
+						'key'   => 'field_featured_offer_price',
+						'label' => 'Gia moi',
+						'name'  => 'price',
+						'type'  => 'text',
+					),
+					array(
+						'key'   => 'field_featured_offer_old_price',
+						'label' => 'Gia cu',
+						'name'  => 'old_price',
+						'type'  => 'text',
+					),
+				),
+			),
+			array(
+				'key'           => 'field_featured_offer_visual',
+				'label'         => 'Anh/logo ben phai',
+				'name'          => 'featured_offer_visual',
+				'type'          => 'image',
+				'return_format' => 'array',
+				'preview_size'  => 'medium',
+				'library'       => 'all',
+			),
+			array(
+				'key'           => 'field_featured_offer_visual_title',
+				'label'         => 'Ten thuong hieu ben phai',
+				'name'          => 'featured_offer_visual_title',
+				'type'          => 'text',
+				'default_value' => 'Apex Trader Funding',
+				'wrapper'       => array( 'width' => '50' ),
+			),
+			array(
+				'key'           => 'field_featured_offer_visual_subtitle',
+				'label'         => 'Dong phu ben phai',
+				'name'          => 'featured_offer_visual_subtitle',
+				'type'          => 'text',
+				'default_value' => 'The #1 Futures Prop Firm',
+				'wrapper'       => array( 'width' => '50' ),
+			),
+			array(
+				'key'           => 'field_featured_offer_rating',
+				'label'         => 'Dong rating/review',
+				'name'          => 'featured_offer_rating',
+				'type'          => 'text',
+				'default_value' => '4.3/5 - 20,000+ Trustpilot Reviews',
+			),
+			array(
+				'key'           => 'field_featured_offer_metric',
+				'label'         => 'So thong ke lon',
+				'name'          => 'featured_offer_metric',
+				'type'          => 'text',
+				'default_value' => '$812M+',
+				'wrapper'       => array( 'width' => '35' ),
+			),
+			array(
+				'key'           => 'field_featured_offer_metric_label',
+				'label'         => 'Mo ta so thong ke lon',
+				'name'          => 'featured_offer_metric_label',
+				'type'          => 'text',
+				'default_value' => 'Paid By Apex Trader Funding Since 2022',
+				'wrapper'       => array( 'width' => '65' ),
+			),
+			array(
+				'key'           => 'field_featured_offer_progress_label',
+				'label'         => 'Label thanh tien do',
+				'name'          => 'featured_offer_progress_label',
+				'type'          => 'text',
+				'default_value' => 'Avg Monthly Payouts To Traders',
+				'wrapper'       => array( 'width' => '50' ),
+			),
+			array(
+				'key'           => 'field_featured_offer_progress_value',
+				'label'         => 'Gia tri thanh tien do',
+				'name'          => 'featured_offer_progress_value',
+				'type'          => 'text',
+				'default_value' => '$14.91M',
+				'wrapper'       => array( 'width' => '50' ),
+			),
+			array(
+				'key'          => 'field_featured_offer_stats',
+				'label'        => 'O thong ke ben phai',
+				'name'         => 'featured_offer_stats',
+				'type'         => 'repeater',
+				'layout'       => 'table',
+				'button_label' => 'Them thong ke',
+				'sub_fields'   => array(
+					array(
+						'key'   => 'field_featured_offer_stat_value',
+						'label' => 'Gia tri',
+						'name'  => 'value',
+						'type'  => 'text',
+					),
+					array(
+						'key'   => 'field_featured_offer_stat_label',
+						'label' => 'Mo ta',
+						'name'  => 'label',
+						'type'  => 'text',
+					),
+				),
+			),
+			array(
+				'key'           => 'field_featured_offer_review_button',
+				'label'         => 'Text nut review',
+				'name'          => 'featured_offer_review_button',
+				'type'          => 'text',
+				'default_value' => 'Read Full Apex Trader Funding Review',
+				'wrapper'       => array( 'width' => '45' ),
+			),
+			array(
+				'key'         => 'field_featured_offer_review_url',
+				'label'       => 'Link nut review',
+				'name'        => 'featured_offer_review_url',
+				'type'        => 'text',
+				'placeholder' => '#',
+				'wrapper'     => array( 'width' => '55' ),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param'    => 'page_template',
+					'operator' => '==',
+					'value'    => 'page-landing.php',
+				),
+			),
+		),
+		'menu_order'            => 1,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'active'                => true,
+		'description'           => 'Quan tri section offer noi bat ngay duoi banner.',
+	) );
+}
+
 add_action( 'acf/init', 'caia_register_landing_discounts_fields' );
 function caia_register_landing_discounts_fields() {
 
@@ -358,7 +602,7 @@ function caia_register_landing_discounts_fields() {
 				),
 			),
 		),
-		'menu_order'            => 1,
+		'menu_order'            => 2,
 		'position'              => 'normal',
 		'style'                 => 'default',
 		'label_placement'       => 'top',
@@ -490,7 +734,7 @@ function caia_register_landing_firms_fields() {
 				),
 			),
 		),
-		'menu_order'            => 2,
+		'menu_order'            => 3,
 		'position'              => 'normal',
 		'style'                 => 'default',
 		'label_placement'       => 'top',
@@ -503,6 +747,386 @@ function caia_register_landing_firms_fields() {
 /**
  * Trang tùy chọn (Options Page) cho Header & Footer của Landing.
  */
+add_action( 'acf/init', 'caia_register_landing_reviews_fields' );
+function caia_register_landing_reviews_fields() {
+
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		return;
+	}
+
+	acf_add_local_field_group( array(
+		'key'      => 'group_landing_reviews',
+		'title'    => 'Landing Page - Reviews',
+		'fields'   => array(
+			array(
+				'key'           => 'field_reviews_title',
+				'label'         => 'Tieu de section',
+				'name'          => 'reviews_title',
+				'type'          => 'text',
+				'default_value' => 'Prop Firm Reviews',
+			),
+			array(
+				'key'          => 'field_reviews_intro',
+				'label'        => 'Mo ta ngan',
+				'name'         => 'reviews_intro',
+				'type'         => 'textarea',
+				'rows'         => 2,
+				'new_lines'    => '',
+			),
+			array(
+				'key'          => 'field_reviews_list',
+				'label'        => 'Danh sach bai review',
+				'name'         => 'reviews_list',
+				'type'         => 'repeater',
+				'instructions' => 'Moi dong la 1 bai review. Co the them anh, thong tin chung, nhieu block noi dung va link Read More.',
+				'layout'       => 'block',
+				'button_label' => 'Them bai review',
+				'sub_fields'   => array(
+					array(
+						'key'           => 'field_review_title',
+						'label'         => 'Ten bai / ten firm',
+						'name'          => 'title',
+						'type'          => 'text',
+						'default_value' => 'Apex Trader Funding',
+					),
+					array(
+						'key'           => 'field_review_image',
+						'label'         => 'Anh lon',
+						'name'          => 'image',
+						'type'          => 'image',
+						'return_format' => 'array',
+						'preview_size'  => 'large',
+						'library'       => 'all',
+						'instructions'  => 'Anh screenshot/khoi lon nhu hinh mau.',
+					),
+					array(
+						'key'           => 'field_review_badge',
+						'label'         => 'Nhan thong tin chung',
+						'name'          => 'badge',
+						'type'          => 'text',
+						'default_value' => "Editor's Pick - June 2026",
+						'wrapper'       => array( 'width' => '35' ),
+					),
+					array(
+						'key'           => 'field_review_headline',
+						'label'         => 'Tieu de thong tin chung',
+						'name'          => 'headline',
+						'type'          => 'text',
+						'default_value' => 'Apex Trader Funding 90% Discount',
+						'wrapper'       => array( 'width' => '45' ),
+					),
+					array(
+						'key'           => 'field_review_coupon',
+						'label'         => 'Coupon code',
+						'name'          => 'coupon',
+						'type'          => 'text',
+						'default_value' => 'ONKAGNVZ',
+						'wrapper'       => array( 'width' => '20' ),
+					),
+					array(
+						'key'          => 'field_review_intro_content',
+						'label'        => 'Noi dung thong tin chung',
+						'name'         => 'intro_content',
+						'type'         => 'wysiwyg',
+						'tabs'         => 'visual',
+						'toolbar'      => 'basic',
+						'media_upload' => 0,
+					),
+					array(
+						'key'          => 'field_review_blocks',
+						'label'        => 'Cac muc noi dung',
+						'name'         => 'blocks',
+						'type'         => 'repeater',
+						'layout'       => 'block',
+						'button_label' => 'Them muc',
+						'sub_fields'   => array(
+							array(
+								'key'         => 'field_review_block_icon',
+								'label'       => 'Icon Font Awesome',
+								'name'        => 'icon',
+								'type'        => 'text',
+								'placeholder' => 'fas fa-shield-halved',
+								'wrapper'     => array( 'width' => '25' ),
+							),
+							array(
+								'key'     => 'field_review_block_title',
+								'label'   => 'Tieu de muc',
+								'name'    => 'title',
+								'type'    => 'text',
+								'wrapper' => array( 'width' => '75' ),
+							),
+							array(
+								'key'          => 'field_review_block_content',
+								'label'        => 'Noi dung muc',
+								'name'         => 'content',
+								'type'         => 'wysiwyg',
+								'tabs'         => 'visual',
+								'toolbar'      => 'basic',
+								'media_upload' => 0,
+							),
+							array(
+								'key'          => 'field_review_block_prices',
+								'label'        => 'Bang gia trong muc (tuy chon)',
+								'name'         => 'prices',
+								'type'         => 'repeater',
+								'layout'       => 'table',
+								'button_label' => 'Them gia',
+								'sub_fields'   => array(
+									array(
+										'key'   => 'field_review_price_label',
+										'label' => 'Ten goi',
+										'name'  => 'label',
+										'type'  => 'text',
+									),
+									array(
+										'key'   => 'field_review_price_old',
+										'label' => 'Gia cu',
+										'name'  => 'old_price',
+										'type'  => 'text',
+									),
+									array(
+										'key'   => 'field_review_price_new',
+										'label' => 'Gia moi',
+										'name'  => 'price',
+										'type'  => 'text',
+									),
+								),
+							),
+						),
+					),
+					array(
+						'key'           => 'field_review_read_more_label',
+						'label'         => 'Text nut Read More',
+						'name'          => 'read_more_label',
+						'type'          => 'text',
+						'default_value' => 'Read More',
+						'wrapper'       => array( 'width' => '30' ),
+					),
+					array(
+						'key'         => 'field_review_read_more_url',
+						'label'       => 'Link Read More',
+						'name'        => 'read_more_url',
+						'type'        => 'text',
+						'placeholder' => '#',
+						'wrapper'     => array( 'width' => '70' ),
+					),
+				),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param'    => 'page_template',
+					'operator' => '==',
+					'value'    => 'page-landing.php',
+				),
+			),
+		),
+		'menu_order'            => 4,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'active'                => true,
+		'description'           => 'Quan tri section cac bai review tren landing.',
+	) );
+}
+
+add_action( 'acf/init', 'caia_register_landing_popup_fields' );
+function caia_register_landing_popup_fields() {
+
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		return;
+	}
+
+	acf_add_local_field_group( array(
+		'key'      => 'group_landing_popup',
+		'title'    => 'Landing Page - Popup',
+		'fields'   => array(
+			array(
+				'key'           => 'field_popup_enabled',
+				'label'         => 'Hien popup',
+				'name'          => 'popup_enabled',
+				'type'          => 'true_false',
+				'instructions'  => 'Bat de popup hien khi load trang, tat de an popup.',
+				'default_value' => 1,
+				'ui'            => 1,
+			),
+			array(
+				'key'           => 'field_popup_logo',
+				'label'         => 'Logo popup',
+				'name'          => 'popup_logo',
+				'type'          => 'image',
+				'return_format' => 'array',
+				'preview_size'  => 'medium',
+				'library'       => 'all',
+				'wrapper'       => array( 'width' => '35' ),
+			),
+			array(
+				'key'           => 'field_popup_brand_text',
+				'label'         => 'Ten thuong hieu',
+				'name'          => 'popup_brand_text',
+				'type'          => 'text',
+				'default_value' => 'APEX TRADER FUNDING',
+				'wrapper'       => array( 'width' => '65' ),
+			),
+			array(
+				'key'           => 'field_popup_eyebrow',
+				'label'         => 'Nhan nho',
+				'name'          => 'popup_eyebrow',
+				'type'          => 'text',
+				'default_value' => 'Exclusive Limited Offer',
+				'wrapper'       => array( 'width' => '35' ),
+			),
+			array(
+				'key'           => 'field_popup_title',
+				'label'         => 'Tieu de',
+				'name'          => 'popup_title',
+				'type'          => 'text',
+				'default_value' => 'Apex Trader Funding Discount',
+				'wrapper'       => array( 'width' => '65' ),
+			),
+			array(
+				'key'           => 'field_popup_discount_number',
+				'label'         => 'So giam gia',
+				'name'          => 'popup_discount_number',
+				'type'          => 'text',
+				'default_value' => '90',
+				'wrapper'       => array( 'width' => '25' ),
+			),
+			array(
+				'key'           => 'field_popup_discount_suffix',
+				'label'         => 'Hau to giam gia',
+				'name'          => 'popup_discount_suffix',
+				'type'          => 'text',
+				'default_value' => '% OFF',
+				'wrapper'       => array( 'width' => '25' ),
+			),
+			array(
+				'key'           => 'field_popup_code',
+				'label'         => 'Coupon code',
+				'name'          => 'popup_code',
+				'type'          => 'text',
+				'default_value' => 'ONKAGNVZ',
+				'wrapper'       => array( 'width' => '25' ),
+			),
+			array(
+				'key'           => 'field_popup_code_label',
+				'label'         => 'Label coupon',
+				'name'          => 'popup_code_label',
+				'type'          => 'text',
+				'default_value' => 'Your exclusive discount code',
+				'wrapper'       => array( 'width' => '25' ),
+			),
+			array(
+				'key'           => 'field_popup_subtitle',
+				'label'         => 'Mo ta ngan',
+				'name'          => 'popup_subtitle',
+				'type'          => 'text',
+				'default_value' => 'Get funded for under $20, the #1 rated futures prop firm in 2026',
+			),
+			array(
+				'key'           => 'field_popup_code_hint',
+				'label'         => 'Ghi chu coupon',
+				'name'          => 'popup_code_hint',
+				'type'          => 'text',
+				'default_value' => 'Copy the code and apply it at checkout',
+			),
+			array(
+				'key'          => 'field_popup_plans',
+				'label'        => 'Bang gia trong popup',
+				'name'         => 'popup_plans',
+				'type'         => 'repeater',
+				'layout'       => 'table',
+				'button_label' => 'Them goi gia',
+				'sub_fields'   => array(
+					array(
+						'key'   => 'field_popup_plan_label',
+						'label' => 'Ten goi',
+						'name'  => 'label',
+						'type'  => 'text',
+					),
+					array(
+						'key'   => 'field_popup_plan_price',
+						'label' => 'Gia moi',
+						'name'  => 'price',
+						'type'  => 'text',
+					),
+					array(
+						'key'   => 'field_popup_plan_old_price',
+						'label' => 'Gia cu',
+						'name'  => 'old_price',
+						'type'  => 'text',
+					),
+				),
+			),
+			array(
+				'key'          => 'field_popup_features',
+				'label'        => 'Badge loi ich',
+				'name'         => 'popup_features',
+				'type'         => 'repeater',
+				'layout'       => 'table',
+				'button_label' => 'Them badge',
+				'sub_fields'   => array(
+					array(
+						'key'   => 'field_popup_feature_text',
+						'label' => 'Noi dung',
+						'name'  => 'text',
+						'type'  => 'text',
+					),
+				),
+			),
+			array(
+				'key'           => 'field_popup_cta_label',
+				'label'         => 'Text nut CTA',
+				'name'          => 'popup_cta_label',
+				'type'          => 'text',
+				'default_value' => 'Claim 90% Off, Get Funded Now',
+				'wrapper'       => array( 'width' => '35' ),
+			),
+			array(
+				'key'           => 'field_popup_cta_note',
+				'label'         => 'Ghi chu duoi CTA',
+				'name'          => 'popup_cta_note',
+				'type'          => 'text',
+				'default_value' => 'Apply the code at checkout - apextraderfunding.com',
+				'wrapper'       => array( 'width' => '40' ),
+			),
+			array(
+				'key'         => 'field_popup_cta_url',
+				'label'       => 'Link CTA',
+				'name'        => 'popup_cta_url',
+				'type'        => 'text',
+				'placeholder' => '#',
+				'wrapper'     => array( 'width' => '25' ),
+			),
+			array(
+				'key'           => 'field_popup_trust_text',
+				'label'         => 'Dong trust/review',
+				'name'          => 'popup_trust_text',
+				'type'          => 'text',
+				'default_value' => '4.3/5 - 20,000+ Trustpilot reviews - 100k+ funded traders worldwide',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param'    => 'page_template',
+					'operator' => '==',
+					'value'    => 'page-landing.php',
+				),
+			),
+		),
+		'menu_order'            => 5,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'active'                => true,
+		'description'           => 'Quan tri popup discount hien khi load trang landing.',
+	) );
+}
+
 add_action( 'acf/init', 'caia_register_landing_options_page' );
 function caia_register_landing_options_page() {
 	if ( ! function_exists( 'acf_add_options_page' ) ) {
@@ -630,6 +1254,7 @@ function caia_register_landing_hf_fields() {
 				'label'       => 'Điện thoại',
 				'name'        => 'ft_phone',
 				'type'        => 'text',
+				'default_value' => '+1 (888) 123-4567',
 				'wrapper'     => array( 'width' => '25' ),
 			),
 			array(
@@ -637,6 +1262,7 @@ function caia_register_landing_hf_fields() {
 				'label'       => 'Email',
 				'name'        => 'ft_email',
 				'type'        => 'text',
+				'default_value' => 'support@fundedprogram.com',
 				'wrapper'     => array( 'width' => '25' ),
 			),
 			array(
@@ -671,6 +1297,13 @@ function caia_register_landing_hf_fields() {
 				'layout'       => 'table',
 				'button_label' => 'Thêm mạng xã hội',
 				'sub_fields'   => array(
+					array(
+						'key'         => 'field_ft_social_label',
+						'label'       => 'Label',
+						'name'        => 'label',
+						'type'        => 'text',
+						'placeholder' => 'Facebook',
+					),
 					array(
 						'key'         => 'field_ft_social_icon',
 						'label'       => 'Icon (class)',
