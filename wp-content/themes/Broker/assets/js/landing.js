@@ -9,52 +9,38 @@
   }
 
   ready(function () {
-    var popup = document.querySelector('[data-lp-popup]');
-    var copyButtons = document.querySelectorAll('[data-copy-code]');
+    var sticky = document.querySelector('[data-hosting-sticky]');
 
-    copyButtons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        var code = button.getAttribute('data-copy-code') || button.textContent.trim();
+    function updateStickyHeight() {
+      if (!sticky) {
+        document.documentElement.style.removeProperty('--hosting-sticky-height');
+        return;
+      }
 
-        if (!navigator.clipboard || !code) {
+      document.documentElement.style.setProperty('--hosting-sticky-height', sticky.offsetHeight + 'px');
+    }
+
+    updateStickyHeight();
+    window.addEventListener('resize', updateStickyHeight);
+
+    document.querySelectorAll('.hosting-landing a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        var targetId = link.getAttribute('href');
+        var target;
+
+        if (!targetId || targetId === '#') {
           return;
         }
 
-        navigator.clipboard.writeText(code).then(function () {
-          button.classList.add('is-copied');
-          window.setTimeout(function () {
-            button.classList.remove('is-copied');
-          }, 1200);
-        });
+        target = document.querySelector(targetId);
+
+        if (!target) {
+          return;
+        }
+
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
-
-    if (!popup) {
-      return;
-    }
-
-    var closeButtons = popup.querySelectorAll('[data-lp-popup-close]');
-    var close = function () {
-      popup.classList.remove('is-open');
-      popup.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('lp-popup-open');
-    };
-    var open = function () {
-      popup.classList.add('is-open');
-      popup.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('lp-popup-open');
-    };
-
-    closeButtons.forEach(function (button) {
-      button.addEventListener('click', close);
-    });
-
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && popup.classList.contains('is-open')) {
-        close();
-      }
-    });
-
-    window.setTimeout(open, 250);
   });
 }());

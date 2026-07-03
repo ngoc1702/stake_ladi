@@ -41,8 +41,8 @@ function custom_override_style() {
     wp_enqueue_style($handle, get_stylesheet_uri(), array(), $version);
 }
 
-add_action('wp_enqueue_scripts', 'caia_enqueue_hotel_landing_assets', 120);
-function caia_enqueue_hotel_landing_assets() {
+add_action('wp_enqueue_scripts', 'caia_enqueue_hosting_landing_assets', 120);
+function caia_enqueue_hosting_landing_assets() {
     $is_landing = is_page_template('page-landing.php');
 
     if (!$is_landing && is_singular()) {
@@ -58,7 +58,7 @@ function caia_enqueue_hotel_landing_assets() {
 
     if (file_exists($js_path)) {
         wp_enqueue_script(
-            'hotel-landing',
+            'hosting-landing',
             get_stylesheet_directory_uri() . '/assets/js/landing.js',
             array('jquery'),
             filemtime($js_path),

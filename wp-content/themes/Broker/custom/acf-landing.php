@@ -1,243 +1,295 @@
 <?php
 /**
- * ACF cấu hình cho Landing Page (template: page-landing.php)
- *
- * - Đăng ký nhóm trường ACF cho Section Banner (dễ quản trị)
- * - Định nghĩa hàm render template parts cho landing
+ * ACF setup and helpers for the Hosting Landing template.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Render các template-parts của trang landing.
- * Được gọi trong page-landing.php
- */
-if ( ! function_exists( 'hotel_landing_render_parts' ) ) {
-	function hotel_landing_render_parts() {
-		// Mỗi section là 1 file trong /template-parts
+if ( ! function_exists( 'hosting_landing_render_parts' ) ) {
+	function hosting_landing_render_parts() {
 		get_template_part( 'template-parts/header' );
 		get_template_part( 'template-parts/banner' );
-		get_template_part( 'template-parts/featured-offer' );
-		get_template_part( 'template-parts/discounts' );
 		get_template_part( 'template-parts/firms-table' );
-		get_template_part( 'template-parts/reviews' );
+		get_template_part( 'template-parts/faq' );
+		get_template_part( 'template-parts/editors-picks' );
 		get_template_part( 'template-parts/footer' );
-		get_template_part( 'template-parts/popup' );
+		get_template_part( 'template-parts/sticky-offer' );
 	}
 }
 
-/**
- * Đăng ký nhóm trường ACF cho Section Banner.
- */
-add_action( 'acf/init', 'caia_register_landing_banner_fields' );
-function caia_register_landing_banner_fields() {
+if ( ! function_exists( 'hosting_landing_get_field' ) ) {
+	function hosting_landing_get_field( $name, $post_id = null, $default = '' ) {
+		$value = null;
 
-	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
-		return;
+		if ( function_exists( 'get_field' ) ) {
+			$value = get_field( $name, $post_id ? $post_id : get_the_ID() );
+		}
+
+		if ( null === $value || '' === $value || array() === $value ) {
+			return $default;
+		}
+
+		return $value;
 	}
+}
 
-	acf_add_local_field_group( array(
-		'key'      => 'group_landing_banner',
-		'title'    => 'Landing Page — Section Banner',
-		'fields'   => array(
+if ( ! function_exists( 'hosting_landing_default_providers' ) ) {
+	function hosting_landing_default_providers() {
+		return array(
+			array(
+				'name'           => 'Hostinger',
+				'accent_color'   => '#673de6',
+				'featured_badge' => 'Best Hosting Service Overall',
+				'deal_note'      => 'GET 81% OFF + free months',
+				'description'    => 'Hostinger is among the best website hosting providers for WordPress, offering quick setup, strong security, and fast loading speeds. It is a reliable choice for users looking for efficient and hassle-free web hosting.',
+				'pros'           => array(
+					array( 'text' => 'DDoS and malware protection' ),
+					array( 'text' => 'Free domain, email backups, and SSL' ),
+					array( 'text' => 'AI Website Builder included' ),
+					array( 'text' => '24/7 expert support' ),
+					array( 'text' => 'Data centers covering 4 continents' ),
+				),
+				'cons'           => array(),
+				'score'          => '9.9',
+				'score_label'    => 'Outstanding',
+				'button_label'   => 'Get the deal',
+				'button_url'     => '#',
+				'quote_text'     => 'After benchmarking 40+ providers, Hostinger consistently delivers the best performance-to-price ratio I have seen in 10 years.',
+				'quote_author'   => 'Jonathan Roland',
+				'quote_role'     => 'Senior tech writer',
+				'money_back'     => '30-days',
+				'storage'        => '25GB SSD',
+				'support'        => 'Yes',
+				'ssl'            => 'Yes (unlimited)',
+			),
+			array(
+				'name'         => 'IONOS',
+				'accent_color' => '#003d8f',
+				'description'  => 'IONOS is a dependable hosting provider, delivering fast, user-friendly, and affordable solutions. With versatile features, it is among the best web hosting options for personal and business sites.',
+				'pros'         => array(
+					array( 'text' => 'Free domain, SSL, DDoS protection' ),
+					array( 'text' => 'Low introductory rates' ),
+					array( 'text' => 'Daily backups and recovery' ),
+					array( 'text' => 'Intuitive control panel and interface' ),
+				),
+				'cons'         => array(),
+				'score'        => '9.4',
+				'score_label'  => 'Very good',
+				'button_label' => 'Visit Site',
+				'button_url'   => '#',
+				'money_back'   => '30-days',
+				'storage'      => '10GB SSD',
+				'support'      => 'Yes',
+				'ssl'          => 'Yes',
+			),
+			array(
+				'name'         => 'Bluehost',
+				'accent_color' => '#0b78bd',
+				'description'  => 'Bluehost is a reliable and highly recommended hosting provider, offering affordable plans, user-friendly tools, and solid performance for websites of all sizes.',
+				'pros'         => array(
+					array( 'text' => 'Modern, intuitive interface' ),
+					array( 'text' => 'Excellent website performance' ),
+					array( 'text' => 'Versatile hosting options' ),
+				),
+				'cons'         => array(
+					array( 'text' => 'Limited payment options' ),
+				),
+				'score'        => '9.3',
+				'score_label'  => 'Very good',
+				'button_label' => 'Visit Site',
+				'button_url'   => '#',
+				'money_back'   => '30-days',
+				'storage'      => '10GB SSD',
+				'support'      => 'Yes',
+				'ssl'          => 'Yes',
+			),
+			array(
+				'name'         => 'DreamHost',
+				'accent_color' => '#6aaec5',
+				'description'  => 'DreamHost offers a robust web hosting service with good security, fast speeds, and a simplified native panel for seamless website management.',
+				'pros'         => array(
+					array( 'text' => 'Free domain and SSL' ),
+					array( 'text' => 'Automated daily backups' ),
+					array( 'text' => 'Free domain privacy' ),
+				),
+				'cons'         => array(
+					array( 'text' => 'Some security tools cost extra' ),
+				),
+				'score'        => '9.2',
+				'score_label'  => 'Very good',
+				'button_label' => 'Visit Site',
+				'button_url'   => '#',
+			),
+			array(
+				'name'         => 'Liquid Web',
+				'accent_color' => '#111111',
+				'description'  => 'Fully managed, affordable, and secure VPS hosting with huge discounts. Liquid Web separates itself from the pack with 100% network and power uptime.',
+				'pros'         => array(
+					array( 'text' => 'Faster than top competitors' ),
+					array( 'text' => 'Integrated firewall' ),
+					array( 'text' => '24/7 phone, chat, and email support' ),
+				),
+				'cons'         => array(
+					array( 'text' => 'Premium-level prices' ),
+				),
+				'score'        => '9.0',
+				'score_label'  => 'Good',
+				'button_label' => 'Visit Site',
+				'button_url'   => '#',
+			),
+			array(
+				'name'         => 'Namecheap',
+				'accent_color' => '#f05f2a',
+				'description'  => 'Namecheap is a solid option for beginners and small projects. With an easy-to-use cPanel and reliable resources, it is a practical choice for simple web hosting.',
+				'pros'         => array(
+					array( 'text' => 'Free domain, SSL, and CDN' ),
+					array( 'text' => 'Native user interface and classic cPanel' ),
+					array( 'text' => 'Automated backups twice a week' ),
+				),
+				'cons'         => array(
+					array( 'text' => 'Unreliable performance' ),
+				),
+				'score'        => '8.9',
+				'score_label'  => 'Good',
+				'button_label' => 'Visit Site',
+				'button_url'   => '#',
+			),
+			array(
+				'name'         => 'SiteGround',
+				'accent_color' => '#74b72e',
+				'description'  => 'SiteGround is a good web hosting for WordPress users, designed to improve site speed and security while simplifying website-building processes.',
+				'pros'         => array(
+					array( 'text' => 'Innovative speed-boosting tech' ),
+					array( 'text' => 'Servers in 4 continents' ),
+					array( 'text' => 'Free domain and free daily backups' ),
+				),
+				'cons'         => array(
+					array( 'text' => 'Limited scalability' ),
+				),
+				'score'        => '8.8',
+				'score_label'  => 'Good',
+				'button_label' => 'Visit Site',
+				'button_url'   => '#',
+			),
+			array(
+				'name'         => 'InMotion Hosting',
+				'accent_color' => '#d91f2c',
+				'description'  => 'InMotion Hosting is a reliable option for those seeking the best web hosting, with a strong focus on security and performance for business or personal websites.',
+				'pros'         => array(
+					array( 'text' => 'Performance-enhancing features' ),
+					array( 'text' => 'BoldGrid website builder for WordPress' ),
+					array( 'text' => 'Free SSL and DDoS protection' ),
+				),
+				'cons'         => array(
+					array( 'text' => 'High prices' ),
+				),
+				'score'        => '8.6',
+				'score_label'  => 'Good',
+				'button_label' => 'Visit Site',
+				'button_url'   => '#',
+			),
+			array(
+				'name'         => 'WIX',
+				'accent_color' => '#111111',
+				'description'  => 'Wix is amazing when it comes to getting your website online with secure hosting, fast load times, built-in SEO tools, customizable templates, and 24/7 support.',
+				'pros'         => array(
+					array( 'text' => 'Free domain, SSL' ),
+					array( 'text' => 'Automated backups' ),
+					array( 'text' => 'Advanced security monitoring' ),
+				),
+				'cons'         => array(
+					array( 'text' => 'Limited hosting options' ),
+				),
+				'score'        => '8.5',
+				'score_label'  => 'Good',
+				'button_label' => 'Visit Site',
+				'button_url'   => '#',
+			),
+			array(
+				'name'         => 'Elementor',
+				'accent_color' => '#92003b',
+				'description'  => 'Elementor excels in beginner-friendly, fully-managed WordPress hosting, ensuring fast-loading sites with custom caching tools for optimal performance.',
+				'pros'         => array(
+					array( 'text' => 'Firewall protection' ),
+					array( 'text' => '14-day backups' ),
+					array( 'text' => 'SSL certificate is included' ),
+				),
+				'cons'         => array(
+					array( 'text' => 'Limited free version' ),
+				),
+				'score'        => '8.4',
+				'score_label'  => 'Good',
+				'button_label' => 'Visit Site',
+				'button_url'   => '#',
+			),
+		);
+	}
+}
 
-			/* ============ CỘT TRÁI ============ */
-			array(
-				'key'     => 'field_banner_tab_left',
-				'label'   => '◀ Nội dung chính (cột trái)',
-				'name'    => '',
-				'type'    => 'tab',
-			),
-			array(
-				'key'          => 'field_banner_badges',
-				'label'        => 'Nhãn nhỏ (badges)',
-				'name'         => 'banner_badges',
-				'type'         => 'repeater',
-				'instructions' => 'Các nhãn nhỏ phía trên tiêu đề, ví dụ: UPDATED 2026, Top 25 List...',
-				'layout'       => 'table',
-				'button_label' => 'Thêm nhãn',
-				'sub_fields'   => array(
-					array(
-						'key'   => 'field_banner_badge_text',
-						'label' => 'Nội dung',
-						'name'  => 'text',
-						'type'  => 'text',
-					),
-				),
-			),
-			array(
-				'key'          => 'field_banner_title',
-				'label'        => 'Tiêu đề lớn',
-				'name'         => 'banner_title',
-				'type'         => 'textarea',
-				'instructions' => 'Tiêu đề chính của banner.',
-				'rows'         => 3,
-				'new_lines'    => '',
-			),
-			array(
-				'key'          => 'field_banner_desc',
-				'label'        => 'Mô tả',
-				'name'         => 'banner_desc',
-				'type'         => 'wysiwyg',
-				'instructions' => 'Đoạn mô tả. Bôi đậm (Bold) những từ muốn nhấn mạnh.',
-				'tabs'         => 'visual',
-				'toolbar'      => 'basic',
-				'media_upload' => 0,
-			),
-			array(
-				'key'          => 'field_banner_filters',
-				'label'        => 'Nút lọc nhanh',
-				'name'         => 'banner_filters',
-				'type'         => 'repeater',
-				'instructions' => 'Các nút bo tròn có chấm tròn, ví dụ: Best Evaluation Programs...',
-				'layout'       => 'table',
-				'button_label' => 'Thêm nút lọc',
-				'sub_fields'   => array(
-					array(
-						'key'   => 'field_banner_filter_label',
-						'label' => 'Tên nút',
-						'name'  => 'label',
-						'type'  => 'text',
-					),
-					array(
-						'key'   => 'field_banner_filter_url',
-						'label' => 'Liên kết',
-						'name'  => 'url',
-						'type'  => 'text',
-						'placeholder' => '#hoặc-link',
-					),
-				),
-			),
-			array(
-				'key'          => 'field_banner_stats',
-				'label'        => 'Số liệu nổi bật',
-				'name'         => 'banner_stats',
-				'type'         => 'repeater',
-				'instructions' => 'Ví dụ: 25 / firms compared.',
-				'layout'       => 'table',
-				'button_label' => 'Thêm số liệu',
-				'sub_fields'   => array(
-					array(
-						'key'   => 'field_banner_stat_number',
-						'label' => 'Con số',
-						'name'  => 'number',
-						'type'  => 'text',
-					),
-					array(
-						'key'   => 'field_banner_stat_label',
-						'label' => 'Mô tả',
-						'name'  => 'label',
-						'type'  => 'text',
-					),
-				),
-			),
-			array(
-				'key'          => 'field_banner_ctas',
-				'label'        => 'Nút kêu gọi (CTA)',
-				'name'         => 'banner_ctas',
-				'type'         => 'repeater',
-				'layout'       => 'table',
-				'button_label' => 'Thêm nút CTA',
-				'sub_fields'   => array(
-					array(
-						'key'   => 'field_banner_cta_label',
-						'label' => 'Tên nút',
-						'name'  => 'label',
-						'type'  => 'text',
-					),
-					array(
-						'key'   => 'field_banner_cta_url',
-						'label' => 'Liên kết',
-						'name'  => 'url',
-						'type'  => 'text',
-						'placeholder' => '#hoặc-link',
-					),
-					array(
-						'key'     => 'field_banner_cta_style',
-						'label'   => 'Kiểu',
-						'name'    => 'style',
-						'type'    => 'select',
-						'choices' => array(
-							'primary' => 'Nền đặc (chính)',
-							'outline' => 'Viền (phụ)',
-						),
-						'default_value' => 'primary',
-					),
-				),
-			),
+if ( ! function_exists( 'hosting_landing_get_providers' ) ) {
+	function hosting_landing_get_providers( $post_id = null ) {
+		$providers = hosting_landing_get_field( 'hosting_providers', $post_id, array() );
 
-			/* ============ CỘT PHẢI (CARD) ============ */
-			array(
-				'key'     => 'field_banner_tab_right',
-				'label'   => '▶ Khung bên phải (card)',
-				'name'    => '',
-				'type'    => 'tab',
-			),
-			array(
-				'key'     => 'field_card_title',
-				'label'   => 'Tiêu đề card',
-				'name'    => 'card_title',
-				'type'    => 'text',
-			),
-			array(
-				'key'     => 'field_card_intro',
-				'label'   => 'Đoạn giới thiệu',
-				'name'    => 'card_intro',
-				'type'    => 'textarea',
-				'rows'    => 3,
-			),
-			array(
-				'key'          => 'field_card_items',
-				'label'        => 'Danh sách tiêu chí',
-				'name'         => 'card_items',
-				'type'         => 'repeater',
-				'instructions' => 'Mỗi mục là 1 ô có tiêu đề + mô tả.',
-				'layout'       => 'block',
-				'button_label' => 'Thêm tiêu chí',
-				'sub_fields'   => array(
-					array(
-						'key'   => 'field_card_item_title',
-						'label' => 'Tiêu đề',
-						'name'  => 'title',
-						'type'  => 'text',
-					),
-					array(
-						'key'   => 'field_card_item_desc',
-						'label' => 'Mô tả',
-						'name'  => 'desc',
-						'type'  => 'text',
-					),
-				),
-			),
+		if ( empty( $providers ) || ! is_array( $providers ) ) {
+			$providers = hosting_landing_default_providers();
+		}
 
-			/* ============ HÀNG DƯỚI CÙNG ============ */
-			array(
-				'key'     => 'field_banner_tab_bottom',
-				'label'   => '▼ Hàng tính năng (dưới cùng)',
-				'name'    => '',
-				'type'    => 'tab',
-			),
-			array(
-				'key'          => 'field_bottom_features',
-				'label'        => 'Các mục tích xanh',
-				'name'         => 'bottom_features',
-				'type'         => 'repeater',
-				'instructions' => 'Các pill có dấu tích ở cuối banner.',
-				'layout'       => 'table',
-				'button_label' => 'Thêm mục',
-				'sub_fields'   => array(
-					array(
-						'key'   => 'field_bottom_feature_text',
-						'label' => 'Nội dung',
-						'name'  => 'text',
-						'type'  => 'text',
-					),
-				),
-			),
-		),
-		'location' => array(
+		foreach ( $providers as $index => $provider ) {
+			$providers[ $index ]['name']         = ! empty( $provider['name'] ) ? $provider['name'] : 'Hosting Provider';
+			$providers[ $index ]['accent_color'] = ! empty( $provider['accent_color'] ) ? $provider['accent_color'] : '#673de6';
+			$providers[ $index ]['pros']         = ! empty( $provider['pros'] ) && is_array( $provider['pros'] ) ? $provider['pros'] : array();
+			$providers[ $index ]['cons']         = ! empty( $provider['cons'] ) && is_array( $provider['cons'] ) ? $provider['cons'] : array();
+			$providers[ $index ]['score']        = ! empty( $provider['score'] ) ? $provider['score'] : '9.0';
+			$providers[ $index ]['score_label']  = ! empty( $provider['score_label'] ) ? $provider['score_label'] : 'Good';
+			$providers[ $index ]['button_label'] = ! empty( $provider['button_label'] ) ? $provider['button_label'] : 'Visit Site';
+			$providers[ $index ]['button_url']   = ! empty( $provider['button_url'] ) ? $provider['button_url'] : '#';
+		}
+
+		return $providers;
+	}
+}
+
+if ( ! function_exists( 'hosting_landing_get_initials' ) ) {
+	function hosting_landing_get_initials( $name ) {
+		$words    = preg_split( '/\s+/', trim( (string) $name ) );
+		$initials = '';
+
+		foreach ( $words as $word ) {
+			if ( '' === $word ) {
+				continue;
+			}
+			$initials .= strtoupper( substr( $word, 0, 1 ) );
+			if ( strlen( $initials ) >= 2 ) {
+				break;
+			}
+		}
+
+		return $initials ? $initials : strtoupper( substr( (string) $name, 0, 1 ) );
+	}
+}
+
+if ( ! function_exists( 'hosting_landing_brand_logo' ) ) {
+	function hosting_landing_brand_logo( $name, $logo = null, $accent_color = '#673de6', $class = 'hosting-brand-logo' ) {
+		$color = sanitize_hex_color( $accent_color );
+		$style = $color ? ' style="--brand-color:' . esc_attr( $color ) . '"' : '';
+		?>
+		<div class="<?php echo esc_attr( $class ); ?>"<?php echo $style; ?>>
+			<?php if ( is_array( $logo ) && ! empty( $logo['url'] ) ) : ?>
+				<img src="<?php echo esc_url( $logo['url'] ); ?>" alt="<?php echo esc_attr( $name ); ?>" loading="lazy">
+			<?php else : ?>
+				<span class="<?php echo esc_attr( $class ); ?>__mark"><?php echo esc_html( hosting_landing_get_initials( $name ) ); ?></span>
+				<strong><?php echo esc_html( $name ); ?></strong>
+			<?php endif; ?>
+		</div>
+		<?php
+	}
+}
+
+if ( ! function_exists( 'hosting_landing_page_location' ) ) {
+	function hosting_landing_page_location() {
+		return array(
 			array(
 				array(
 					'param'    => 'page_template',
@@ -245,1104 +297,234 @@ function caia_register_landing_banner_fields() {
 					'value'    => 'page-landing.php',
 				),
 			),
-		),
-		'menu_order'            => 0,
-		'position'              => 'normal',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'active'                => true,
-		'description'           => 'Quản trị Section Banner của trang Landing.',
-	) );
+		);
+	}
 }
 
-/**
- * Đăng ký nhóm trường ACF cho Section Bảng xếp hạng (Top 25 Prop Firms).
- */
-/**
- * Dang ky nhom truong ACF cho Section Discounts.
- */
-add_action( 'acf/init', 'caia_register_landing_featured_offer_fields' );
-function caia_register_landing_featured_offer_fields() {
-
-	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
-		return;
+if ( ! function_exists( 'hosting_landing_field' ) ) {
+	function hosting_landing_field( $key, $label, $name, $type = 'text', $extra = array() ) {
+		return array_merge(
+			array(
+				'key'   => $key,
+				'label' => $label,
+				'name'  => $name,
+				'type'  => $type,
+			),
+			$extra
+		);
 	}
+}
 
-	acf_add_local_field_group( array(
-		'key'      => 'group_landing_featured_offer',
-		'title'    => 'Landing Page - Featured Offer',
-		'fields'   => array(
+if ( ! function_exists( 'hosting_landing_text_repeater' ) ) {
+	function hosting_landing_text_repeater( $key, $label, $name, $button_label ) {
+		return hosting_landing_field(
+			$key,
+			$label,
+			$name,
+			'repeater',
 			array(
-				'key'           => 'field_featured_offer_enabled',
-				'label'         => 'Hien section',
-				'name'          => 'featured_offer_enabled',
-				'type'          => 'true_false',
-				'default_value' => 1,
-				'ui'            => 1,
-			),
-			array(
-				'key'           => 'field_featured_offer_eyebrow',
-				'label'         => 'Nhan nho',
-				'name'          => 'featured_offer_eyebrow',
-				'type'          => 'text',
-				'default_value' => '#1 Trader-Rated Prop Firm',
-			),
-			array(
-				'key'           => 'field_featured_offer_highlight',
-				'label'         => 'Dong tieu de mau mint',
-				'name'          => 'featured_offer_highlight',
-				'type'          => 'text',
-				'default_value' => 'Apex Trader Funding',
-				'wrapper'       => array( 'width' => '40' ),
-			),
-			array(
-				'key'           => 'field_featured_offer_title',
-				'label'         => 'Tieu de chinh',
-				'name'          => 'featured_offer_title',
-				'type'          => 'textarea',
-				'rows'          => 2,
-				'default_value' => 'The Smartest Way To Get Funded In 2026',
-				'wrapper'       => array( 'width' => '60' ),
-			),
-			array(
-				'key'          => 'field_featured_offer_desc',
-				'label'        => 'Mo ta',
-				'name'         => 'featured_offer_desc',
-				'type'         => 'wysiwyg',
-				'tabs'         => 'visual',
-				'toolbar'      => 'basic',
-				'media_upload' => 0,
-			),
-			array(
-				'key'           => 'field_featured_offer_coupon_label',
-				'label'         => 'Label coupon',
-				'name'          => 'featured_offer_coupon_label',
-				'type'          => 'text',
-				'default_value' => 'Apex Trader Funding Code',
-				'wrapper'       => array( 'width' => '35' ),
-			),
-			array(
-				'key'           => 'field_featured_offer_coupon_badge',
-				'label'         => 'Badge coupon',
-				'name'          => 'featured_offer_coupon_badge',
-				'type'          => 'text',
-				'default_value' => 'Up To 90% Off',
-				'wrapper'       => array( 'width' => '25' ),
-			),
-			array(
-				'key'           => 'field_featured_offer_coupon_code',
-				'label'         => 'Coupon code',
-				'name'          => 'featured_offer_coupon_code',
-				'type'          => 'text',
-				'default_value' => 'ONKAGNVZ',
-				'wrapper'       => array( 'width' => '20' ),
-			),
-			array(
-				'key'         => 'field_featured_offer_coupon_url',
-				'label'       => 'Link nut discount',
-				'name'        => 'featured_offer_coupon_url',
-				'type'        => 'text',
-				'placeholder' => '#',
-				'wrapper'     => array( 'width' => '20' ),
-			),
-			array(
-				'key'           => 'field_featured_offer_coupon_button',
-				'label'         => 'Text nut discount',
-				'name'          => 'featured_offer_coupon_button',
-				'type'          => 'text',
-				'default_value' => 'Get Apex Trader Funding Discount',
-			),
-			array(
-				'key'          => 'field_featured_offer_prices',
-				'label'        => 'Gia trong coupon card',
-				'name'         => 'featured_offer_prices',
-				'type'         => 'repeater',
 				'layout'       => 'table',
-				'button_label' => 'Them gia',
+				'button_label' => $button_label,
 				'sub_fields'   => array(
-					array(
-						'key'   => 'field_featured_offer_price_label',
-						'label' => 'Ten goi',
-						'name'  => 'label',
-						'type'  => 'text',
-					),
-					array(
-						'key'   => 'field_featured_offer_price',
-						'label' => 'Gia moi',
-						'name'  => 'price',
-						'type'  => 'text',
-					),
-					array(
-						'key'   => 'field_featured_offer_old_price',
-						'label' => 'Gia cu',
-						'name'  => 'old_price',
-						'type'  => 'text',
-					),
+					hosting_landing_field( $key . '_text', 'Text', 'text' ),
 				),
-			),
-			array(
-				'key'           => 'field_featured_offer_visual',
-				'label'         => 'Anh/logo ben phai',
-				'name'          => 'featured_offer_visual',
-				'type'          => 'image',
-				'return_format' => 'array',
-				'preview_size'  => 'medium',
-				'library'       => 'all',
-			),
-			array(
-				'key'           => 'field_featured_offer_visual_title',
-				'label'         => 'Ten thuong hieu ben phai',
-				'name'          => 'featured_offer_visual_title',
-				'type'          => 'text',
-				'default_value' => 'Apex Trader Funding',
-				'wrapper'       => array( 'width' => '50' ),
-			),
-			array(
-				'key'           => 'field_featured_offer_visual_subtitle',
-				'label'         => 'Dong phu ben phai',
-				'name'          => 'featured_offer_visual_subtitle',
-				'type'          => 'text',
-				'default_value' => 'The #1 Futures Prop Firm',
-				'wrapper'       => array( 'width' => '50' ),
-			),
-			array(
-				'key'           => 'field_featured_offer_rating',
-				'label'         => 'Dong rating/review',
-				'name'          => 'featured_offer_rating',
-				'type'          => 'text',
-				'default_value' => '4.3/5 - 20,000+ Trustpilot Reviews',
-			),
-			array(
-				'key'           => 'field_featured_offer_metric',
-				'label'         => 'So thong ke lon',
-				'name'          => 'featured_offer_metric',
-				'type'          => 'text',
-				'default_value' => '$812M+',
-				'wrapper'       => array( 'width' => '35' ),
-			),
-			array(
-				'key'           => 'field_featured_offer_metric_label',
-				'label'         => 'Mo ta so thong ke lon',
-				'name'          => 'featured_offer_metric_label',
-				'type'          => 'text',
-				'default_value' => 'Paid By Apex Trader Funding Since 2022',
-				'wrapper'       => array( 'width' => '65' ),
-			),
-			array(
-				'key'           => 'field_featured_offer_progress_label',
-				'label'         => 'Label thanh tien do',
-				'name'          => 'featured_offer_progress_label',
-				'type'          => 'text',
-				'default_value' => 'Avg Monthly Payouts To Traders',
-				'wrapper'       => array( 'width' => '50' ),
-			),
-			array(
-				'key'           => 'field_featured_offer_progress_value',
-				'label'         => 'Gia tri thanh tien do',
-				'name'          => 'featured_offer_progress_value',
-				'type'          => 'text',
-				'default_value' => '$14.91M',
-				'wrapper'       => array( 'width' => '50' ),
-			),
-			array(
-				'key'          => 'field_featured_offer_stats',
-				'label'        => 'O thong ke ben phai',
-				'name'         => 'featured_offer_stats',
-				'type'         => 'repeater',
-				'layout'       => 'table',
-				'button_label' => 'Them thong ke',
-				'sub_fields'   => array(
-					array(
-						'key'   => 'field_featured_offer_stat_value',
-						'label' => 'Gia tri',
-						'name'  => 'value',
-						'type'  => 'text',
-					),
-					array(
-						'key'   => 'field_featured_offer_stat_label',
-						'label' => 'Mo ta',
-						'name'  => 'label',
-						'type'  => 'text',
-					),
-				),
-			),
-			array(
-				'key'           => 'field_featured_offer_review_button',
-				'label'         => 'Text nut review',
-				'name'          => 'featured_offer_review_button',
-				'type'          => 'text',
-				'default_value' => 'Read Full Apex Trader Funding Review',
-				'wrapper'       => array( 'width' => '45' ),
-			),
-			array(
-				'key'         => 'field_featured_offer_review_url',
-				'label'       => 'Link nut review',
-				'name'        => 'featured_offer_review_url',
-				'type'        => 'text',
-				'placeholder' => '#',
-				'wrapper'     => array( 'width' => '55' ),
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param'    => 'page_template',
-					'operator' => '==',
-					'value'    => 'page-landing.php',
-				),
-			),
-		),
-		'menu_order'            => 1,
-		'position'              => 'normal',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'active'                => true,
-		'description'           => 'Quan tri section offer noi bat ngay duoi banner.',
-	) );
+			)
+		);
+	}
 }
 
-add_action( 'acf/init', 'caia_register_landing_discounts_fields' );
-function caia_register_landing_discounts_fields() {
-
+add_action( 'acf/init', 'caia_register_hosting_landing_fields' );
+function caia_register_hosting_landing_fields() {
 	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
 		return;
 	}
 
-	acf_add_local_field_group( array(
-		'key'      => 'group_landing_discounts',
-		'title'    => 'Landing Page - Section Discounts',
-		'fields'   => array(
-			array(
-				'key'           => 'field_discounts_title',
-				'label'         => 'Tieu de section',
-				'name'          => 'discounts_title',
-				'type'          => 'text',
-				'default_value' => 'Best Prop Firm Discounts',
+	acf_add_local_field_group(
+		array(
+			'key'                   => 'group_hosting_landing_hero',
+			'title'                 => 'Hosting Landing - 01 Header & Hero',
+			'fields'                => array(
+				hosting_landing_field( 'field_hosting_header_tab', 'Header', '', 'tab' ),
+				hosting_landing_field( 'field_hosting_header_logo', 'Logo image', 'hosting_header_logo', 'image', array( 'return_format' => 'array', 'preview_size' => 'medium' ) ),
+				hosting_landing_field( 'field_hosting_header_logo_text', 'Logo text', 'hosting_header_logo_text', 'text', array( 'default_value' => 'cybernews*' ) ),
+				hosting_landing_field( 'field_hosting_header_disclosure_label', 'Disclosure label', 'hosting_disclosure_label', 'text', array( 'default_value' => 'Advertiser disclosure', 'wrapper' => array( 'width' => '50' ) ) ),
+				hosting_landing_field( 'field_hosting_header_disclosure_url', 'Disclosure URL', 'hosting_disclosure_url', 'text', array( 'default_value' => '#', 'wrapper' => array( 'width' => '50' ) ) ),
+				hosting_landing_field( 'field_hosting_hero_tab', 'Hero copy', '', 'tab' ),
+				hosting_landing_field( 'field_hosting_hero_updated', 'Updated label', 'hosting_hero_updated', 'text', array( 'default_value' => 'Updated: July 2026' ) ),
+				hosting_landing_field( 'field_hosting_hero_title', 'Title', 'hosting_hero_title', 'textarea', array( 'rows' => 2, 'default_value' => 'Best Web Hosting Services' ) ),
+				hosting_landing_field( 'field_hosting_hero_intro', 'Intro', 'hosting_hero_intro', 'textarea', array( 'rows' => 3, 'default_value' => 'If you are looking to run a personal blog, business landing page, or even an online store, a reliable and affordable hosting service is what you need. Check our list of best web hosting solutions to find the one best suited for your needs.' ) ),
+				hosting_landing_field( 'field_hosting_top_tab', 'Hero top provider bar', '', 'tab' ),
+				hosting_landing_field( 'field_hosting_top_logo', 'Provider logo', 'hosting_top_logo', 'image', array( 'return_format' => 'array', 'preview_size' => 'medium' ) ),
+				hosting_landing_field( 'field_hosting_top_name', 'Provider name', 'hosting_top_name', 'text', array( 'default_value' => 'Hostinger', 'wrapper' => array( 'width' => '35' ) ) ),
+				hosting_landing_field( 'field_hosting_top_color', 'Brand color', 'hosting_top_color', 'color_picker', array( 'default_value' => '#673de6', 'wrapper' => array( 'width' => '15' ) ) ),
+				hosting_landing_field( 'field_hosting_top_rank_label', 'Rank label', 'hosting_top_rank_label', 'text', array( 'default_value' => 'Hosting ranking', 'wrapper' => array( 'width' => '25' ) ) ),
+				hosting_landing_field( 'field_hosting_top_rank', 'Rank value', 'hosting_top_rank', 'text', array( 'default_value' => '#1', 'wrapper' => array( 'width' => '25' ) ) ),
+				hosting_landing_field( 'field_hosting_top_score_label', 'Score label', 'hosting_top_score_label', 'text', array( 'default_value' => 'Score', 'wrapper' => array( 'width' => '25' ) ) ),
+				hosting_landing_field( 'field_hosting_top_score', 'Score value', 'hosting_top_score', 'text', array( 'default_value' => '9.9', 'wrapper' => array( 'width' => '25' ) ) ),
+				hosting_landing_field( 'field_hosting_top_deal_label', 'Deal label', 'hosting_top_deal_label', 'text', array( 'default_value' => 'Current deal', 'wrapper' => array( 'width' => '25' ) ) ),
+				hosting_landing_field( 'field_hosting_top_deal', 'Deal value', 'hosting_top_deal', 'text', array( 'default_value' => '81% OFF', 'wrapper' => array( 'width' => '25' ) ) ),
+				hosting_landing_field( 'field_hosting_top_cta_label', 'CTA label', 'hosting_top_cta_label', 'text', array( 'default_value' => 'Get Hostinger deal now', 'wrapper' => array( 'width' => '50' ) ) ),
+				hosting_landing_field( 'field_hosting_top_cta_url', 'CTA URL', 'hosting_top_cta_url', 'text', array( 'default_value' => '#', 'wrapper' => array( 'width' => '50' ) ) ),
+				hosting_landing_field( 'field_hosting_promo_tab', 'Yellow promo strip', '', 'tab' ),
+				hosting_landing_field( 'field_hosting_promo_text', 'Promo text', 'hosting_promo_text', 'text', array( 'default_value' => 'Free domain for the 1st year + get 81% OFF + free months' ) ),
+				hosting_landing_field( 'field_hosting_promo_url', 'Promo URL', 'hosting_promo_url', 'text', array( 'default_value' => '#' ) ),
 			),
-			array(
-				'key'          => 'field_discounts_list',
-				'label'        => 'Danh sach discount',
-				'name'         => 'discounts_list',
-				'type'         => 'repeater',
-				'instructions' => 'Moi dong la 1 card discount. Upload logo va anh coupon neu co; de trong se dung fallback mac dinh.',
-				'layout'       => 'row',
-				'button_label' => 'Them discount',
-				'sub_fields'   => array(
-					array(
-						'key'           => 'field_discount_logo',
-						'label'         => 'Logo',
-						'name'          => 'logo',
-						'type'          => 'image',
-						'return_format' => 'array',
-						'preview_size'  => 'medium',
-						'library'       => 'all',
-						'wrapper'       => array( 'width' => '30' ),
-					),
-					array(
-						'key'     => 'field_discount_name',
-						'label'   => 'Ten firm',
-						'name'    => 'name',
-						'type'    => 'text',
-						'wrapper' => array( 'width' => '35' ),
-					),
-					array(
-						'key'         => 'field_discount_amount',
-						'label'       => 'Muc giam',
-						'name'        => 'amount',
-						'type'        => 'text',
-						'placeholder' => '90%',
-						'wrapper'     => array( 'width' => '15' ),
-					),
-					array(
-						'key'         => 'field_discount_code',
-						'label'       => 'Coupon code',
-						'name'        => 'code',
-						'type'        => 'text',
-						'placeholder' => 'FUNDEDPROGRAM',
-						'wrapper'     => array( 'width' => '20' ),
-					),
-					array(
-						'key'           => 'field_discount_image',
-						'label'         => 'Anh coupon',
-						'name'          => 'image',
-						'type'          => 'image',
-						'return_format' => 'array',
-						'preview_size'  => 'medium',
-						'library'       => 'all',
-						'instructions'  => 'Ty le khuyen nghi 16:9 hoac gan 750x395 nhu anh mau.',
-						'wrapper'       => array( 'width' => '50' ),
-					),
-					array(
-						'key'           => 'field_discount_button_label',
-						'label'         => 'Text nut',
-						'name'          => 'button_label',
-						'type'          => 'text',
-						'default_value' => 'Get Discount',
-						'wrapper'       => array( 'width' => '25' ),
-					),
-					array(
-						'key'         => 'field_discount_url',
-						'label'       => 'Link nut',
-						'name'        => 'url',
-						'type'        => 'text',
-						'placeholder' => '#',
-						'wrapper'     => array( 'width' => '25' ),
-					),
-				),
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param'    => 'page_template',
-					'operator' => '==',
-					'value'    => 'page-landing.php',
-				),
-			),
-		),
-		'menu_order'            => 2,
-		'position'              => 'normal',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'active'                => true,
-		'description'           => 'Quan tri section Best Prop Firm Discounts.',
-	) );
-}
+			'location'              => hosting_landing_page_location(),
+			'menu_order'            => 0,
+			'position'              => 'normal',
+			'style'                 => 'default',
+			'label_placement'       => 'top',
+			'instruction_placement' => 'label',
+			'active'                => true,
+		)
+	);
 
-add_action( 'acf/init', 'caia_register_landing_firms_fields' );
-function caia_register_landing_firms_fields() {
-
-	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
-		return;
-	}
-
-	acf_add_local_field_group( array(
-		'key'      => 'group_landing_firms',
-		'title'    => 'Landing Page — Section Bảng xếp hạng',
-		'fields'   => array(
-			array(
-				'key'     => 'field_firms_title',
-				'label'   => 'Tiêu đề bảng',
-				'name'    => 'firms_title',
-				'type'    => 'text',
-				'default_value' => 'Top 25 Prop Trading Firms & Funding Programs',
-			),
-			array(
-				'key'          => 'field_firms_list',
-				'label'        => 'Danh sách công ty',
-				'name'         => 'firms_list',
-				'type'         => 'repeater',
-				'instructions' => 'Mỗi dòng là 1 công ty. Số thứ tự (#) tự động tăng theo vị trí.',
-				'layout'       => 'row',
-				'button_label' => 'Thêm công ty',
-				'sub_fields'   => array(
+	acf_add_local_field_group(
+		array(
+			'key'                   => 'group_hosting_landing_providers',
+			'title'                 => 'Hosting Landing - 02 Provider Ranking',
+			'fields'                => array(
+				hosting_landing_field(
+					'field_hosting_providers',
+					'Hosting providers',
+					'hosting_providers',
+					'repeater',
 					array(
-						'key'           => 'field_firm_logo',
-						'label'         => 'Logo',
-						'name'          => 'logo',
-						'type'          => 'image',
-						'return_format' => 'array',
-						'preview_size'  => 'thumbnail',
-						'library'       => 'all',
-						'wrapper'       => array( 'width' => '20' ),
-					),
-					array(
-						'key'          => 'field_firm_badge',
-						'label'        => 'Nhãn nổi bật',
-						'name'         => 'highlight_badge',
-						'type'         => 'text',
-						'instructions' => 'Ví dụ: #1 (để trống nếu không có).',
-						'placeholder'  => '#1',
-						'wrapper'      => array( 'width' => '20' ),
-					),
-					array(
-						'key'     => 'field_firm_name',
-						'label'   => 'Tên công ty',
-						'name'    => 'name',
-						'type'    => 'text',
-						'wrapper' => array( 'width' => '30' ),
-					),
-					array(
-						'key'           => 'field_firm_type',
-						'label'         => 'Loại',
-						'name'          => 'type',
-						'type'          => 'text',
-						'default_value' => 'Futures',
-						'wrapper'       => array( 'width' => '30' ),
-					),
-					array(
-						'key'         => 'field_firm_score',
-						'label'       => 'Điểm',
-						'name'        => 'score',
-						'type'        => 'text',
-						'placeholder' => '9.7 / 10',
-						'wrapper'     => array( 'width' => '25' ),
-					),
-					array(
-						'key'          => 'field_firm_grade',
-						'label'        => 'Hạng',
-						'name'         => 'grade',
-						'type'         => 'text',
-						'instructions' => 'A+, A, A-, B+...',
-						'placeholder'  => 'A+',
-						'wrapper'      => array( 'width' => '25' ),
-					),
-					array(
-						'key'         => 'field_firm_split',
-						'label'       => 'Profit Split',
-						'name'        => 'profit_split',
-						'type'        => 'text',
-						'placeholder' => '100%',
-						'wrapper'     => array( 'width' => '25' ),
-					),
-					array(
-						'key'         => 'field_firm_capital',
-						'label'       => 'Max Capital',
-						'name'        => 'max_capital',
-						'type'        => 'text',
-						'placeholder' => '$150k',
-						'wrapper'     => array( 'width' => '25' ),
-					),
-					array(
-						'key'         => 'field_firm_review_url',
-						'label'       => 'Link Read Review',
-						'name'        => 'review_url',
-						'type'        => 'text',
-						'placeholder' => '#',
-						'wrapper'     => array( 'width' => '50' ),
-					),
-					array(
-						'key'         => 'field_firm_challenge_url',
-						'label'       => 'Link Start Challenge',
-						'name'        => 'challenge_url',
-						'type'        => 'text',
-						'placeholder' => '#',
-						'wrapper'     => array( 'width' => '50' ),
-					),
-				),
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param'    => 'page_template',
-					'operator' => '==',
-					'value'    => 'page-landing.php',
-				),
-			),
-		),
-		'menu_order'            => 3,
-		'position'              => 'normal',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'active'                => true,
-		'description'           => 'Quản trị bảng xếp hạng Top Prop Firms.',
-	) );
-}
-
-/**
- * Trang tùy chọn (Options Page) cho Header & Footer của Landing.
- */
-add_action( 'acf/init', 'caia_register_landing_reviews_fields' );
-function caia_register_landing_reviews_fields() {
-
-	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
-		return;
-	}
-
-	acf_add_local_field_group( array(
-		'key'      => 'group_landing_reviews',
-		'title'    => 'Landing Page - Reviews',
-		'fields'   => array(
-			array(
-				'key'           => 'field_reviews_title',
-				'label'         => 'Tieu de section',
-				'name'          => 'reviews_title',
-				'type'          => 'text',
-				'default_value' => 'Prop Firm Reviews',
-			),
-			array(
-				'key'          => 'field_reviews_intro',
-				'label'        => 'Mo ta ngan',
-				'name'         => 'reviews_intro',
-				'type'         => 'textarea',
-				'rows'         => 2,
-				'new_lines'    => '',
-			),
-			array(
-				'key'          => 'field_reviews_list',
-				'label'        => 'Danh sach bai review',
-				'name'         => 'reviews_list',
-				'type'         => 'repeater',
-				'instructions' => 'Moi dong la 1 bai review. Co the them anh, thong tin chung, nhieu block noi dung va link Read More.',
-				'layout'       => 'block',
-				'button_label' => 'Them bai review',
-				'sub_fields'   => array(
-					array(
-						'key'           => 'field_review_title',
-						'label'         => 'Ten bai / ten firm',
-						'name'          => 'title',
-						'type'          => 'text',
-						'default_value' => 'Apex Trader Funding',
-					),
-					array(
-						'key'           => 'field_review_image',
-						'label'         => 'Anh lon',
-						'name'          => 'image',
-						'type'          => 'image',
-						'return_format' => 'array',
-						'preview_size'  => 'large',
-						'library'       => 'all',
-						'instructions'  => 'Anh screenshot/khoi lon nhu hinh mau.',
-					),
-					array(
-						'key'           => 'field_review_badge',
-						'label'         => 'Nhan thong tin chung',
-						'name'          => 'badge',
-						'type'          => 'text',
-						'default_value' => "Editor's Pick - June 2026",
-						'wrapper'       => array( 'width' => '35' ),
-					),
-					array(
-						'key'           => 'field_review_headline',
-						'label'         => 'Tieu de thong tin chung',
-						'name'          => 'headline',
-						'type'          => 'text',
-						'default_value' => 'Apex Trader Funding 90% Discount',
-						'wrapper'       => array( 'width' => '45' ),
-					),
-					array(
-						'key'           => 'field_review_coupon',
-						'label'         => 'Coupon code',
-						'name'          => 'coupon',
-						'type'          => 'text',
-						'default_value' => 'ONKAGNVZ',
-						'wrapper'       => array( 'width' => '20' ),
-					),
-					array(
-						'key'          => 'field_review_intro_content',
-						'label'        => 'Noi dung thong tin chung',
-						'name'         => 'intro_content',
-						'type'         => 'wysiwyg',
-						'tabs'         => 'visual',
-						'toolbar'      => 'basic',
-						'media_upload' => 0,
-					),
-					array(
-						'key'          => 'field_review_blocks',
-						'label'        => 'Cac muc noi dung',
-						'name'         => 'blocks',
-						'type'         => 'repeater',
 						'layout'       => 'block',
-						'button_label' => 'Them muc',
+						'button_label' => 'Add provider',
 						'sub_fields'   => array(
-							array(
-								'key'         => 'field_review_block_icon',
-								'label'       => 'Icon Font Awesome',
-								'name'        => 'icon',
-								'type'        => 'text',
-								'placeholder' => 'fas fa-shield-halved',
-								'wrapper'     => array( 'width' => '25' ),
-							),
-							array(
-								'key'     => 'field_review_block_title',
-								'label'   => 'Tieu de muc',
-								'name'    => 'title',
-								'type'    => 'text',
-								'wrapper' => array( 'width' => '75' ),
-							),
-							array(
-								'key'          => 'field_review_block_content',
-								'label'        => 'Noi dung muc',
-								'name'         => 'content',
-								'type'         => 'wysiwyg',
-								'tabs'         => 'visual',
-								'toolbar'      => 'basic',
-								'media_upload' => 0,
-							),
-							array(
-								'key'          => 'field_review_block_prices',
-								'label'        => 'Bang gia trong muc (tuy chon)',
-								'name'         => 'prices',
-								'type'         => 'repeater',
-								'layout'       => 'table',
-								'button_label' => 'Them gia',
-								'sub_fields'   => array(
-									array(
-										'key'   => 'field_review_price_label',
-										'label' => 'Ten goi',
-										'name'  => 'label',
-										'type'  => 'text',
-									),
-									array(
-										'key'   => 'field_review_price_old',
-										'label' => 'Gia cu',
-										'name'  => 'old_price',
-										'type'  => 'text',
-									),
-									array(
-										'key'   => 'field_review_price_new',
-										'label' => 'Gia moi',
-										'name'  => 'price',
-										'type'  => 'text',
-									),
-								),
-							),
+							hosting_landing_field( 'field_hosting_provider_name', 'Provider name', 'name', 'text', array( 'wrapper' => array( 'width' => '35' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_logo', 'Logo', 'logo', 'image', array( 'return_format' => 'array', 'preview_size' => 'thumbnail', 'wrapper' => array( 'width' => '35' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_color', 'Brand color', 'accent_color', 'color_picker', array( 'default_value' => '#673de6', 'wrapper' => array( 'width' => '30' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_badge', 'Featured badge', 'featured_badge', 'text', array( 'wrapper' => array( 'width' => '50' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_deal_note', 'Small deal label', 'deal_note', 'text', array( 'wrapper' => array( 'width' => '50' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_desc', 'Description', 'description', 'textarea', array( 'rows' => 3 ) ),
+							hosting_landing_text_repeater( 'field_hosting_provider_pros', 'Green checklist items', 'pros', 'Add green item' ),
+							hosting_landing_text_repeater( 'field_hosting_provider_cons', 'Gray limitation items', 'cons', 'Add limitation' ),
+							hosting_landing_field( 'field_hosting_provider_score', 'Score', 'score', 'text', array( 'default_value' => '9.0', 'wrapper' => array( 'width' => '25' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_score_label', 'Score label', 'score_label', 'text', array( 'default_value' => 'Good', 'wrapper' => array( 'width' => '25' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_button_label', 'Button label', 'button_label', 'text', array( 'default_value' => 'Visit Site', 'wrapper' => array( 'width' => '25' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_button_url', 'Button URL', 'button_url', 'text', array( 'default_value' => '#', 'wrapper' => array( 'width' => '25' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_quote_text', 'Featured quote text', 'quote_text', 'textarea', array( 'rows' => 2 ) ),
+							hosting_landing_field( 'field_hosting_provider_quote_author', 'Quote author', 'quote_author', 'text', array( 'wrapper' => array( 'width' => '50' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_quote_role', 'Quote role', 'quote_role', 'text', array( 'wrapper' => array( 'width' => '50' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_money_back', 'Money-back guarantee', 'money_back', 'text', array( 'wrapper' => array( 'width' => '25' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_storage', 'Storage', 'storage', 'text', array( 'wrapper' => array( 'width' => '25' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_support', '24/7 support', 'support', 'text', array( 'wrapper' => array( 'width' => '25' ) ) ),
+							hosting_landing_field( 'field_hosting_provider_ssl', 'Free SSL certificate', 'ssl', 'text', array( 'wrapper' => array( 'width' => '25' ) ) ),
 						),
-					),
-					array(
-						'key'           => 'field_review_read_more_label',
-						'label'         => 'Text nut Read More',
-						'name'          => 'read_more_label',
-						'type'          => 'text',
-						'default_value' => 'Read More',
-						'wrapper'       => array( 'width' => '30' ),
-					),
-					array(
-						'key'         => 'field_review_read_more_url',
-						'label'       => 'Link Read More',
-						'name'        => 'read_more_url',
-						'type'        => 'text',
-						'placeholder' => '#',
-						'wrapper'     => array( 'width' => '70' ),
-					),
+					)
 				),
 			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param'    => 'page_template',
-					'operator' => '==',
-					'value'    => 'page-landing.php',
+			'location'              => hosting_landing_page_location(),
+			'menu_order'            => 1,
+			'position'              => 'normal',
+			'style'                 => 'default',
+			'label_placement'       => 'top',
+			'instruction_placement' => 'label',
+			'active'                => true,
+		)
+	);
+
+	acf_add_local_field_group(
+		array(
+			'key'                   => 'group_hosting_landing_faq',
+			'title'                 => 'Hosting Landing - 03 FAQ',
+			'fields'                => array(
+				hosting_landing_field( 'field_hosting_faq_title', 'FAQ title', 'hosting_faq_title', 'text', array( 'default_value' => 'Frequently Asked Questions' ) ),
+				hosting_landing_field(
+					'field_hosting_faqs',
+					'FAQ items',
+					'hosting_faqs',
+					'repeater',
+					array(
+						'layout'       => 'block',
+						'button_label' => 'Add FAQ',
+						'sub_fields'   => array(
+							hosting_landing_field( 'field_hosting_faq_question', 'Question', 'question' ),
+							hosting_landing_field( 'field_hosting_faq_answer', 'Answer', 'answer', 'textarea', array( 'rows' => 3 ) ),
+						),
+					)
 				),
 			),
-		),
-		'menu_order'            => 4,
-		'position'              => 'normal',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'active'                => true,
-		'description'           => 'Quan tri section cac bai review tren landing.',
-	) );
-}
+			'location'              => hosting_landing_page_location(),
+			'menu_order'            => 2,
+			'position'              => 'normal',
+			'style'                 => 'default',
+			'label_placement'       => 'top',
+			'instruction_placement' => 'label',
+			'active'                => true,
+		)
+	);
 
-add_action( 'acf/init', 'caia_register_landing_popup_fields' );
-function caia_register_landing_popup_fields() {
-
-	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
-		return;
-	}
-
-	acf_add_local_field_group( array(
-		'key'      => 'group_landing_popup',
-		'title'    => 'Landing Page - Popup',
-		'fields'   => array(
-			array(
-				'key'           => 'field_popup_enabled',
-				'label'         => 'Hien popup',
-				'name'          => 'popup_enabled',
-				'type'          => 'true_false',
-				'instructions'  => 'Bat de popup hien khi load trang, tat de an popup.',
-				'default_value' => 1,
-				'ui'            => 1,
-			),
-			array(
-				'key'           => 'field_popup_logo',
-				'label'         => 'Logo popup',
-				'name'          => 'popup_logo',
-				'type'          => 'image',
-				'return_format' => 'array',
-				'preview_size'  => 'medium',
-				'library'       => 'all',
-				'wrapper'       => array( 'width' => '35' ),
-			),
-			array(
-				'key'           => 'field_popup_brand_text',
-				'label'         => 'Ten thuong hieu',
-				'name'          => 'popup_brand_text',
-				'type'          => 'text',
-				'default_value' => 'APEX TRADER FUNDING',
-				'wrapper'       => array( 'width' => '65' ),
-			),
-			array(
-				'key'           => 'field_popup_eyebrow',
-				'label'         => 'Nhan nho',
-				'name'          => 'popup_eyebrow',
-				'type'          => 'text',
-				'default_value' => 'Exclusive Limited Offer',
-				'wrapper'       => array( 'width' => '35' ),
-			),
-			array(
-				'key'           => 'field_popup_title',
-				'label'         => 'Tieu de',
-				'name'          => 'popup_title',
-				'type'          => 'text',
-				'default_value' => 'Apex Trader Funding Discount',
-				'wrapper'       => array( 'width' => '65' ),
-			),
-			array(
-				'key'           => 'field_popup_discount_number',
-				'label'         => 'So giam gia',
-				'name'          => 'popup_discount_number',
-				'type'          => 'text',
-				'default_value' => '90',
-				'wrapper'       => array( 'width' => '25' ),
-			),
-			array(
-				'key'           => 'field_popup_discount_suffix',
-				'label'         => 'Hau to giam gia',
-				'name'          => 'popup_discount_suffix',
-				'type'          => 'text',
-				'default_value' => '% OFF',
-				'wrapper'       => array( 'width' => '25' ),
-			),
-			array(
-				'key'           => 'field_popup_code',
-				'label'         => 'Coupon code',
-				'name'          => 'popup_code',
-				'type'          => 'text',
-				'default_value' => 'ONKAGNVZ',
-				'wrapper'       => array( 'width' => '25' ),
-			),
-			array(
-				'key'           => 'field_popup_code_label',
-				'label'         => 'Label coupon',
-				'name'          => 'popup_code_label',
-				'type'          => 'text',
-				'default_value' => 'Your exclusive discount code',
-				'wrapper'       => array( 'width' => '25' ),
-			),
-			array(
-				'key'           => 'field_popup_subtitle',
-				'label'         => 'Mo ta ngan',
-				'name'          => 'popup_subtitle',
-				'type'          => 'text',
-				'default_value' => 'Get funded for under $20, the #1 rated futures prop firm in 2026',
-			),
-			array(
-				'key'           => 'field_popup_code_hint',
-				'label'         => 'Ghi chu coupon',
-				'name'          => 'popup_code_hint',
-				'type'          => 'text',
-				'default_value' => 'Copy the code and apply it at checkout',
-			),
-			array(
-				'key'          => 'field_popup_plans',
-				'label'        => 'Bang gia trong popup',
-				'name'         => 'popup_plans',
-				'type'         => 'repeater',
-				'layout'       => 'table',
-				'button_label' => 'Them goi gia',
-				'sub_fields'   => array(
+	acf_add_local_field_group(
+		array(
+			'key'                   => 'group_hosting_landing_footer',
+			'title'                 => 'Hosting Landing - 04 Editor Picks, Footer & Sticky',
+			'fields'                => array(
+				hosting_landing_field( 'field_hosting_editor_tab', 'Editor picks', '', 'tab' ),
+				hosting_landing_field( 'field_hosting_editor_title', 'Section title', 'hosting_editor_title', 'text', array( 'default_value' => "Editors' Picks" ) ),
+				hosting_landing_field(
+					'field_hosting_editor_picks',
+					'Custom editor cards',
+					'hosting_editor_picks',
+					'repeater',
 					array(
-						'key'   => 'field_popup_plan_label',
-						'label' => 'Ten goi',
-						'name'  => 'label',
-						'type'  => 'text',
-					),
-					array(
-						'key'   => 'field_popup_plan_price',
-						'label' => 'Gia moi',
-						'name'  => 'price',
-						'type'  => 'text',
-					),
-					array(
-						'key'   => 'field_popup_plan_old_price',
-						'label' => 'Gia cu',
-						'name'  => 'old_price',
-						'type'  => 'text',
-					),
+						'instructions' => 'Leave empty to use the first 3 providers from the ranking.',
+						'layout'       => 'block',
+						'button_label' => 'Add editor card',
+						'sub_fields'   => array(
+							hosting_landing_field( 'field_hosting_editor_name', 'Provider name', 'name', 'text', array( 'wrapper' => array( 'width' => '35' ) ) ),
+							hosting_landing_field( 'field_hosting_editor_logo', 'Logo', 'logo', 'image', array( 'return_format' => 'array', 'preview_size' => 'thumbnail', 'wrapper' => array( 'width' => '35' ) ) ),
+							hosting_landing_field( 'field_hosting_editor_color', 'Brand color', 'accent_color', 'color_picker', array( 'default_value' => '#673de6', 'wrapper' => array( 'width' => '30' ) ) ),
+							hosting_landing_field( 'field_hosting_editor_deal_note', 'Top badge', 'deal_note' ),
+							hosting_landing_field( 'field_hosting_editor_score', 'Score', 'score', 'text', array( 'default_value' => '9.0', 'wrapper' => array( 'width' => '30' ) ) ),
+							hosting_landing_field( 'field_hosting_editor_score_label', 'Score label', 'score_label', 'text', array( 'default_value' => 'Good', 'wrapper' => array( 'width' => '30' ) ) ),
+							hosting_landing_field( 'field_hosting_editor_description', 'Description', 'description', 'textarea', array( 'rows' => 3 ) ),
+							hosting_landing_field( 'field_hosting_editor_money_back', 'Money-back guarantee', 'money_back', 'text', array( 'wrapper' => array( 'width' => '25' ) ) ),
+							hosting_landing_field( 'field_hosting_editor_storage', 'Storage', 'storage', 'text', array( 'wrapper' => array( 'width' => '25' ) ) ),
+							hosting_landing_field( 'field_hosting_editor_support', '24/7 support', 'support', 'text', array( 'wrapper' => array( 'width' => '25' ) ) ),
+							hosting_landing_field( 'field_hosting_editor_ssl', 'Free SSL certificate', 'ssl', 'text', array( 'wrapper' => array( 'width' => '25' ) ) ),
+							hosting_landing_field( 'field_hosting_editor_button_label', 'Button label', 'button_label', 'text', array( 'default_value' => 'Visit Site', 'wrapper' => array( 'width' => '50' ) ) ),
+							hosting_landing_field( 'field_hosting_editor_button_url', 'Button URL', 'button_url', 'text', array( 'default_value' => '#', 'wrapper' => array( 'width' => '50' ) ) ),
+						),
+					)
 				),
-			),
-			array(
-				'key'          => 'field_popup_features',
-				'label'        => 'Badge loi ich',
-				'name'         => 'popup_features',
-				'type'         => 'repeater',
-				'layout'       => 'table',
-				'button_label' => 'Them badge',
-				'sub_fields'   => array(
+				hosting_landing_field( 'field_hosting_footer_tab', 'Footer', '', 'tab' ),
+				hosting_landing_field( 'field_hosting_footer_logo', 'Footer logo', 'hosting_footer_logo', 'image', array( 'return_format' => 'array', 'preview_size' => 'medium' ) ),
+				hosting_landing_field( 'field_hosting_footer_logo_text', 'Footer logo text', 'hosting_footer_logo_text', 'text', array( 'default_value' => 'cybernews*' ) ),
+				hosting_landing_field(
+					'field_hosting_footer_links',
+					'Footer links',
+					'hosting_footer_links',
+					'repeater',
 					array(
-						'key'   => 'field_popup_feature_text',
-						'label' => 'Noi dung',
-						'name'  => 'text',
-						'type'  => 'text',
-					),
+						'layout'       => 'table',
+						'button_label' => 'Add footer link',
+						'sub_fields'   => array(
+							hosting_landing_field( 'field_hosting_footer_link_label', 'Label', 'label' ),
+							hosting_landing_field( 'field_hosting_footer_link_url', 'URL', 'url', 'text', array( 'default_value' => '#' ) ),
+						),
+					)
 				),
+				hosting_landing_field( 'field_hosting_footer_copyright', 'Copyright', 'hosting_footer_copyright', 'text', array( 'default_value' => '(c) 2026 Cybernews - Latest Cybersecurity and Tech News, Research & Analysis' ) ),
+				hosting_landing_field( 'field_hosting_sticky_tab', 'Sticky bottom offer', '', 'tab' ),
+				hosting_landing_field( 'field_hosting_sticky_enabled', 'Enable sticky offer', 'hosting_sticky_enabled', 'true_false', array( 'default_value' => 1, 'ui' => 1 ) ),
+				hosting_landing_field( 'field_hosting_sticky_logo', 'Sticky logo', 'hosting_sticky_logo', 'image', array( 'return_format' => 'array', 'preview_size' => 'thumbnail' ) ),
+				hosting_landing_field( 'field_hosting_sticky_name', 'Provider name', 'hosting_sticky_name', 'text', array( 'default_value' => 'Hostinger', 'wrapper' => array( 'width' => '35' ) ) ),
+				hosting_landing_field( 'field_hosting_sticky_color', 'Brand color', 'hosting_sticky_color', 'color_picker', array( 'default_value' => '#673de6', 'wrapper' => array( 'width' => '15' ) ) ),
+				hosting_landing_field( 'field_hosting_sticky_badge', 'Badge', 'hosting_sticky_badge', 'text', array( 'default_value' => 'Best overall', 'wrapper' => array( 'width' => '25' ) ) ),
+				hosting_landing_field( 'field_hosting_sticky_text', 'Offer text', 'hosting_sticky_text', 'text', array( 'default_value' => 'Best deal in hosting - GET 81% OFF + free months', 'wrapper' => array( 'width' => '25' ) ) ),
+				hosting_landing_field( 'field_hosting_sticky_cta_label', 'Button label', 'hosting_sticky_cta_label', 'text', array( 'default_value' => 'Get Hostinger', 'wrapper' => array( 'width' => '50' ) ) ),
+				hosting_landing_field( 'field_hosting_sticky_cta_url', 'Button URL', 'hosting_sticky_cta_url', 'text', array( 'default_value' => '#', 'wrapper' => array( 'width' => '50' ) ) ),
 			),
-			array(
-				'key'           => 'field_popup_cta_label',
-				'label'         => 'Text nut CTA',
-				'name'          => 'popup_cta_label',
-				'type'          => 'text',
-				'default_value' => 'Claim 90% Off, Get Funded Now',
-				'wrapper'       => array( 'width' => '35' ),
-			),
-			array(
-				'key'           => 'field_popup_cta_note',
-				'label'         => 'Ghi chu duoi CTA',
-				'name'          => 'popup_cta_note',
-				'type'          => 'text',
-				'default_value' => 'Apply the code at checkout - apextraderfunding.com',
-				'wrapper'       => array( 'width' => '40' ),
-			),
-			array(
-				'key'         => 'field_popup_cta_url',
-				'label'       => 'Link CTA',
-				'name'        => 'popup_cta_url',
-				'type'        => 'text',
-				'placeholder' => '#',
-				'wrapper'     => array( 'width' => '25' ),
-			),
-			array(
-				'key'           => 'field_popup_trust_text',
-				'label'         => 'Dong trust/review',
-				'name'          => 'popup_trust_text',
-				'type'          => 'text',
-				'default_value' => '4.3/5 - 20,000+ Trustpilot reviews - 100k+ funded traders worldwide',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param'    => 'page_template',
-					'operator' => '==',
-					'value'    => 'page-landing.php',
-				),
-			),
-		),
-		'menu_order'            => 5,
-		'position'              => 'normal',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'active'                => true,
-		'description'           => 'Quan tri popup discount hien khi load trang landing.',
-	) );
-}
-
-add_action( 'acf/init', 'caia_register_landing_options_page' );
-function caia_register_landing_options_page() {
-	if ( ! function_exists( 'acf_add_options_page' ) ) {
-		return;
-	}
-	acf_add_options_page( array(
-		'page_title' => 'Landing — Header & Footer',
-		'menu_title' => 'Landing H/F',
-		'menu_slug'  => 'landing-hf-settings',
-		'capability' => 'edit_theme_options',
-		'icon_url'   => 'dashicons-layout',
-		'position'   => 59,
-		'redirect'   => false,
-	) );
-}
-
-/**
- * Đăng ký field group cho HEADER & FOOTER (gắn vào Options Page).
- */
-add_action( 'acf/init', 'caia_register_landing_hf_fields' );
-function caia_register_landing_hf_fields() {
-
-	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
-		return;
-	}
-
-	acf_add_local_field_group( array(
-		'key'      => 'group_landing_hf',
-		'title'    => 'Landing — Header & Footer',
-		'fields'   => array(
-
-			/* ============ HEADER ============ */
-			array(
-				'key'   => 'field_hf_tab_header',
-				'label' => 'HEADER',
-				'type'  => 'tab',
-			),
-			array(
-				'key'           => 'field_hf_logo',
-				'label'         => 'Logo',
-				'name'          => 'hf_logo',
-				'type'          => 'image',
-				'return_format' => 'array',
-				'preview_size'  => 'medium',
-			),
-			array(
-				'key'          => 'field_hf_logo_text',
-				'label'        => 'Tên thương hiệu (nếu không dùng logo ảnh)',
-				'name'         => 'hf_logo_text',
-				'type'         => 'text',
-				'placeholder'  => 'FundedProgram',
-			),
-			array(
-				'key'          => 'field_hf_menu',
-				'label'        => 'Menu',
-				'name'         => 'hf_menu',
-				'type'         => 'repeater',
-				'instructions' => 'Các mục menu trên header.',
-				'layout'       => 'table',
-				'button_label' => 'Thêm mục menu',
-				'sub_fields'   => array(
-					array(
-						'key'   => 'field_hf_menu_label',
-						'label' => 'Tên',
-						'name'  => 'label',
-						'type'  => 'text',
-					),
-					array(
-						'key'         => 'field_hf_menu_url',
-						'label'       => 'Liên kết',
-						'name'        => 'url',
-						'type'        => 'text',
-						'placeholder' => '#hoặc-link',
-					),
-				),
-			),
-			array(
-				'key'     => 'field_hf_btn_label',
-				'label'   => 'Nút Contact — Tên',
-				'name'    => 'hf_btn_label',
-				'type'    => 'text',
-				'default_value' => 'Contact',
-				'wrapper' => array( 'width' => '50' ),
-			),
-			array(
-				'key'         => 'field_hf_btn_url',
-				'label'       => 'Nút Contact — Liên kết',
-				'name'        => 'hf_btn_url',
-				'type'        => 'text',
-				'placeholder' => '#contact',
-				'wrapper'     => array( 'width' => '50' ),
-			),
-
-			/* ============ FOOTER ============ */
-			array(
-				'key'   => 'field_hf_tab_footer',
-				'label' => 'FOOTER',
-				'type'  => 'tab',
-			),
-			array(
-				'key'           => 'field_ft_logo',
-				'label'         => 'Logo footer (tuỳ chọn)',
-				'name'          => 'ft_logo',
-				'type'          => 'image',
-				'return_format' => 'array',
-				'preview_size'  => 'medium',
-				'instructions'  => 'Để trống sẽ dùng logo/tên ở header.',
-			),
-			array(
-				'key'     => 'field_ft_about',
-				'label'   => 'Giới thiệu ngắn',
-				'name'    => 'ft_about',
-				'type'    => 'textarea',
-				'rows'    => 3,
-			),
-			array(
-				'key'         => 'field_ft_address',
-				'label'       => 'Địa chỉ',
-				'name'        => 'ft_address',
-				'type'        => 'text',
-				'wrapper'     => array( 'width' => '50' ),
-			),
-			array(
-				'key'         => 'field_ft_phone',
-				'label'       => 'Điện thoại',
-				'name'        => 'ft_phone',
-				'type'        => 'text',
-				'default_value' => '+1 (888) 123-4567',
-				'wrapper'     => array( 'width' => '25' ),
-			),
-			array(
-				'key'         => 'field_ft_email',
-				'label'       => 'Email',
-				'name'        => 'ft_email',
-				'type'        => 'text',
-				'default_value' => 'support@fundedprogram.com',
-				'wrapper'     => array( 'width' => '25' ),
-			),
-			array(
-				'key'          => 'field_ft_links',
-				'label'        => 'Liên kết nhanh',
-				'name'         => 'ft_links',
-				'type'         => 'repeater',
-				'layout'       => 'table',
-				'button_label' => 'Thêm liên kết',
-				'sub_fields'   => array(
-					array(
-						'key'   => 'field_ft_link_label',
-						'label' => 'Tên',
-						'name'  => 'label',
-						'type'  => 'text',
-					),
-					array(
-						'key'         => 'field_ft_link_url',
-						'label'       => 'Liên kết',
-						'name'        => 'url',
-						'type'        => 'text',
-						'placeholder' => '#',
-					),
-				),
-			),
-			array(
-				'key'          => 'field_ft_socials',
-				'label'        => 'Mạng xã hội',
-				'name'         => 'ft_socials',
-				'type'         => 'repeater',
-				'instructions' => 'Icon dùng class Font Awesome, ví dụ: fab fa-facebook-f, fab fa-x-twitter, fab fa-telegram...',
-				'layout'       => 'table',
-				'button_label' => 'Thêm mạng xã hội',
-				'sub_fields'   => array(
-					array(
-						'key'         => 'field_ft_social_label',
-						'label'       => 'Label',
-						'name'        => 'label',
-						'type'        => 'text',
-						'placeholder' => 'Facebook',
-					),
-					array(
-						'key'         => 'field_ft_social_icon',
-						'label'       => 'Icon (class)',
-						'name'        => 'icon',
-						'type'        => 'text',
-						'placeholder' => 'fab fa-facebook-f',
-					),
-					array(
-						'key'         => 'field_ft_social_url',
-						'label'       => 'Liên kết',
-						'name'        => 'url',
-						'type'        => 'text',
-						'placeholder' => 'https://',
-					),
-				),
-			),
-			array(
-				'key'           => 'field_ft_copyright',
-				'label'         => 'Dòng bản quyền',
-				'name'          => 'ft_copyright',
-				'type'          => 'text',
-				'default_value' => '© 2026 FundedProgram. All rights reserved.',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param'    => 'options_page',
-					'operator' => '==',
-					'value'    => 'landing-hf-settings',
-				),
-			),
-		),
-		'menu_order'            => 0,
-		'position'              => 'normal',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'active'                => true,
-		'description'           => 'Quản trị Header & Footer của Landing.',
-	) );
+			'location'              => hosting_landing_page_location(),
+			'menu_order'            => 3,
+			'position'              => 'normal',
+			'style'                 => 'default',
+			'label_placement'       => 'top',
+			'instruction_placement' => 'label',
+			'active'                => true,
+		)
+	);
 }
