@@ -1,5 +1,5 @@
  /*
-	Theme Name: Broker
+	Theme Name: Hosting
 	Description: Themes há»— trá»£ Genesis Theme v2.7.3 and Wordpress v5.0 trá»Ÿ lÃªn
 	Template: genesis
 */
@@ -1658,9 +1658,9 @@ input#submit {
   padding: 0 0 var(--hosting-sticky-height, 0);
   background: #fff;
   color: var(--hosting-text);
-  font-family: Inter, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.45;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
 }
 
 #main-landing *,
@@ -1684,32 +1684,32 @@ input#submit {
 }
 
 .hosting-container {
-  width: min(100% - 32px, 840px);
+  width: min(100% - 32px, 1120px);
   margin: 0 auto;
 }
 
 .hosting-topbar {
-  height: 38px;
+  height: 48px;
   background: #fff;
   color: #15171a;
 }
 
 .hosting-topbar__inner {
-  height: 38px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  gap: 22px;
 }
 
 .hosting-topbar__brand,
 .hosting-footer__brand a {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 9px;
   color: #111317;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 800;
   letter-spacing: 0;
 }
@@ -1717,20 +1717,20 @@ input#submit {
 .hosting-topbar__brand img,
 .hosting-footer__brand img {
   display: block;
-  max-width: 160px;
-  max-height: 24px;
+  max-width: 184px;
+  max-height: 30px;
   object-fit: contain;
 }
 
 .hosting-topbar__brand-icon,
 .hosting-footer__brand span {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   display: inline-grid;
   place-items: center;
   background: #111317;
   color: #fff;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1;
   font-weight: 800;
 }
@@ -1738,18 +1738,18 @@ input#submit {
 .hosting-topbar__disclosure {
   color: #676d76;
   text-decoration: none;
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1;
 }
 
 .hosting-hero {
-  padding: 0 14px 26px;
+  padding: 0 18px 36px;
   background: #fff;
 }
 
 .hosting-hero__panel {
-  min-height: 286px;
-  padding: 31px 0 26px;
+  min-height: 360px;
+  padding: 48px 0 44px;
   border-radius: 8px;
   background: linear-gradient(110deg, #8a5ad7 0%, var(--hosting-purple-dark) 100%);
   color: #fff;
@@ -1757,39 +1757,39 @@ input#submit {
 }
 
 .hosting-hero__updated {
-  margin: 0 0 17px;
+  margin: 0 0 20px;
   color: rgba(255, 255, 255, 0.88);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 800;
 }
 
 .hosting-hero__title {
   margin: 0;
   color: #fff;
-  font-size: 34px;
+  font-size: 52px;
   line-height: 1.05;
   font-weight: 800;
   letter-spacing: 0;
 }
 
 .hosting-hero__intro {
-  width: min(100%, 610px);
-  margin: 18px auto 0;
+  width: min(100%, 760px);
+  margin: 22px auto 0;
   color: rgba(255, 255, 255, 0.88);
-  font-size: 11px;
-  line-height: 1.45;
+  font-size: 16px;
+  line-height: 1.6;
   font-weight: 600;
 }
 
 .hosting-hero-deal {
-  width: min(100%, 840px);
-  min-height: 76px;
-  margin: 31px auto 0;
-  padding: 13px 20px;
+  width: min(100%, 1040px);
+  min-height: 102px;
+  margin: 40px auto 0;
+  padding: 20px 32px;
   display: grid;
-  grid-template-columns: minmax(185px, 1.35fr) repeat(3, minmax(92px, 0.72fr)) minmax(170px, 1fr);
+  grid-template-columns: minmax(240px, 1.35fr) repeat(3, minmax(132px, 0.72fr)) minmax(220px, 1fr);
   align-items: center;
-  gap: 12px;
+  gap: 18px;
   border-radius: 8px;
   background: #fff;
   color: #202328;
@@ -1806,7 +1806,7 @@ input#submit {
   display: block;
   margin-bottom: 5px;
   color: #3b4049;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
 }
 
@@ -1816,31 +1816,71 @@ input#submit {
   justify-content: center;
   gap: 4px;
   color: #17191d;
-  font-size: 20px;
+  font-size: 28px;
   line-height: 1;
   font-weight: 800;
 }
 
-.hosting-hero-deal__metric em,
-.hosting-stars {
+.hosting-hero-deal__metric em {
   color: #f7b500;
   font-style: normal;
   letter-spacing: 1px;
 }
 
+.hosting-stars {
+  --rating-fill: 0%;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  color: #d2d8e2;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.hosting-star {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+}
+
+.hosting-star__base {
+  color: #d2d8e2;
+}
+
+.hosting-star__base,
+.hosting-star__fill {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+.hosting-star__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--star-fill);
+  overflow: hidden;
+  color: #f7b500;
+  white-space: nowrap;
+}
+
 .hosting-button {
-  min-height: 38px;
+  min-height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  padding: 0 18px;
-  border-radius: 2px;
+  gap: 9px;
+  padding: 0 24px;
+  border-radius: 4px;
   border: 1px solid transparent;
   color: #111317;
   background: #fff;
   text-decoration: none;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1;
   font-weight: 800;
   white-space: nowrap;
@@ -1876,6 +1916,7 @@ input#submit {
 .hosting-hero-brand,
 .hosting-provider-logo,
 .hosting-editor-logo,
+.hosting-bonus-logo,
 .hosting-sticky-logo {
   --brand-color: #673de6;
   display: flex;
@@ -1885,8 +1926,8 @@ input#submit {
 }
 
 .hosting-hero-brand {
-  gap: 10px;
-  font-size: 16px;
+  gap: 12px;
+  font-size: 22px;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -1894,16 +1935,18 @@ input#submit {
 .hosting-hero-brand img,
 .hosting-provider-logo img,
 .hosting-editor-logo img,
+.hosting-bonus-logo img,
 .hosting-sticky-logo img {
   display: block;
   max-width: 100%;
-  max-height: 56px;
+  max-height: 68px;
   object-fit: contain;
 }
 
 .hosting-hero-brand__mark,
 .hosting-provider-logo__mark,
 .hosting-editor-logo__mark,
+.hosting-bonus-logo__mark,
 .hosting-sticky-logo__mark {
   display: inline-grid;
   place-items: center;
@@ -1915,52 +1958,52 @@ input#submit {
 }
 
 .hosting-hero-brand__mark {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 7px;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .hosting-ranking {
-  padding: 0 0 48px;
+  padding: 0 0 64px;
   background: #fff;
 }
 
 .hosting-promo-strip {
-  min-height: 34px;
+  min-height: 46px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 0 14px;
+  gap: 12px;
+  padding: 0 22px;
   border-radius: 7px 7px 0 0;
   background: var(--hosting-yellow);
   color: #2a2d33;
   text-decoration: none;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 800;
 }
 
 .hosting-promo-strip span {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   display: inline-grid;
   place-items: center;
   border-radius: 50%;
   background: #fff;
   color: #2d8738;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .hosting-promo-strip i {
   margin-left: auto;
   color: #545961;
-  font-size: 16px;
+  font-size: 22px;
   font-style: normal;
 }
 
 .hosting-provider-list {
   display: grid;
-  gap: 10px;
+  gap: 16px;
 }
 
 .hosting-provider-card {
@@ -1974,58 +2017,58 @@ input#submit {
 
 .hosting-provider-card__rank {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 12px;
+  left: 12px;
   z-index: 2;
-  min-width: 24px;
-  height: 22px;
+  min-width: 32px;
+  height: 30px;
   display: inline-grid;
   place-items: center;
   border-radius: 999px;
   background: #eff1f4;
   color: #9299a3;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 800;
 }
 
 .hosting-provider-card__main {
-  min-height: 132px;
+  min-height: 172px;
   display: grid;
-  grid-template-columns: 170px minmax(0, 1fr) 148px;
+  grid-template-columns: 220px minmax(0, 1fr) 190px;
   align-items: stretch;
-  gap: 16px;
-  padding: 20px 14px 20px 30px;
+  gap: 24px;
+  padding: 28px 22px 28px 48px;
 }
 
 .hosting-provider-card.is-featured .hosting-provider-card__main {
-  min-height: 176px;
+  min-height: 220px;
 }
 
 .hosting-provider-card__logo {
   display: grid;
   place-items: center;
-  padding: 8px 15px 8px 0;
+  padding: 12px 22px 12px 0;
   border-right: 1px solid #edf0f3;
 }
 
 .hosting-provider-logo {
-  min-height: 72px;
+  min-height: 92px;
   flex-direction: column;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   text-align: center;
 }
 
 .hosting-provider-logo__mark {
-  width: 58px;
-  height: 58px;
+  width: 70px;
+  height: 70px;
   border-radius: 9px;
-  font-size: 19px;
+  font-size: 24px;
 }
 
 .hosting-provider-logo strong {
   color: var(--brand-color);
-  font-size: 23px;
+  font-size: 28px;
   line-height: 1;
   font-weight: 500;
 }
@@ -2038,21 +2081,21 @@ input#submit {
 .hosting-provider-card__badge {
   display: inline-flex;
   align-items: center;
-  min-height: 18px;
-  margin-bottom: 10px;
-  padding: 0 9px;
+  min-height: 24px;
+  margin-bottom: 14px;
+  padding: 0 12px;
   border-radius: 2px;
   background: #0b0c0e;
   color: #fff;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
 }
 
 .hosting-provider-card__description {
-  margin: 0 0 10px;
+  margin: 0 0 14px;
   color: #24282f;
-  font-size: 11px;
-  line-height: 1.45;
+  font-size: 14px;
+  line-height: 1.55;
   font-weight: 500;
 }
 
@@ -2063,7 +2106,7 @@ input#submit {
 .hosting-feature-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 5px 22px;
+  gap: 8px 28px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -2072,20 +2115,20 @@ input#submit {
 .hosting-feature-list li {
   position: relative;
   min-width: 0;
-  padding-left: 17px;
+  padding-left: 22px;
   color: #1f252c;
-  font-size: 10px;
-  line-height: 1.3;
+  font-size: 13px;
+  line-height: 1.4;
   font-weight: 600;
 }
 
 .hosting-feature-list li::before {
   content: "";
   position: absolute;
-  top: 2px;
+  top: 3px;
   left: 0;
-  width: 11px;
-  height: 11px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: #17be64;
 }
@@ -2093,10 +2136,10 @@ input#submit {
 .hosting-feature-list li::after {
   content: "";
   position: absolute;
-  top: 5px;
-  left: 3px;
-  width: 5px;
-  height: 3px;
+  top: 7px;
+  left: 4px;
+  width: 6px;
+  height: 4px;
   border-left: 1.5px solid #fff;
   border-bottom: 1.5px solid #fff;
   transform: rotate(-45deg);
@@ -2121,64 +2164,64 @@ input#submit {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  padding: 12px;
+  gap: 8px;
+  padding: 18px;
   background: #f4f4f4;
   text-align: center;
 }
 
 .hosting-score-box strong {
   color: #262a30;
-  font-size: 31px;
+  font-size: 40px;
   line-height: 1;
   font-weight: 500;
 }
 
 .hosting-score-box .hosting-stars {
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1;
 }
 
 .hosting-score-box small {
-  min-height: 13px;
+  min-height: 16px;
   color: #4f5660;
-  font-size: 8px;
+  font-size: 12px;
   line-height: 1;
 }
 
 .hosting-score-box .hosting-button {
   width: 100%;
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 .hosting-provider-quote {
-  min-height: 48px;
+  min-height: 62px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 9px 22px;
+  gap: 14px;
+  padding: 14px 30px;
   border-top: 1px solid #e3e6ea;
   background: #f5f5f5;
 }
 
 .hosting-provider-quote__avatar {
-  flex: 0 0 34px;
-  width: 34px;
-  height: 34px;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
   display: inline-grid;
   place-items: center;
   border-radius: 50%;
   background: #202328;
   color: #fff;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
 }
 
 .hosting-provider-quote p {
   margin: 0;
   color: #505762;
-  font-size: 10px;
-  line-height: 1.45;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .hosting-provider-quote strong {
@@ -2192,21 +2235,21 @@ input#submit {
 }
 
 .hosting-faq {
-  padding: 0 0 42px;
+  padding: 0 0 60px;
   background: #fff;
 }
 
 .hosting-faq__panel {
-  padding: 27px 28px 31px;
+  padding: 38px 42px 44px;
   border-radius: 8px;
   background: #f0f0f0;
 }
 
 .hosting-faq h2,
 .hosting-editors h2 {
-  margin: 0 0 25px;
+  margin: 0 0 30px;
   color: #23262b;
-  font-size: 24px;
+  font-size: 32px;
   line-height: 1.2;
   font-weight: 500;
   letter-spacing: 0;
@@ -2214,7 +2257,7 @@ input#submit {
 
 .hosting-faq__list {
   display: grid;
-  gap: 10px;
+  gap: 14px;
 }
 
 .hosting-faq-item {
@@ -2224,15 +2267,15 @@ input#submit {
 }
 
 .hosting-faq-item summary {
-  min-height: 43px;
+  min-height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
-  padding: 0 18px;
+  gap: 22px;
+  padding: 0 24px;
   cursor: pointer;
   color: #2c3036;
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 800;
   list-style: none;
 }
@@ -2244,7 +2287,7 @@ input#submit {
 .hosting-faq-item summary::after {
   content: "+";
   color: #565d67;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 400;
 }
 
@@ -2254,94 +2297,94 @@ input#submit {
 
 .hosting-faq-item p {
   margin: 0;
-  padding: 0 18px 16px;
+  padding: 0 24px 22px;
   color: #58606b;
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.65;
 }
 
 .hosting-editors {
-  padding: 45px 0 72px;
+  padding: 60px 0 90px;
   background: #f0f0f0;
 }
 
 .hosting-editor-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 17px;
+  gap: 24px;
 }
 
 .hosting-editor-card {
-  min-height: 420px;
+  min-height: 480px;
   display: flex;
   flex-direction: column;
-  padding: 17px;
+  padding: 24px;
   border: 1px solid #e3e6ea;
   border-radius: 5px;
   background: #fff;
 }
 
 .hosting-editor-card__top {
-  min-height: 24px;
+  min-height: 30px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 21px;
+  gap: 10px;
+  margin-bottom: 28px;
 }
 
 .hosting-editor-card__rank {
-  min-width: 22px;
-  height: 22px;
+  min-width: 28px;
+  height: 28px;
   display: inline-grid;
   place-items: center;
   border-radius: 50%;
   background: #f0f1f3;
   color: #7e8792;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
 }
 
 .hosting-editor-card__deal {
-  min-height: 18px;
+  min-height: 22px;
   display: inline-flex;
   align-items: center;
-  padding: 0 8px;
+  padding: 0 10px;
   border-radius: 2px;
   background: var(--hosting-yellow);
   color: #22262c;
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 900;
 }
 
 .hosting-editor-card__brand-row {
-  min-height: 78px;
+  min-height: 96px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 88px;
+  grid-template-columns: minmax(0, 1fr) 110px;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 21px;
+  gap: 18px;
+  margin-bottom: 26px;
 }
 
 .hosting-editor-logo {
-  min-height: 70px;
+  min-height: 84px;
   justify-content: center;
-  padding-right: 13px;
+  padding-right: 18px;
   border-right: 1px solid #edf0f3;
   flex-direction: column;
-  gap: 7px;
+  gap: 9px;
   text-align: center;
 }
 
 .hosting-editor-logo__mark {
-  width: 45px;
-  height: 45px;
+  width: 54px;
+  height: 54px;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .hosting-editor-logo strong {
   color: var(--brand-color);
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1;
   font-weight: 700;
 }
@@ -2353,42 +2396,42 @@ input#submit {
 .hosting-editor-card__score strong {
   display: block;
   color: #24272d;
-  font-size: 30px;
+  font-size: 38px;
   line-height: 1;
   font-weight: 500;
 }
 
 .hosting-editor-card__score .hosting-stars {
-  display: block;
+  display: inline-flex;
   margin-top: 5px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .hosting-editor-card__score small {
   display: block;
   color: #4f5660;
-  font-size: 8px;
+  font-size: 11px;
 }
 
 .hosting-editor-card__desc {
-  min-height: 96px;
-  margin: 0 0 16px;
+  min-height: 112px;
+  margin: 0 0 20px;
   color: #24282f;
-  font-size: 10px;
-  line-height: 1.55;
+  font-size: 13px;
+  line-height: 1.6;
   font-weight: 600;
 }
 
 .hosting-editor-card__specs {
-  margin: auto 0 16px;
+  margin: auto 0 20px;
 }
 
 .hosting-editor-card__specs div {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 7px 0;
+  gap: 16px;
+  padding: 9px 0;
   border-bottom: 1px solid #edf0f3;
 }
 
@@ -2396,8 +2439,8 @@ input#submit {
 .hosting-editor-card__specs dd {
   margin: 0;
   color: #293039;
-  font-size: 9px;
-  line-height: 1.2;
+  font-size: 12px;
+  line-height: 1.3;
 }
 
 .hosting-editor-card__specs dt {
@@ -2413,22 +2456,284 @@ input#submit {
   width: 100%;
 }
 
+.hosting-bonus-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  padding: 24px 0;
+  background: transparent;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.hosting-bonus-popup.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.hosting-popup-open {
+  overflow: hidden;
+}
+
+.hosting-bonus-popup__backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: rgba(12, 17, 24, 0.62);
+  cursor: pointer;
+}
+
+.hosting-bonus-popup .hosting-container {
+  position: relative;
+  z-index: 1;
+}
+
+.hosting-bonus-popup__shell {
+  position: relative;
+  overflow: hidden;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  padding: 28px;
+  border: 1px solid #dfe5ee;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 22px 54px rgba(55, 62, 74, 0.12);
+  transform: translateY(12px) scale(0.98);
+  transition: transform 0.22s ease;
+}
+
+.hosting-bonus-popup.is-visible .hosting-bonus-popup__shell {
+  transform: translateY(0) scale(1);
+}
+
+.hosting-bonus-popup__shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-top: 5px solid var(--hosting-yellow);
+  pointer-events: none;
+}
+
+.hosting-bonus-popup__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dfe5ee;
+  border-radius: 50%;
+  background: #fff;
+  color: #15171b;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.hosting-bonus-popup__close:hover {
+  transform: translateY(-1px);
+  border-color: #cfd7e3;
+  background: #f8fafc;
+}
+
+.hosting-bonus-popup__header {
+  position: relative;
+  max-width: 660px;
+  margin: 0 auto 26px;
+  text-align: center;
+}
+
+.hosting-bonus-popup__header span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  margin-bottom: 10px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #15171b;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.hosting-bonus-popup__header h2 {
+  margin: 0;
+  color: #16191f;
+  font-size: 34px;
+  line-height: 1.12;
+  font-weight: 900;
+}
+
+.hosting-bonus-popup__header p {
+  margin: 12px 0 0;
+  color: #555e6b;
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+.hosting-bonus-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.hosting-bonus-card {
+  --card-color: var(--hosting-purple);
+  min-height: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #dde3ec;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 14px 30px rgba(44, 52, 64, 0.08);
+}
+
+.hosting-bonus-card.is-leading {
+  border-color: rgba(103, 61, 230, 0.42);
+  box-shadow: 0 18px 38px rgba(103, 61, 230, 0.16);
+}
+
+.hosting-bonus-card__brand {
+  width: 100%;
+  min-height: 68px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+  padding: 12px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(103, 61, 230, 0.1), rgba(46, 135, 56, 0.08));
+}
+
+.hosting-bonus-logo {
+  justify-content: center;
+  gap: 10px;
+  color: var(--card-color);
+  text-align: left;
+}
+
+.hosting-bonus-logo__mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 7px;
+  background: var(--card-color);
+  font-size: 16px;
+}
+
+.hosting-bonus-logo strong {
+  color: var(--card-color);
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.hosting-bonus-card__deal {
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 18px;
+}
+
+.hosting-bonus-card__deal span {
+  color: #2a2f37;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.hosting-bonus-card__deal strong {
+  max-width: 260px;
+  color: #12151a;
+  font-size: 36px;
+  line-height: 0.98;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.hosting-bonus-card__rating {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: auto 0 14px;
+  color: #252a31;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.hosting-bonus-card__rating .hosting-stars {
+  font-size: 14px;
+}
+
+.hosting-bonus-card__button {
+  width: 100%;
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background: #35df75;
+  color: #07150d;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hosting-bonus-card__button:hover {
+  background: #27cb64;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.hosting-bonus-card small {
+  display: block;
+  margin-top: 16px;
+  color: #6a7280;
+  font-size: 11px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
 .hosting-footer {
-  padding: 0 0 88px;
+  padding: 0 0 104px;
   background: #f0f0f0;
 }
 
 .hosting-footer__brand {
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
 .hosting-footer__bottom {
-  min-height: 40px;
+  min-height: 52px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding-top: 13px;
+  gap: 24px;
+  padding-top: 18px;
   border-top: 1px solid #d4d8de;
 }
 
@@ -2436,7 +2741,7 @@ input#submit {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 9px;
+  gap: 14px;
 }
 
 .hosting-footer__links a,
@@ -2444,8 +2749,8 @@ input#submit {
   margin: 0;
   color: #30353d;
   text-decoration: none;
-  font-size: 9px;
-  line-height: 1.3;
+  font-size: 12px;
+  line-height: 1.4;
   font-weight: 500;
 }
 
@@ -2459,12 +2764,12 @@ input#submit {
 }
 
 .hosting-sticky-offer__inner {
-  min-height: 60px;
+  min-height: 76px;
   display: grid;
-  grid-template-columns: 104px minmax(0, 1fr) 130px;
+  grid-template-columns: 140px minmax(0, 1fr) 180px;
   align-items: center;
-  gap: 16px;
-  padding: 8px 12px;
+  gap: 20px;
+  padding: 12px 16px;
   border: 1px solid #14171b;
   border-radius: 4px;
   background: #fff;
@@ -2475,19 +2780,19 @@ input#submit {
 .hosting-sticky-logo {
   justify-content: center;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .hosting-sticky-logo__mark {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   border-radius: 5px;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .hosting-sticky-logo strong {
   color: var(--brand-color);
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1;
   font-weight: 900;
   text-transform: uppercase;
@@ -2500,13 +2805,13 @@ input#submit {
 .hosting-sticky-offer__copy span {
   display: inline-flex;
   align-items: center;
-  min-height: 18px;
-  margin-bottom: 3px;
-  padding: 0 8px;
+  min-height: 22px;
+  margin-bottom: 5px;
+  padding: 0 10px;
   border-radius: 2px;
   background: #0b0c0e;
   color: #fff;
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 900;
 }
 
@@ -2514,7 +2819,7 @@ input#submit {
   display: block;
   overflow: hidden;
   color: #111317;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 900;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2533,7 +2838,7 @@ input#submit {
   }
 
   .hosting-provider-card__main {
-    grid-template-columns: 140px minmax(0, 1fr);
+    grid-template-columns: 180px minmax(0, 1fr);
   }
 
   .hosting-score-box {
@@ -2542,13 +2847,21 @@ input#submit {
   }
 
   .hosting-score-box .hosting-button {
-    max-width: 230px;
+    max-width: 260px;
+  }
+
+  .hosting-bonus-popup__shell {
+    padding: 24px;
+  }
+
+  .hosting-bonus-card__deal strong {
+    font-size: 30px;
   }
 }
 
 @media (max-width: 720px) {
   .hosting-container {
-    width: min(100% - 24px, 840px);
+    width: min(100% - 24px, 1120px);
   }
 
   .hosting-topbar__inner {
@@ -2565,16 +2878,16 @@ input#submit {
   }
 
   .hosting-hero__title {
-    font-size: 30px;
+    font-size: 34px;
   }
 
   .hosting-hero-deal {
-    padding: 14px;
+    padding: 16px;
   }
 
   .hosting-provider-card__main {
     grid-template-columns: 1fr;
-    padding: 38px 14px 14px;
+    padding: 44px 16px 18px;
   }
 
   .hosting-provider-card__logo {
@@ -2593,12 +2906,31 @@ input#submit {
     grid-template-columns: 1fr;
   }
 
+  .hosting-bonus-popup {
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 16px 0;
+  }
+
+  .hosting-bonus-popup__shell {
+    max-height: none;
+    padding: 18px;
+  }
+
+  .hosting-bonus-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hosting-bonus-card {
+    min-height: 0;
+  }
+
   .hosting-editor-card {
     min-height: 0;
   }
 
   .hosting-faq__panel {
-    padding: 22px 16px;
+    padding: 26px 18px;
   }
 
   .hosting-footer__bottom {
@@ -2608,7 +2940,7 @@ input#submit {
   }
 
   .hosting-sticky-offer__inner {
-    grid-template-columns: 68px minmax(0, 1fr);
+    grid-template-columns: 78px minmax(0, 1fr);
   }
 
   .hosting-sticky-offer .hosting-button {
@@ -2619,11 +2951,11 @@ input#submit {
 
 @media (max-width: 460px) {
   .hosting-hero__title {
-    font-size: 26px;
+    font-size: 30px;
   }
 
   .hosting-hero__intro {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .hosting-hero-deal {
@@ -2645,5 +2977,13 @@ input#submit {
     border-right: 0;
     border-bottom: 1px solid #edf0f3;
     padding: 0 0 14px;
+  }
+
+  .hosting-bonus-popup__header h2 {
+    font-size: 28px;
+  }
+
+  .hosting-bonus-card__deal strong {
+    font-size: 28px;
   }
 }

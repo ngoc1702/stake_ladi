@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $pid              = get_the_ID();
 $logo             = hosting_landing_get_field( 'hosting_header_logo', $pid );
-$logo_text        = hosting_landing_get_field( 'hosting_header_logo_text', $pid, 'cybernews*' );
+$logo_text        = hosting_landing_get_field( 'hosting_header_logo_text', $pid, 'CasinoReview*' );
 $disclosure_label = hosting_landing_get_field( 'hosting_disclosure_label', $pid, 'Advertiser disclosure' );
 $disclosure_url   = hosting_landing_get_field( 'hosting_disclosure_url', $pid, '#' );
 ?>

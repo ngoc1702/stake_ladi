@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $pid        = get_the_ID();
 $logo       = hosting_landing_get_field( 'hosting_footer_logo', $pid );
-$logo_text  = hosting_landing_get_field( 'hosting_footer_logo_text', $pid, 'cybernews*' );
+$logo_text  = hosting_landing_get_field( 'hosting_footer_logo_text', $pid, 'CasinoReview*' );
 $links      = hosting_landing_get_field( 'hosting_footer_links', $pid, array() );
-$copyright  = hosting_landing_get_field( 'hosting_footer_copyright', $pid, '(c) 2026 Cybernews - Latest Cybersecurity and Tech News, Research & Analysis' );
+$copyright  = hosting_landing_get_field( 'hosting_footer_copyright', $pid, '(c) 2026 CasinoReview - Casino reviews, sportsbook bonuses, and responsible play information.' );
 
 if ( empty( $links ) ) {
 	$links = array(

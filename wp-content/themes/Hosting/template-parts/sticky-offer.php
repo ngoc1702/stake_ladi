@@ -15,12 +15,12 @@ if ( ! $enabled ) {
 }
 
 $logo      = hosting_landing_get_field( 'hosting_sticky_logo', $pid );
-$name      = hosting_landing_get_field( 'hosting_sticky_name', $pid, 'Hostinger' );
-$color     = hosting_landing_get_field( 'hosting_sticky_color', $pid, '#673de6' );
-$badge     = hosting_landing_get_field( 'hosting_sticky_badge', $pid, 'Best overall' );
-$text      = hosting_landing_get_field( 'hosting_sticky_text', $pid, 'Best deal in hosting - GET 81% OFF + free months' );
-$cta_label = hosting_landing_get_field( 'hosting_sticky_cta_label', $pid, 'Get Hostinger' );
-$cta_url   = hosting_landing_get_field( 'hosting_sticky_cta_url', $pid, '#' );
+$name      = hosting_landing_get_field( 'hosting_sticky_name', $pid, 'Duelbits' );
+$color     = hosting_landing_get_field( 'hosting_sticky_color', $pid, '#ff8a00' );
+$badge     = hosting_landing_get_field( 'hosting_sticky_badge', $pid, 'Best casino bonus' );
+$text      = hosting_landing_get_field( 'hosting_sticky_text', $pid, 'Duelbits - Get 500 free spins + $100 in free bets' );
+$cta_label = hosting_landing_get_field( 'hosting_sticky_cta_label', $pid, 'Claim bonus' );
+$cta_url   = hosting_landing_get_field( 'hosting_sticky_cta_url', $pid, 'https://go.duelbits.net/visit/?bta=36979&brand=duelbits' );
 ?>
 
 <aside class="hosting-sticky-offer" data-hosting-sticky>

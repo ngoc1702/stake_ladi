@@ -40,11 +40,12 @@ define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );
 
 if ( ! defined( 'WP_CLI' ) && isset( $_SERVER['REQUEST_SCHEME'], $_SERVER['HTTP_HOST'] ) ) {
-	$site_base_path = isset( $_SERVER['SCRIPT_NAME'] ) ? rtrim( str_replace( '\\', '/', dirname( $_SERVER['SCRIPT_NAME'] ) ), '/' ) : '';
-	$site_base_path = '.' === $site_base_path ? '' : $site_base_path;
+	$host_name = preg_replace( '/:\d+$/', '', $_SERVER['HTTP_HOST'] );
+	$site_path = in_array( $host_name, array( 'localhost', '127.0.0.1' ), true ) ? '/ladi_hosting' : '';
+	$site_url  = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $site_path;
 
-	define( 'WP_SITEURL', $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $site_base_path );
-	define( 'WP_HOME',    $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $site_base_path );
+	define( 'WP_SITEURL', $site_url );
+	define( 'WP_HOME',    $site_url );
 }
 
 

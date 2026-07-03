@@ -10,6 +10,8 @@
 
   ready(function () {
     var sticky = document.querySelector('[data-hosting-sticky]');
+    var popup = document.querySelector('[data-hosting-popup]');
+    var popupCloseButtons = popup ? popup.querySelectorAll('[data-hosting-popup-close]') : [];
 
     function updateStickyHeight() {
       if (!sticky) {
@@ -22,6 +24,46 @@
 
     updateStickyHeight();
     window.addEventListener('resize', updateStickyHeight);
+
+    function openPopup() {
+      if (!popup) {
+        return;
+      }
+
+      popup.classList.add('is-visible');
+      popup.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('hosting-popup-open');
+
+      var closeButton = popup.querySelector('.hosting-bonus-popup__close');
+
+      if (closeButton) {
+        closeButton.focus({ preventScroll: true });
+      }
+    }
+
+    function closePopup() {
+      if (!popup) {
+        return;
+      }
+
+      popup.classList.remove('is-visible');
+      popup.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('hosting-popup-open');
+    }
+
+    if (popup) {
+      window.setTimeout(openPopup, 180);
+
+      popupCloseButtons.forEach(function (button) {
+        button.addEventListener('click', closePopup);
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && popup.classList.contains('is-visible')) {
+          closePopup();
+        }
+      });
+    }
 
     document.querySelectorAll('.hosting-landing a[href^="#"]').forEach(function (link) {
       link.addEventListener('click', function (event) {

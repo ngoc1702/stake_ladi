@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $pid        = get_the_ID();
 $providers  = hosting_landing_get_providers( $pid );
-$promo_text = hosting_landing_get_field( 'hosting_promo_text', $pid, 'Free domain for the 1st year + get 81% OFF + free months' );
+$promo_text = hosting_landing_get_field( 'hosting_promo_text', $pid, 'Fresh casino bonuses, esports odds, and live betting picks updated for July 2026' );
 $promo_url  = hosting_landing_get_field( 'hosting_promo_url', $pid, '#' );
 ?>
 
@@ -26,7 +26,7 @@ $promo_url  = hosting_landing_get_field( 'hosting_promo_url', $pid, '#' );
 		<div class="hosting-provider-list">
 			<?php foreach ( $providers as $index => $provider ) :
 				$rank        = $index + 1;
-				$name        = ! empty( $provider['name'] ) ? $provider['name'] : 'Hosting Provider';
+				$name        = ! empty( $provider['name'] ) ? $provider['name'] : 'Casino Brand';
 				$logo        = ! empty( $provider['logo'] ) ? $provider['logo'] : null;
 				$color       = ! empty( $provider['accent_color'] ) ? $provider['accent_color'] : '#673de6';
 				$description = ! empty( $provider['description'] ) ? $provider['description'] : '';
@@ -77,7 +77,7 @@ $promo_url  = hosting_landing_get_field( 'hosting_promo_url', $pid, '#' );
 
 						<aside class="hosting-score-box">
 							<strong><?php echo esc_html( $score ); ?></strong>
-							<span class="hosting-stars" aria-label="<?php echo esc_attr( $score . ' score' ); ?>">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+							<?php hosting_landing_render_stars( $score, $score_label ); ?>
 							<small><?php echo esc_html( $score_label ); ?></small>
 							<a class="hosting-button <?php echo $is_featured ? 'hosting-button--dark' : 'hosting-button--outline'; ?>" href="<?php echo esc_url( $url ); ?>">
 								<?php echo esc_html( $button ); ?> <span aria-hidden="true">&rarr;</span>
@@ -87,7 +87,7 @@ $promo_url  = hosting_landing_get_field( 'hosting_promo_url', $pid, '#' );
 
 					<?php if ( $is_featured && ! empty( $provider['quote_text'] ) ) : ?>
 						<footer class="hosting-provider-quote">
-							<span class="hosting-provider-quote__avatar" aria-hidden="true">JR</span>
+							<span class="hosting-provider-quote__avatar" aria-hidden="true">CR</span>
 							<p>
 								<em>"<?php echo esc_html( $provider['quote_text'] ); ?>"</em>
 								<?php if ( ! empty( $provider['quote_author'] ) ) : ?>

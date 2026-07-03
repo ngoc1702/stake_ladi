@@ -12,19 +12,19 @@ $providers = hosting_landing_get_providers( $pid );
 $first     = ! empty( $providers[0] ) ? $providers[0] : array();
 
 $updated    = hosting_landing_get_field( 'hosting_hero_updated', $pid, 'Updated: July 2026' );
-$title      = hosting_landing_get_field( 'hosting_hero_title', $pid, 'Best Web Hosting Services' );
-$intro      = hosting_landing_get_field( 'hosting_hero_intro', $pid, 'If you are looking to run a personal blog, business landing page, or even an online store, a reliable and affordable hosting service is what you need. Check our list of best web hosting solutions to find the one best suited for your needs.' );
-$name       = hosting_landing_get_field( 'hosting_top_name', $pid, ! empty( $first['name'] ) ? $first['name'] : 'Hostinger' );
+$title      = hosting_landing_get_field( 'hosting_hero_title', $pid, 'Best Casino Review Sites' );
+$intro      = hosting_landing_get_field( 'hosting_hero_intro', $pid, 'Compare top casino and sportsbook brands by bonus value, esports coverage, live betting, game variety, and player-friendly rewards.' );
+$name       = hosting_landing_get_field( 'hosting_top_name', $pid, ! empty( $first['name'] ) ? $first['name'] : 'Duelbits' );
 $logo       = hosting_landing_get_field( 'hosting_top_logo', $pid, ! empty( $first['logo'] ) ? $first['logo'] : null );
-$color      = hosting_landing_get_field( 'hosting_top_color', $pid, ! empty( $first['accent_color'] ) ? $first['accent_color'] : '#673de6' );
-$rank_label = hosting_landing_get_field( 'hosting_top_rank_label', $pid, 'Hosting ranking' );
+$color      = hosting_landing_get_field( 'hosting_top_color', $pid, ! empty( $first['accent_color'] ) ? $first['accent_color'] : '#ff8a00' );
+$rank_label = hosting_landing_get_field( 'hosting_top_rank_label', $pid, 'Casino ranking' );
 $rank       = hosting_landing_get_field( 'hosting_top_rank', $pid, '#1' );
 $score_lbl  = hosting_landing_get_field( 'hosting_top_score_label', $pid, 'Score' );
-$score      = hosting_landing_get_field( 'hosting_top_score', $pid, ! empty( $first['score'] ) ? $first['score'] : '9.9' );
-$deal_lbl   = hosting_landing_get_field( 'hosting_top_deal_label', $pid, 'Current deal' );
-$deal       = hosting_landing_get_field( 'hosting_top_deal', $pid, '81% OFF' );
-$cta_label  = hosting_landing_get_field( 'hosting_top_cta_label', $pid, 'Get Hostinger deal now' );
-$cta_url    = hosting_landing_get_field( 'hosting_top_cta_url', $pid, '#' );
+$score      = hosting_landing_get_field( 'hosting_top_score', $pid, ! empty( $first['score'] ) ? $first['score'] : '9.8' );
+$deal_lbl   = hosting_landing_get_field( 'hosting_top_deal_label', $pid, 'Top bonus' );
+$deal       = hosting_landing_get_field( 'hosting_top_deal', $pid, '500 spins + $100 bets' );
+$cta_label  = hosting_landing_get_field( 'hosting_top_cta_label', $pid, 'Claim Duelbits bonus' );
+$cta_url    = hosting_landing_get_field( 'hosting_top_cta_url', $pid, ! empty( $first['button_url'] ) ? $first['button_url'] : '#' );
 ?>
 
 <section class="hosting-hero">

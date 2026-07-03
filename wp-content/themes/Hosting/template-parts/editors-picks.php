@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $pid       = get_the_ID();
-$title     = hosting_landing_get_field( 'hosting_editor_title', $pid, "Editors' Picks" );
+$title     = hosting_landing_get_field( 'hosting_editor_title', $pid, 'Top Casino Picks' );
 $providers = hosting_landing_get_providers( $pid );
 $cards     = hosting_landing_get_field( 'hosting_editor_picks', $pid, array() );
 
@@ -23,20 +23,20 @@ if ( empty( $cards ) ) {
 
 		<div class="hosting-editor-grid">
 			<?php foreach ( $cards as $index => $card ) :
-				$name        = ! empty( $card['name'] ) ? $card['name'] : 'Hosting Provider';
+				$name        = ! empty( $card['name'] ) ? $card['name'] : 'Casino Brand';
 				$logo        = ! empty( $card['logo'] ) ? $card['logo'] : null;
 				$color       = ! empty( $card['accent_color'] ) ? $card['accent_color'] : '#673de6';
 				$deal        = ! empty( $card['deal_note'] ) ? $card['deal_note'] : '';
 				$score       = ! empty( $card['score'] ) ? $card['score'] : '9.0';
 				$score_label = ! empty( $card['score_label'] ) ? $card['score_label'] : 'Good';
 				$desc        = ! empty( $card['description'] ) ? $card['description'] : '';
-				$button      = ! empty( $card['button_label'] ) ? $card['button_label'] : 'Visit Site';
+				$button      = ! empty( $card['button_label'] ) ? $card['button_label'] : 'Visit site';
 				$url         = ! empty( $card['button_url'] ) ? $card['button_url'] : '#';
 				$specs       = array(
-					'Money-back guarantee' => ! empty( $card['money_back'] ) ? $card['money_back'] : '30-days',
-					'Storage space (from)' => ! empty( $card['storage'] ) ? $card['storage'] : '10GB SSD',
-					'24/7 live support'    => ! empty( $card['support'] ) ? $card['support'] : 'Yes',
-					'Free SSL certificate' => ! empty( $card['ssl'] ) ? $card['ssl'] : 'Yes',
+					'Bonus'                 => ! empty( $card['money_back'] ) ? $card['money_back'] : 'Casino bonus',
+					'Game coverage'         => ! empty( $card['storage'] ) ? $card['storage'] : 'Casino + sports',
+					'Live betting / support' => ! empty( $card['support'] ) ? $card['support'] : 'Available',
+					'Rewards / feature'     => ! empty( $card['ssl'] ) ? $card['ssl'] : 'Player rewards',
 				);
 				?>
 				<article class="hosting-editor-card">
@@ -51,7 +51,7 @@ if ( empty( $cards ) ) {
 						<?php hosting_landing_brand_logo( $name, $logo, $color, 'hosting-editor-logo' ); ?>
 						<div class="hosting-editor-card__score">
 							<strong><?php echo esc_html( $score ); ?></strong>
-							<span class="hosting-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+							<?php hosting_landing_render_stars( $score, $score_label ); ?>
 							<small><?php echo esc_html( $score_label ); ?></small>
 						</div>
 					</div>
