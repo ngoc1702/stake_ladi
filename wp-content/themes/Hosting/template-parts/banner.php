@@ -16,6 +16,7 @@ $title      = hosting_landing_get_field( 'hosting_hero_title', $pid, 'Best Casin
 $intro      = hosting_landing_get_field( 'hosting_hero_intro', $pid, 'Compare top casino and sportsbook brands by bonus value, esports coverage, live betting, game variety, and player-friendly rewards.' );
 $name       = hosting_landing_get_field( 'hosting_top_name', $pid, ! empty( $first['name'] ) ? $first['name'] : 'Duelbits' );
 $logo       = hosting_landing_get_field( 'hosting_top_logo', $pid, ! empty( $first['logo'] ) ? $first['logo'] : null );
+$logo_svg   = hosting_landing_get_field( 'hosting_top_logo_svg', $pid, ! empty( $first['logo_svg'] ) ? $first['logo_svg'] : '' );
 $color      = hosting_landing_get_field( 'hosting_top_color', $pid, ! empty( $first['accent_color'] ) ? $first['accent_color'] : '#ff8a00' );
 $rank_label = hosting_landing_get_field( 'hosting_top_rank_label', $pid, 'Casino ranking' );
 $rank       = hosting_landing_get_field( 'hosting_top_rank', $pid, '#1' );
@@ -42,7 +43,7 @@ $cta_url    = hosting_landing_get_field( 'hosting_top_cta_url', $pid, ! empty( $
 
 			<div class="hosting-hero-deal">
 				<div class="hosting-hero-deal__brand">
-					<?php hosting_landing_brand_logo( $name, $logo, $color, 'hosting-hero-brand' ); ?>
+					<?php hosting_landing_brand_logo( $name, $logo, $color, 'hosting-hero-brand', $logo_svg ); ?>
 				</div>
 
 				<div class="hosting-hero-deal__metric">

@@ -66,7 +66,7 @@ textarea {
   color: #333;
   font-family: "Inter", sans-serif;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 li,
@@ -82,7 +82,7 @@ ol li {
 
 strong,
 b {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* Hyperlinks
@@ -170,7 +170,7 @@ body {
   padding: 0 20px;
   border-radius: 25px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   transition: background 0.3s ease;
 }
 
@@ -269,7 +269,7 @@ body {
   position: relative;
   text-decoration: none;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   transition: 0.4s ease;
   border-radius: 8px;
 }
@@ -284,7 +284,7 @@ body {
   display: table;
   line-height: 40px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 400;
   background: #ffa405;
   padding: 0px 24px;
   border-radius: 8px;
@@ -455,23 +455,23 @@ ul.menu li.sfHover ul,
 .breadcrumb .wrap {
   width: 1140px;
   color: #fff;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .breadcrumb a {
   color: #333;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .breadcrumb .label {
   margin: 0 5px;
-  font-weight: 500;
+  font-weight: 400;
   color: #fff;
 }
 
 .breadcrumb span {
-  font-weight: 500;
+  font-weight: 400;
   color: #fff;
 }
 
@@ -830,7 +830,7 @@ p.wp-caption-text {
 .sidebar .widgettitle {
   font-size: 28px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 54px;
   text-transform: uppercase;
   margin-bottom: 18px;
@@ -1399,7 +1399,7 @@ input#submit {
 .page_blog .widget-item-title a {
   color: #0066ff;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 0.4rem;
   margin-top: 0.4rem;
   overflow: hidden;
@@ -1627,7 +1627,7 @@ input#submit {
   color: #fff;
   text-align: center;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 13px;
   margin: 0 !important;
 }
@@ -1654,8 +1654,10 @@ input#submit {
   --hosting-card: #ffffff;
   box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   margin: 0;
-  padding: 0 0 var(--hosting-sticky-height, 0);
+  padding: 0 0 0px;
   background: #fff;
   color: var(--hosting-text);
   font-family: "Inter", sans-serif;
@@ -1684,7 +1686,8 @@ input#submit {
 }
 
 .hosting-container {
-  width: min(100% - 32px, 1120px);
+  width: calc(100% - 32px);
+  max-width: 1120px;
   margin: 0 auto;
 }
 
@@ -1710,7 +1713,7 @@ input#submit {
   color: #111317;
   text-decoration: none;
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0;
 }
 
@@ -1732,25 +1735,29 @@ input#submit {
   color: #fff;
   font-size: 12px;
   line-height: 1;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .hosting-topbar__disclosure {
   color: #676d76;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1;
 }
 
 .hosting-hero {
   padding: 0 18px 36px;
   background: #fff;
+  overflow: hidden;
 }
 
 .hosting-hero__panel {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
   min-height: 360px;
   padding: 48px 0 44px;
-  border-radius: 8px;
+  border-radius: 12px;
   background: linear-gradient(110deg, #8a5ad7 0%, var(--hosting-purple-dark) 100%);
   color: #fff;
   text-align: center;
@@ -1758,9 +1765,9 @@ input#submit {
 
 .hosting-hero__updated {
   margin: 0 0 20px;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 13px;
-  font-weight: 800;
+  color: #FFF;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 .hosting-hero__title {
@@ -1768,46 +1775,62 @@ input#submit {
   color: #fff;
   font-size: 52px;
   line-height: 1.05;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0;
 }
 
 .hosting-hero__intro {
   width: min(100%, 760px);
   margin: 22px auto 0;
-  color: rgba(255, 255, 255, 0.88);
+  color: #FFF;
   font-size: 16px;
   line-height: 1.6;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .hosting-hero-deal {
-  width: min(100%, 1040px);
-  min-height: 102px;
-  margin: 40px auto 0;
-  padding: 20px 32px;
+  width: 100%;
+  max-width: 1180px;
+  min-height: 116px;
+  margin: 38px auto 0;
+  padding: 18px 22px;
   display: grid;
-  grid-template-columns: minmax(240px, 1.35fr) repeat(3, minmax(132px, 0.72fr)) minmax(220px, 1fr);
+  grid-template-columns: minmax(200px, 1.05fr) repeat(2, minmax(112px, 0.7fr)) minmax(180px, 1.2fr) minmax(220px, 0.95fr);
   align-items: center;
-  gap: 18px;
-  border-radius: 8px;
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 10px;
   background: #fff;
   color: #202328;
-  box-shadow: 0 16px 38px rgba(34, 18, 94, 0.16);
+  box-shadow: 0 22px 48px rgba(28, 15, 72, 0.2);
   text-align: left;
 }
 
+.hosting-hero-deal__brand,
 .hosting-hero-deal__metric {
   min-width: 0;
+  min-height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 18px;
+  border-right: 1px solid #edf0f3;
+}
+
+.hosting-hero-deal__brand {
+  padding-left: 8px;
+}
+
+.hosting-hero-deal__metric {
   text-align: center;
 }
 
 .hosting-hero-deal__metric span {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 12px;
   color: #3b4049;
-  font-size: 12px;
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .hosting-hero-deal__metric strong {
@@ -1816,15 +1839,40 @@ input#submit {
   justify-content: center;
   gap: 4px;
   color: #17191d;
-  font-size: 28px;
+  font-size: 30px;
   line-height: 1;
-  font-weight: 800;
+  font-weight: 600;
+}
+
+.hosting-hero-deal__metric:last-of-type strong {
+  max-width: 190px;
+  margin: 0 auto;
+  font-size: 29px;
+  line-height: 1.02;
 }
 
 .hosting-hero-deal__metric em {
   color: #f7b500;
   font-style: normal;
   letter-spacing: 1px;
+}
+
+.hosting-hero-deal .hosting-button {
+  width: 80%;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 5px;
+  background: #2f8e3f;
+  border-color: #2f8e3f;
+  color: #fff;
+  font-weight: 400;
+  box-shadow: 0 8px 18px rgba(47, 142, 63, 0.22);
+  margin: 0 auto;
+}
+
+.hosting-hero-deal .hosting-button:hover {
+  background: #287a36;
+  border-color: #287a36;
 }
 
 .hosting-stars {
@@ -1843,8 +1891,8 @@ input#submit {
   position: relative;
   display: inline-block;
   flex: 0 0 auto;
-  width: 1em;
-  height: 1em;
+  width: 16px;
+  height: 16px;
   line-height: 1;
 }
 
@@ -1855,8 +1903,8 @@ input#submit {
 .hosting-star__base,
 .hosting-star__fill {
   display: block;
-  width: 1em;
-  height: 1em;
+  width: 16px;
+  height: 16px;
 }
 
 .hosting-star__fill {
@@ -1869,7 +1917,7 @@ input#submit {
 }
 
 .hosting-button {
-  min-height: 48px;
+  min-height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1880,9 +1928,10 @@ input#submit {
   color: #111317;
   background: #fff;
   text-decoration: none;
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 800;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 400;
+  text-align: center;
   white-space: nowrap;
   transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
@@ -1892,13 +1941,18 @@ input#submit {
   text-decoration: none;
 }
 
+.hosting-button i {
+  font-style: normal;
+  line-height: 1;
+}
+
 .hosting-button--green {
   color: #fff;
   background: var(--hosting-green);
 }
 
 .hosting-button--dark {
-  color: #fff;
+  color: #fff !important;
   background: #050607;
   border-color: #050607;
 }
@@ -1923,12 +1977,13 @@ input#submit {
   align-items: center;
   min-width: 0;
   color: var(--brand-color);
+  margin: auto;
 }
 
 .hosting-hero-brand {
   gap: 12px;
   font-size: 22px;
-  font-weight: 900;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -1943,6 +1998,79 @@ input#submit {
   object-fit: contain;
 }
 
+.hosting-brand-svg {
+  display: block;
+  width: min(100%, 250px);
+  height: auto;
+  max-height: 68px;
+  overflow: visible;
+}
+
+.hosting-logo-svg {
+  display: block;
+  width: min(100%, 250px);
+  max-height: 68px;
+  line-height: 0;
+}
+
+.hosting-logo-svg svg {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: inherit;
+}
+
+.hosting-hero-brand .hosting-brand-svg {
+  width: min(100%, 250px);
+  max-height: 58px;
+}
+
+.hosting-hero-brand .hosting-logo-svg {
+  width: min(100%, 250px);
+  max-height: 58px;
+}
+
+.hosting-provider-logo .hosting-brand-svg {
+  width: min(100%, 250px);
+  max-height: 76px;
+}
+
+.hosting-provider-logo .hosting-logo-svg {
+  width: min(100%, 250px);
+  max-height: 76px;
+}
+
+.hosting-editor-logo .hosting-brand-svg {
+  width: min(100%, 190px);
+  max-height: 64px;
+}
+
+.hosting-editor-logo .hosting-logo-svg {
+  width: min(100%, 190px);
+  max-height: 64px;
+}
+
+.hosting-bonus-logo .hosting-brand-svg {
+  width: min(100%, 210px);
+  max-height: 58px;
+}
+
+.hosting-bonus-logo .hosting-logo-svg {
+  width: min(100%, 210px);
+  max-height: 58px;
+}
+
+.hosting-sticky-logo .hosting-brand-svg {
+  width: min(100%, 132px);
+  max-height: 48px;
+}
+
+.hosting-sticky-logo .hosting-logo-svg {
+  width: min(100%, 132px);
+  max-height: 48px;
+}
+
 .hosting-hero-brand__mark,
 .hosting-provider-logo__mark,
 .hosting-editor-logo__mark,
@@ -1953,7 +2081,7 @@ input#submit {
   flex: 0 0 auto;
   background: var(--brand-color);
   color: #fff;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1;
 }
 
@@ -1967,6 +2095,7 @@ input#submit {
 .hosting-ranking {
   padding: 0 0 64px;
   background: #fff;
+  overflow: hidden;
 }
 
 .hosting-promo-strip {
@@ -1976,11 +2105,11 @@ input#submit {
   gap: 12px;
   padding: 0 22px;
   border-radius: 7px 7px 0 0;
-  background: var(--hosting-yellow);
-  color: #2a2d33;
+  background: #f0f0f0;
+  /* color: #2a2d33; */
   text-decoration: none;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .hosting-promo-strip span {
@@ -1996,14 +2125,14 @@ input#submit {
 
 .hosting-promo-strip i {
   margin-left: auto;
-  color: #545961;
+  color: #f97316;
   font-size: 22px;
   font-style: normal;
 }
 
 .hosting-provider-list {
   display: grid;
-  gap: 16px;
+  gap: 24px;
 }
 
 .hosting-provider-card {
@@ -2026,9 +2155,9 @@ input#submit {
   place-items: center;
   border-radius: 999px;
   background: #eff1f4;
-  color: #9299a3;
+  color: #1e1e1e;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .hosting-provider-card__main {
@@ -2037,11 +2166,11 @@ input#submit {
   grid-template-columns: 220px minmax(0, 1fr) 190px;
   align-items: stretch;
   gap: 24px;
-  padding: 28px 22px 28px 48px;
+  padding: 22px 22px 22px 32px;
 }
 
 .hosting-provider-card.is-featured .hosting-provider-card__main {
-  min-height: 220px;
+  min-height: 200px;
 }
 
 .hosting-provider-card__logo {
@@ -2070,7 +2199,7 @@ input#submit {
   color: var(--brand-color);
   font-size: 28px;
   line-height: 1;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .hosting-provider-card__content {
@@ -2081,26 +2210,26 @@ input#submit {
 .hosting-provider-card__badge {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
+  min-height: 30px;
   margin-bottom: 14px;
-  padding: 0 12px;
-  border-radius: 2px;
+  padding: 0 16px;
+  border-radius: 6px;
   background: #0b0c0e;
   color: #fff;
-  font-size: 12px;
-  font-weight: 800;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .hosting-provider-card__description {
   margin: 0 0 14px;
   color: #24282f;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.55;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .hosting-provider-card__description strong {
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .hosting-feature-list {
@@ -2116,10 +2245,10 @@ input#submit {
   position: relative;
   min-width: 0;
   padding-left: 22px;
-  color: #1f252c;
-  font-size: 13px;
+  color: #222;
+  font-size: 15px;
   line-height: 1.4;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .hosting-feature-list li::before {
@@ -2168,6 +2297,7 @@ input#submit {
   padding: 18px;
   background: #f4f4f4;
   text-align: center;
+  border-radius: 5px;
 }
 
 .hosting-score-box strong {
@@ -2178,20 +2308,20 @@ input#submit {
 }
 
 .hosting-score-box .hosting-stars {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1;
 }
 
 .hosting-score-box small {
   min-height: 16px;
   color: #4f5660;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1;
 }
 
 .hosting-score-box .hosting-button {
   width: 100%;
-  margin-top: 12px;
+  margin-top: 4px;
 }
 
 .hosting-provider-quote {
@@ -2214,20 +2344,20 @@ input#submit {
   background: #202328;
   color: #fff;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .hosting-provider-quote p {
   margin: 0;
   color: #505762;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
 .hosting-provider-quote strong {
   margin-left: 8px;
   color: #1f2329;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .hosting-provider-quote span:last-child {
@@ -2251,7 +2381,7 @@ input#submit {
   color: #23262b;
   font-size: 32px;
   line-height: 1.2;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0;
 }
 
@@ -2275,8 +2405,8 @@ input#submit {
   padding: 0 24px;
   cursor: pointer;
   color: #2c3036;
-  font-size: 15px;
-  font-weight: 800;
+  font-size: 16px;
+  font-weight: 600;
   list-style: none;
 }
 
@@ -2299,13 +2429,14 @@ input#submit {
   margin: 0;
   padding: 0 24px 22px;
   color: #58606b;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.65;
 }
 
 .hosting-editors {
   padding: 60px 0 90px;
   background: #f0f0f0;
+  overflow: hidden;
 }
 
 .hosting-editor-grid {
@@ -2341,19 +2472,20 @@ input#submit {
   background: #f0f1f3;
   color: #7e8792;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .hosting-editor-card__deal {
-  min-height: 22px;
+  min-height: 26px;
   display: inline-flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 6px 14px;
   border-radius: 2px;
   background: var(--hosting-yellow);
   color: #22262c;
-  font-size: 11px;
-  font-weight: 900;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
 }
 
 .hosting-editor-card__brand-row {
@@ -2386,7 +2518,7 @@ input#submit {
   color: var(--brand-color);
   font-size: 20px;
   line-height: 1;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .hosting-editor-card__score {
@@ -2404,22 +2536,22 @@ input#submit {
 .hosting-editor-card__score .hosting-stars {
   display: inline-flex;
   margin-top: 5px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .hosting-editor-card__score small {
   display: block;
   color: #4f5660;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .hosting-editor-card__desc {
-  min-height: 112px;
+  min-height: 80px;
   margin: 0 0 20px;
   color: #24282f;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.6;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .hosting-editor-card__specs {
@@ -2439,7 +2571,7 @@ input#submit {
 .hosting-editor-card__specs dd {
   margin: 0;
   color: #293039;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.3;
 }
 
@@ -2449,7 +2581,7 @@ input#submit {
 
 .hosting-editor-card__specs dd {
   text-align: right;
-  font-weight: 900;
+  font-weight: 400;
 }
 
 .hosting-editor-card__button {
@@ -2565,7 +2697,7 @@ input#submit {
   color: #fff;
   font-size: 11px;
   line-height: 1;
-  font-weight: 900;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -2574,7 +2706,7 @@ input#submit {
   color: #16191f;
   font-size: 34px;
   line-height: 1.12;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .hosting-bonus-popup__header p {
@@ -2641,7 +2773,7 @@ input#submit {
   color: var(--card-color);
   font-size: 22px;
   line-height: 1;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .hosting-bonus-card__deal {
@@ -2658,7 +2790,7 @@ input#submit {
   color: #2a2f37;
   font-size: 18px;
   line-height: 1;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .hosting-bonus-card__deal strong {
@@ -2666,7 +2798,7 @@ input#submit {
   color: #12151a;
   font-size: 36px;
   line-height: 0.98;
-  font-weight: 900;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -2677,13 +2809,13 @@ input#submit {
   gap: 7px;
   margin: auto 0 14px;
   color: #252a31;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .hosting-bonus-card__rating .hosting-stars {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .hosting-bonus-card__button {
@@ -2698,7 +2830,7 @@ input#submit {
   text-decoration: none;
   font-size: 14px;
   line-height: 1;
-  font-weight: 900;
+  font-weight: 600;
   text-transform: uppercase;
   transition: transform 0.2s ease, background 0.2s ease;
 }
@@ -2719,7 +2851,7 @@ input#submit {
 }
 
 .hosting-footer {
-  padding: 0 0 104px;
+  padding: 0 0 140px;
   background: #f0f0f0;
 }
 
@@ -2744,14 +2876,22 @@ input#submit {
   gap: 14px;
 }
 
-.hosting-footer__links a,
-.hosting-footer__bottom p {
+.hosting-footer__links a
+ {
   margin: 0;
   color: #30353d;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.4;
-  font-weight: 500;
+  font-weight: 400;
+}
+
+.hosting-footer__bottom p {
+  margin: 0;
+  color: #5a5f69;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400;
 }
 
 .hosting-sticky-offer {
@@ -2769,12 +2909,13 @@ input#submit {
   grid-template-columns: 140px minmax(0, 1fr) 180px;
   align-items: center;
   gap: 20px;
-  padding: 12px 16px;
-  border: 1px solid #14171b;
+  padding:20px 28px 18px 20px;
+  /* border: 1px solid #14171b; */
   border-radius: 4px;
   background: #fff;
   box-shadow: 0 10px 32px rgba(18, 21, 26, 0.16);
   pointer-events: auto;
+  border-radius: 8px;
 }
 
 .hosting-sticky-logo {
@@ -2794,7 +2935,7 @@ input#submit {
   color: var(--brand-color);
   font-size: 12px;
   line-height: 1;
-  font-weight: 900;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -2805,22 +2946,23 @@ input#submit {
 .hosting-sticky-offer__copy span {
   display: inline-flex;
   align-items: center;
-  min-height: 22px;
+  min-height: 26px;
   margin-bottom: 5px;
-  padding: 0 10px;
-  border-radius: 2px;
+  padding: 0 12px;
+  border-radius: 4px;
   background: #0b0c0e;
   color: #fff;
-  font-size: 11px;
-  font-weight: 900;
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 400;
 }
 
 .hosting-sticky-offer__copy strong {
   display: block;
   overflow: hidden;
   color: #111317;
-  font-size: 14px;
-  font-weight: 900;
+  font-size: 15px;
+  font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -2828,13 +2970,31 @@ input#submit {
 @media (max-width: 900px) {
   .hosting-hero-deal {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 18px;
     text-align: center;
+  }
+
+  .hosting-hero-deal__brand,
+  .hosting-hero-deal__metric {
+    min-height: 60px;
+    padding: 0;
+    border-right: 0;
+  }
+
+  .hosting-hero-deal__brand .hosting-hero-brand {
+    justify-content: center;
+  }
+
+  .hosting-hero-deal__metric {
+    padding-top: 14px;
+    border-top: 1px solid #edf0f3;
   }
 
   .hosting-hero-deal__brand,
   .hosting-hero-deal .hosting-button {
     grid-column: 1 / -1;
-    justify-self: center;
+    justify-self: stretch;
   }
 
   .hosting-provider-card__main {
@@ -2861,28 +3021,83 @@ input#submit {
 
 @media (max-width: 720px) {
   .hosting-container {
-    width: min(100% - 24px, 1120px);
+    width: calc(100% - 24px);
+    max-width: 1120px;
   }
 
   .hosting-topbar__inner {
     gap: 10px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .hosting-topbar__brand {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .hosting-topbar__brand strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hosting-topbar__disclosure {
+    display: block;
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 42vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .hosting-hero {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding: 0 8px 30px;
   }
 
   .hosting-hero__panel {
     padding: 28px 12px 22px;
   }
 
+  .hosting-hero__intro {
+    max-width: 360px;
+  }
+
   .hosting-hero__title {
-    font-size: 34px;
+    max-width: 360px;
+    margin: 0 auto;
+    font-size: 32px;
+    line-height: 1.12;
+    overflow-wrap: anywhere;
   }
 
   .hosting-hero-deal {
     padding: 16px;
+  }
+
+  .hosting-hero-deal .hosting-button {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .hosting-ranking > .hosting-container > .hosting-button {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    min-height: 46px;
+    padding: 10px 14px;
+    white-space: normal;
+    line-height: 1.35;
+  }
+
+  .hosting-ranking > .hosting-container > .hosting-button span {
+    flex: 0 0 auto;
+  }
+
+  .hosting-ranking > .hosting-container > .hosting-button i:last-child {
+    flex: 0 0 auto;
   }
 
   .hosting-provider-card__main {
@@ -2899,6 +3114,12 @@ input#submit {
   .hosting-provider-logo {
     min-height: auto;
     flex-direction: row;
+  }
+
+  .hosting-provider-logo img,
+  .hosting-provider-logo .hosting-brand-svg,
+  .hosting-provider-logo .hosting-logo-svg {
+    max-height: 58px;
   }
 
   .hosting-feature-list,
@@ -2939,28 +3160,55 @@ input#submit {
     gap: 10px;
   }
 
+  .hosting-footer {
+    padding-bottom: 168px;
+  }
+
+  .hosting-sticky-offer {
+    bottom: 8px;
+  }
+
   .hosting-sticky-offer__inner {
-    grid-template-columns: 78px minmax(0, 1fr);
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 10px 12px;
+    padding: 12px;
+  }
+
+  .hosting-sticky-logo .hosting-brand-svg,
+  .hosting-sticky-logo .hosting-logo-svg {
+    max-height: 34px;
   }
 
   .hosting-sticky-offer .hosting-button {
     grid-column: 1 / -1;
     width: 100%;
+    min-height: 40px;
   }
 }
 
 @media (max-width: 460px) {
   .hosting-hero__title {
-    font-size: 30px;
+    max-width: 320px;
+    font-size: 28px;
   }
 
   .hosting-hero__intro {
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   .hosting-hero-deal {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  .hosting-hero-deal__metric {
+    padding-top: 12px;
+  }
+
+  .hosting-hero-deal__metric strong,
+  .hosting-hero-deal__metric:last-of-type strong {
+    font-size: 28px;
   }
 
   .hosting-promo-strip {
@@ -2969,8 +3217,26 @@ input#submit {
     line-height: 1.35;
   }
 
+  .hosting-score-box {
+    padding: 16px;
+  }
+
+  .hosting-provider-quote {
+    align-items: flex-start;
+    padding: 14px 16px;
+  }
+
+  .hosting-provider-quote p {
+    font-size: 13px;
+  }
+
+  .hosting-editor-card {
+    padding: 20px;
+  }
+
   .hosting-editor-card__brand-row {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .hosting-editor-logo {
@@ -2985,5 +3251,15 @@ input#submit {
 
   .hosting-bonus-card__deal strong {
     font-size: 28px;
+  }
+
+  .hosting-sticky-offer__copy span {
+    min-height: 22px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+
+  .hosting-sticky-offer__copy strong {
+    font-size: 13px;
   }
 }

@@ -43,6 +43,7 @@ if ( empty( $providers ) ) {
 				<?php foreach ( $providers as $index => $provider ) :
 					$name             = ! empty( $provider['name'] ) ? $provider['name'] : 'Casino Brand';
 					$logo             = ! empty( $provider['logo'] ) ? $provider['logo'] : null;
+					$logo_svg         = ! empty( $provider['logo_svg'] ) ? $provider['logo_svg'] : '';
 					$color            = sanitize_hex_color( ! empty( $provider['accent_color'] ) ? $provider['accent_color'] : '#673de6' );
 					$deal             = ! empty( $provider['deal_note'] ) ? $provider['deal_note'] : 'Casino bonus';
 					$deal             = preg_replace( '/^get\s+/i', '', $deal );
@@ -54,7 +55,7 @@ if ( empty( $providers ) ) {
 					?>
 					<article class="hosting-bonus-card <?php echo 0 === $index ? 'is-leading' : ''; ?>"<?php echo $style; ?>>
 						<div class="hosting-bonus-card__brand">
-							<?php hosting_landing_brand_logo( $name, $logo, $color ? $color : '#673de6', 'hosting-bonus-logo' ); ?>
+							<?php hosting_landing_brand_logo( $name, $logo, $color ? $color : '#673de6', 'hosting-bonus-logo', $logo_svg ); ?>
 						</div>
 
 						<div class="hosting-bonus-card__deal">

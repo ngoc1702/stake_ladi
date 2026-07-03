@@ -16,8 +16,8 @@ $promo_url  = hosting_landing_get_field( 'hosting_promo_url', $pid, '#' );
 <section id="hosting-ranking" class="hosting-ranking">
 	<div class="hosting-container">
 		<?php if ( $promo_text ) : ?>
-			<a class="hosting-promo-strip" href="<?php echo esc_url( $promo_url ? $promo_url : '#' ); ?>">
-				<span aria-hidden="true">^</span>
+			<a class="hosting-button hosting-button--dark" href="<?php echo esc_url( $promo_url ? $promo_url : '#' ); ?>">
+				<span aria-hidden="true"><i class="fa-solid fa-fire"></i></span>
 				<?php echo esc_html( $promo_text ); ?>
 				<i aria-hidden="true">&rsaquo;</i>
 			</a>
@@ -28,13 +28,14 @@ $promo_url  = hosting_landing_get_field( 'hosting_promo_url', $pid, '#' );
 				$rank        = $index + 1;
 				$name        = ! empty( $provider['name'] ) ? $provider['name'] : 'Casino Brand';
 				$logo        = ! empty( $provider['logo'] ) ? $provider['logo'] : null;
+				$logo_svg    = ! empty( $provider['logo_svg'] ) ? $provider['logo_svg'] : '';
 				$color       = ! empty( $provider['accent_color'] ) ? $provider['accent_color'] : '#673de6';
 				$description = ! empty( $provider['description'] ) ? $provider['description'] : '';
 				$pros        = ! empty( $provider['pros'] ) ? $provider['pros'] : array();
 				$cons        = ! empty( $provider['cons'] ) ? $provider['cons'] : array();
 				$score       = ! empty( $provider['score'] ) ? $provider['score'] : '9.0';
 				$score_label = ! empty( $provider['score_label'] ) ? $provider['score_label'] : 'Good';
-				$button      = ! empty( $provider['button_label'] ) ? $provider['button_label'] : 'Visit Site';
+				$button      = 'Visit site';
 				$url         = ! empty( $provider['button_url'] ) ? $provider['button_url'] : '#';
 				$is_featured = 1 === $rank;
 				?>
@@ -43,7 +44,7 @@ $promo_url  = hosting_landing_get_field( 'hosting_promo_url', $pid, '#' );
 
 					<div class="hosting-provider-card__main">
 						<div class="hosting-provider-card__logo">
-							<?php hosting_landing_brand_logo( $name, $logo, $color, 'hosting-provider-logo' ); ?>
+							<?php hosting_landing_brand_logo( $name, $logo, $color, 'hosting-provider-logo', $logo_svg ); ?>
 						</div>
 
 						<div class="hosting-provider-card__content">
@@ -80,7 +81,7 @@ $promo_url  = hosting_landing_get_field( 'hosting_promo_url', $pid, '#' );
 							<?php hosting_landing_render_stars( $score, $score_label ); ?>
 							<small><?php echo esc_html( $score_label ); ?></small>
 							<a class="hosting-button <?php echo $is_featured ? 'hosting-button--dark' : 'hosting-button--outline'; ?>" href="<?php echo esc_url( $url ); ?>">
-								<?php echo esc_html( $button ); ?> <span aria-hidden="true">&rarr;</span>
+								<?php echo esc_html( $button ); ?> <i aria-hidden="true">›</i>
 							</a>
 						</aside>
 					</div>
