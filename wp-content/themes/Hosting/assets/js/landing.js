@@ -84,5 +84,21 @@
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
+
+    document.querySelectorAll('.hosting-landing a[href]').forEach(function (link) {
+      var href = link.getAttribute('href') || '';
+
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) {
+        return;
+      }
+
+      if (!link.getAttribute('target')) {
+        link.setAttribute('target', '_blank');
+      }
+
+      if (!link.getAttribute('rel')) {
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
   });
 }());

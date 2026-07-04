@@ -30,7 +30,9 @@ $promo_url  = hosting_landing_get_field( 'hosting_promo_url', $pid, '#' );
 				$logo        = ! empty( $provider['logo'] ) ? $provider['logo'] : null;
 				$logo_svg    = ! empty( $provider['logo_svg'] ) ? $provider['logo_svg'] : '';
 				$color       = ! empty( $provider['accent_color'] ) ? $provider['accent_color'] : '#673de6';
+				$bonus_color = sanitize_hex_color( $color );
 				$description = ! empty( $provider['description'] ) ? $provider['description'] : '';
+				$deal        = ! empty( $provider['deal_note'] ) ? $provider['deal_note'] : '';
 				$pros        = ! empty( $provider['pros'] ) ? $provider['pros'] : array();
 				$cons        = ! empty( $provider['cons'] ) ? $provider['cons'] : array();
 				$score       = ! empty( $provider['score'] ) ? $provider['score'] : '9.0';
@@ -73,6 +75,16 @@ $promo_url  = hosting_landing_get_field( 'hosting_promo_url', $pid, '#' );
 										<li class="is-muted"><?php echo esc_html( $item['text'] ); ?></li>
 									<?php endforeach; ?>
 								</ul>
+							<?php endif; ?>
+
+							<?php if ( $deal ) : ?>
+								<div class="hosting-provider-card__bonus" style="--bonus-color: <?php echo esc_attr( $bonus_color ? $bonus_color : '#673de6' ); ?>;">
+									<span class="hosting-provider-card__bonus-icon" aria-hidden="true">
+										<i class="fa-solid fa-gift"></i>
+									</span>
+									<span class="hosting-provider-card__bonus-label">Bonus</span>
+									<strong><?php echo esc_html( $deal ); ?></strong>
+								</div>
 							<?php endif; ?>
 						</div>
 
