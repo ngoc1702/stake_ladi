@@ -1702,6 +1702,7 @@ input#submit {
 .student-section-heading {
   margin: 0 auto 48px;
   text-align: center;
+  max-width: 1280px;
 }
 
 .student-section-heading h2 {
@@ -2090,6 +2091,7 @@ input#submit {
 
 .student-start .student-section-heading {
   margin-bottom: 34px;
+  
 }
 
 .student-start__grid {
@@ -2250,14 +2252,14 @@ input#submit {
 
 .student-events__inner,
 .student-journey__inner {
-  max-width: 980px;
+  max-width: 100%;
 }
 
 .student-events__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px 20px;
-  max-width: 760px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -2320,7 +2322,7 @@ input#submit {
 }
 
 .student-journey__list {
-  max-width: 900px;
+  max-width: 85%;
   margin: 0 auto;
 }
 
@@ -2345,32 +2347,34 @@ input#submit {
 
 .student-journey-step__label span {
   display: inline-flex;
-  width: 18px;
-  height: 18px;
+  width: 32px;
+  height: 32px;
   align-items: center;
   justify-content: center;
-  margin-top: 4px;
+  margin-top: 8px;
   border-radius: 50%;
   background: var(--student-yellow);
   color: var(--student-ink);
-  font-size: 11px;
-  font-weight: 820;
+  font-size: 15px;
+  font-weight: 600;
   line-height: 1;
 }
 
 .student-journey-step h3 {
   margin: 0;
   color: var(--student-ink);
-  font-size: 18px;
-  font-weight: 760;
+  font-size: 24px;
+  margin-top: 8px;
+  margin-left: 16px;
+  font-weight: 500;
   line-height: 1.35;
   letter-spacing: 0;
 }
 
 .student-journey-step__body {
   color: var(--student-ink);
-  font-size: 16px;
-  font-weight: 650;
+  font-size: 20px;
+  font-weight: 400;
   line-height: 1.55;
 }
 
