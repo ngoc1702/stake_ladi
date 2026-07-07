@@ -22,7 +22,7 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'ladi_hosting' );
+define( 'DB_NAME', 'student_casino' );
 
 /** Database username */
 define( 'DB_USER', 'root' );
@@ -41,7 +41,7 @@ define( 'DB_COLLATE', '' );
 
 if ( ! defined( 'WP_CLI' ) && isset( $_SERVER['REQUEST_SCHEME'], $_SERVER['HTTP_HOST'] ) ) {
 	$host_name = preg_replace( '/:\d+$/', '', $_SERVER['HTTP_HOST'] );
-	$site_path = in_array( $host_name, array( 'localhost', '127.0.0.1' ), true ) ? '/ladi_hosting' : '';
+	$site_path = in_array( $host_name, array( 'localhost', '127.0.0.1' ), true ) ? '/student_casino' : '';
 	$site_url  = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $site_path;
 
 	define( 'WP_SITEURL', $site_url );
