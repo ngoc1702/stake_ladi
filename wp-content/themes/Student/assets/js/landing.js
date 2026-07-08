@@ -45,6 +45,66 @@
       }
     });
 
+    (function initRevealAnimations() {
+      var selectors = [
+        '.student-hero__copy h1',
+        '.student-hero__copy p',
+        '.student-hero__media',
+        '.student-section-heading',
+        '.student-about-card',
+        '.student-program__media',
+        '.student-benefits',
+        '.student-testimonial',
+        '.student-start-card',
+        '.student-event',
+        '.student-journey-step',
+        '.student-footer__inner > div'
+      ];
+      var revealItems = [];
+      var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      selectors.forEach(function (selector) {
+        landing.querySelectorAll(selector).forEach(function (element, index) {
+          if (element.classList.contains('student-reveal')) {
+            return;
+          }
+
+          element.classList.add('student-reveal');
+          element.style.setProperty('--student-reveal-delay', Math.min((index % 5) * 70, 280) + 'ms');
+          revealItems.push(element);
+        });
+      });
+
+      if (!revealItems.length) {
+        return;
+      }
+
+      if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+        revealItems.forEach(function (element) {
+          element.classList.add('is-visible');
+        });
+        return;
+      }
+
+      var revealObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, {
+        rootMargin: '0px 0px -8% 0px',
+        threshold: 0.12
+      });
+
+      revealItems.forEach(function (element) {
+        revealObserver.observe(element);
+      });
+    }());
+
     landing.querySelectorAll('[data-student-testimonials]').forEach(function (slider) {
       var track = slider.querySelector('[data-student-testimonial-track]');
       var slides = slider.querySelectorAll('[data-student-slide]');

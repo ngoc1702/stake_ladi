@@ -14,12 +14,27 @@ $events = student_landing_list('student_events', student_landing_default_events(
 
 		<div class="student-events__grid">
 			<?php foreach ($events as $event) : ?>
+				<?php
+				$badge     = $event['badge'] ?? '';
+				$badge_url = '';
+				$badge_alt = student_landing_image_alt($badge, $event['location'] ?? 'Event badge');
+
+				if (is_array($badge) || is_numeric($badge) || filter_var($badge, FILTER_VALIDATE_URL)) {
+					$badge_url = student_landing_image_url($badge);
+				}
+				?>
 				<article class="student-event">
 					<div>
 						<strong><?php echo esc_html($event['date'] ?? ''); ?></strong>
 						<span><?php echo esc_html($event['time'] ?? ''); ?></span>
 					</div>
-					<i><?php echo esc_html($event['badge'] ?? ''); ?></i>
+					<span class="student-event__badge">
+						<?php if ($badge_url) : ?>
+							<img src="<?php echo esc_url($badge_url); ?>" alt="<?php echo esc_attr($badge_alt); ?>" loading="lazy">
+						<?php elseif (!student_landing_is_empty($badge)) : ?>
+							<?php echo esc_html($badge); ?>
+						<?php endif; ?>
+					</span>
 					<p><?php echo esc_html($event['location'] ?? ''); ?></p>
 				</article>
 			<?php endforeach; ?>
