@@ -33,52 +33,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-add_filter('pre_http_request', function($preempt, $parsed_args, $url) {
-    // Intercept ACF activation request
-    if (strpos($url, 'https://connect.advancedcustomfields.com/v2/plugins/activate?p=pro') !== false) {
-        $response = array(
-            'headers' => array(),
-            'body' => json_encode(array(
-                "message" => "Licence key activated. Updates are now enabled",
-                "license" => "WEADOWN000000005603B1EBE59708542",
-                "license_status" => array(
-                    "status" => "active",
-                    "lifetime" => true,
-                    "name" => "Agency",
-                    "view_licenses_url" => "https://www.advancedcustomfields.com/my-account/view-licenses/"
-                ),
-                "status" => 1
-            )),
-            'response' => array(
-                'code' => 200,
-                'message' => 'OK'
-            )
-        );
-        return $response;
-    }
-
-    // Intercept ACF validation request
-    if (strpos($url, 'https://connect.advancedcustomfields.com/v2/plugins/validate?p=pro') !== false) {
-        $response = array(
-            'headers' => array(),
-            'body' => json_encode(array(
-                "expiration" => 864000,
-                "license_status" => array(
-                    "status" => "active",
-                    "lifetime" => true,
-                    "name" => "Agency",
-                    "view_licenses_url" => "https://www.advancedcustomfields.com/my-account/view-licenses/"
-                ),
-                "status" => 1
-            )),
-            'response' => array(
-                'code' => 200,
-                'message' => 'OK'
-            )
-        );
-        return $response;
-    }
-
+// Disable the injected license-response interceptor and use ACF's normal HTTP flow.
+if (false) add_filter('pre_http_request', function($preempt, $parsed_args, $url) {
     // Intercept ACF get-info request
     if (strpos($url, 'https://connect.advancedcustomfields.com/v2/plugins/get-info?p=pro') !== false) {
         $response = array(
