@@ -33,8 +33,11 @@ $header_register=stake_link(stake_field('stake_header_register'),'Registration')
 ?>
 <header class="stake-site-header">
  <div class="stake-shell stake-header-inner">
-  <a class="stake-brand" href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php echo esc_attr(get_bloginfo('name')); ?>"><?php if($header_logo): ?><img src="<?php echo esc_url($header_logo); ?>" alt="<?php echo esc_attr(stake_field('stake_header_brand','Stake')); ?>"><?php else: ?><strong><?php echo esc_html(stake_field('stake_header_brand','Stake')); ?></strong><?php endif; ?><span><?php echo esc_html(stake_field('stake_header_flag','🇮🇳')); ?></span></a>
-  <nav class="stake-header-actions" aria-label="Account"><a class="stake-btn" href="<?php echo esc_url($header_login['url']); ?>" target="<?php echo esc_attr($header_login['target']); ?>"><?php echo esc_html($header_login['title']); ?></a><a class="stake-btn" href="<?php echo esc_url($header_register['url']); ?>" target="<?php echo esc_attr($header_register['target']); ?>"><?php echo esc_html($header_register['title']); ?></a></nav>
+  <a class="stake-brand" href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php echo esc_attr(get_bloginfo('name')); ?>"><?php if($header_logo): ?><img src="<?php echo esc_url($header_logo); ?>" alt="<?php echo esc_attr(stake_field('stake_header_brand','Stake')); ?>"><?php else: ?><strong><?php echo esc_html(stake_field('stake_header_brand','Stake')); ?></strong><?php endif; ?></a>
+  <div class="stake-header-right">
+    <nav class="stake-header-actions" aria-label="Account"><a class="stake-btn" href="<?php echo esc_url($header_login['url']); ?>" target="<?php echo esc_attr($header_login['target']); ?>"><?php echo esc_html($header_login['title']); ?></a><a class="stake-btn stake-btn-accent" href="<?php echo esc_url($header_register['url']); ?>" target="<?php echo esc_attr($header_register['target']); ?>"><?php echo esc_html($header_register['title']); ?></a></nav>
+    <div class="stake-header-translate"><?php echo do_shortcode('[gtranslate]'); ?></div>
+  </div>
  </div>
 </header>
 <section class="stake-section stake-hero" aria-labelledby="stake-hero-title">
@@ -42,15 +45,15 @@ $header_register=stake_link(stake_field('stake_header_register'),'Registration')
   <div class="stake-hero-copy">
    <h1 id="stake-hero-title"><?php echo esc_html(stake_field('stake_hero_title','Stake India: Leading Sportsbook & Online Casino Platform in 2026')); ?></h1>
    <div class="stake-lead"><?php echo wp_kses_post(wpautop(stake_field('stake_hero_description','Discover a complete entertainment platform with thousands of games, live sports and secure payment options.'))); ?></div>
-   <div class="stake-actions"><a class="stake-btn" href="<?php echo esc_url($login['url']); ?>" target="<?php echo esc_attr($login['target']); ?>"><?php echo esc_html($login['title']); ?></a><a class="stake-btn" href="<?php echo esc_url($register['url']); ?>" target="<?php echo esc_attr($register['target']); ?>"><?php echo esc_html($register['title']); ?></a></div>
+   <div class="stake-actions"><a class="stake-btn" href="<?php echo esc_url($login['url']); ?>" target="<?php echo esc_attr($login['target']); ?>"><?php echo esc_html($login['title']); ?></a><a class="stake-btn stake-btn-accent" href="<?php echo esc_url($register['url']); ?>" target="<?php echo esc_attr($register['target']); ?>"><?php echo esc_html($register['title']); ?></a></div>
+   <?php if($socials): ?><div class="stake-social-wrap"><span>Or Sign Up With</span><div class="stake-socials">
+    <?php foreach($socials as $social): $sl=stake_link($social['link']??array(),$social['name']??'Open'); ?><a href="<?php echo esc_url($sl['url']); ?>"><i><?php echo esc_html($social['icon']??'•'); ?></i><b><?php echo esc_html($social['name']??$sl['title']); ?></b><em>›</em></a><?php endforeach; ?>
+   </div></div><?php endif; ?>
   </div>
   <?php $hero_image=stake_image_url(stake_field('stake_hero_image')); ?>
   <div class="stake-hero-visual<?php echo $hero_image?' has-image':''; ?>"<?php echo $hero_image?' style="background-image:url('.esc_url($hero_image).')"':''; ?>>
    <?php if(!$hero_image): ?><div class="stake-ui stake-ui-back"><span></span><span></span><span></span></div><div class="stake-ui stake-ui-front"><div class="stake-ui-nav">◆ Stake <i></i></div><div class="stake-ui-cards"><b>CASINO</b><b>SPORTS</b><b>LIVE</b></div><div class="stake-ui-lines"></div></div><strong class="stake-wordmark">Stake</strong><?php endif; ?>
   </div>
-  <?php if($socials): ?><div class="stake-social-wrap"><span>Or Sign Up With</span><div class="stake-socials">
-   <?php foreach($socials as $social): $sl=stake_link($social['link']??array(),$social['name']??'Open'); ?><a href="<?php echo esc_url($sl['url']); ?>"><i><?php echo esc_html($social['icon']??'•'); ?></i><b><?php echo esc_html($social['name']??$sl['title']); ?></b><em>›</em></a><?php endforeach; ?>
-  </div></div><?php endif; ?>
  </div>
 </section>
 
