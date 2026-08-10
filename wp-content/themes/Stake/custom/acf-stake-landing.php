@@ -55,20 +55,32 @@ function stake_register_landing_fields() {
             $link('field_stake_all_games_button','Nút xem tất cả trò chơi','stake_all_games_button'),
 
             $tab('field_stake_tab_gallery','3. Thư viện giao diện'),
-            $text('field_stake_gallery_title','Tiêu đề section','stake_gallery_title','Stake Official Website Interface Review'),
+            $text('field_stake_gallery_title','Tiêu đề section','stake_gallery_title','Stake Casino — Independent Fan Guide & Reviews'),
+            $area('field_stake_gallery_intro','Nội dung giới thiệu','stake_gallery_intro','Your independent resource for exploring Stake Casino. Read honest player reviews, discover games and learn about bonuses from a community perspective.'),
+            $link('field_stake_gallery_button','Nút truy cập website','stake_gallery_button'),
+            $text('field_stake_gallery_rating_label','Nhãn đánh giá','stake_gallery_rating_label','Community Reviews'),
+            array('key'=>'field_stake_gallery_rating','label'=>'Điểm đánh giá','name'=>'stake_gallery_rating','type'=>'number','default_value'=>4.8,'min'=>0,'max'=>5,'step'=>0.1),
+            $text('field_stake_gallery_rating_note','Ghi chú đánh giá','stake_gallery_rating_note','Based on more than 10,000 player experiences and reviews.'),
+            array('key'=>'field_stake_gallery_stats','label'=>'Các chỉ số','name'=>'stake_gallery_stats','type'=>'repeater','layout'=>'table','button_label'=>'Thêm chỉ số','sub_fields'=>array(
+                $text('field_stake_gallery_stat_value','Giá trị','value'),
+                $text('field_stake_gallery_stat_label','Nhãn','label')
+            )),
+            $image('field_stake_gallery_feature_image','Ảnh lớn bên phải','stake_gallery_feature_image'),
             array('key'=>'field_stake_gallery','label'=>'Danh sách ảnh','name'=>'stake_gallery','type'=>'repeater','layout'=>'table','button_label'=>'Thêm ảnh','sub_fields'=>array(
                 $image('field_stake_gallery_image','Ảnh giao diện','image')
             )),
 
             $tab('field_stake_tab_features','4. Tính năng'),
-            $text('field_stake_features_title','Tiêu đề section','stake_features_title','Stake Features'),
-            $area('field_stake_features_intro','Mô tả','stake_features_intro','Explore the key features designed to make the platform secure, accessible and enjoyable.'),
+            $text('field_stake_features_title','Tiêu đề section','stake_features_title','Why Is Stake Casino So Popular?'),
+            $text('field_stake_features_highlight','Phần tiêu đề màu','stake_features_highlight','Stake Casino'),
+            $area('field_stake_features_intro','Mô tả','stake_features_intro','Discover the platform features most often highlighted by Stake Casino players.'),
             array('key'=>'field_stake_features','label'=>'Danh sách tính năng','name'=>'stake_features','type'=>'repeater','layout'=>'block','button_label'=>'Thêm tính năng','sub_fields'=>array(
                 $image('field_stake_feature_image','Ảnh/icon','image'), $text('field_stake_feature_title','Tiêu đề','title'), $area('field_stake_feature_desc','Mô tả','description')
             )),
 
             $tab('field_stake_tab_partners','5. Đối tác & đại sứ'),
             $text('field_stake_partners_title','Tiêu đề section','stake_partners_title','Stake Partners & Ambassadors'),
+            $text('field_stake_partners_highlight','Phần tiêu đề màu','stake_partners_highlight','Ambassadors'),
             $area('field_stake_partners_intro','Nội dung mở đầu','stake_partners_intro','Stake actively works on improving its reputation and is involved in sponsorship and charitable activities. Global ambassadors include:'),
             array('key'=>'field_stake_partners','label'=>'Danh sách đối tác / đại sứ','name'=>'stake_partners','type'=>'repeater','layout'=>'table','button_label'=>'Thêm đối tác','sub_fields'=>array($text('field_stake_partner_text','Nội dung','text'))),
             $area('field_stake_partners_note','Nội dung cuối','stake_partners_note','Stake also collaborates with clubs and organizations, expanding its audience worldwide.'),
@@ -76,31 +88,12 @@ function stake_register_landing_fields() {
 
             $tab('field_stake_tab_bonus','6. Welcome Bonus'),
             $text('field_stake_bonus_title','Tiêu đề section','stake_bonus_title','Stake Welcome Bonus for Sports Bettors and Casino Players'),
+            $text('field_stake_bonus_highlight','Phần tiêu đề màu','stake_bonus_highlight','Welcome Bonus'),
             $area('field_stake_bonus_intro','Nội dung mở đầu','stake_bonus_intro','Every player can access ongoing promotions and a weekly lottery:'),
             array('key'=>'field_stake_bonus_items','label'=>'Danh sách quyền lợi','name'=>'stake_bonus_items','type'=>'repeater','layout'=>'table','button_label'=>'Thêm quyền lợi','sub_fields'=>array($text('field_stake_bonus_item','Nội dung','text'))),
             $area('field_stake_bonus_note','Nội dung cuối','stake_bonus_note','Winners are selected during a live broadcast and winning tickets are determined by a random number generator.'),
             $link('field_stake_bonus_button','Nút nhận thưởng','stake_bonus_button'),
             $image('field_stake_bonus_image','Ảnh Welcome Bonus','stake_bonus_image'),
-
-            $tab('field_stake_tab_sports','7. Cá cược thể thao'),
-            $text('field_stake_sports_title','Tiêu đề section','stake_sports_title','Sports Betting Online at Stake India'),
-            $area('field_stake_sports_intro','Mô tả','stake_sports_intro','Place bets across dozens of sports and hundreds of sporting events every day.'),
-            array('key'=>'field_stake_sports','label'=>'Danh sách môn thể thao','name'=>'stake_sports','type'=>'repeater','layout'=>'block','button_label'=>'Thêm môn thể thao','sub_fields'=>array(
-                $image('field_stake_sport_image','Ảnh','image'), $text('field_stake_sport_title','Tên môn thể thao','title'),
-                $area('field_stake_sport_desc','Mô tả','description'),
-                array('key'=>'field_stake_sport_events','label'=>'Giải đấu / sự kiện','name'=>'events','type'=>'repeater','layout'=>'table','button_label'=>'Thêm sự kiện','sub_fields'=>array($text('field_stake_sport_event','Tên sự kiện','text'))),
-                $area('field_stake_sport_note','Nội dung cuối','note')
-            )),
-
-            $tab('field_stake_tab_casino','8. Trò chơi Casino'),
-            $text('field_stake_casino_title','Tiêu đề section','stake_casino_title','Stake Online Casino: Top Slots and Live Games'),
-            $area('field_stake_casino_intro','Mô tả','stake_casino_intro','Explore slots, table games, live dealer games and new releases from popular providers.'),
-            array('key'=>'field_stake_casino_games','label'=>'Danh sách trò chơi Casino','name'=>'stake_casino_games','type'=>'repeater','layout'=>'block','button_label'=>'Thêm trò chơi','sub_fields'=>array(
-                $image('field_stake_casino_game_image','Ảnh trò chơi','image'), $text('field_stake_casino_game_title','Tên trò chơi','title'),
-                $area('field_stake_casino_game_desc','Mô tả','description'),
-                array('key'=>'field_stake_casino_game_stats','label'=>'Thông số','name'=>'stats','type'=>'repeater','layout'=>'table','button_label'=>'Thêm thông số','sub_fields'=>array($text('field_stake_casino_game_stat','Nội dung','text'))),
-                $link('field_stake_casino_game_button','Nút chơi','button')
-            )),
 
             $tab('field_stake_tab_testimonials','9. Đánh giá người chơi'),
             $text('field_stake_testimonials_title','Phần đầu tiêu đề','stake_testimonials_title','Player'),
@@ -117,7 +110,7 @@ function stake_register_landing_fields() {
             $area('field_stake_crypto_intro','Nội dung giới thiệu','stake_crypto_intro','Stake supports a wide range of cryptocurrencies for fast and secure transactions.'),
             array('key'=>'field_stake_crypto_items','label'=>'Danh sách tiền mã hóa','name'=>'stake_crypto_items','type'=>'repeater','layout'=>'table','button_label'=>'Thêm tiền mã hóa','sub_fields'=>array(
                 $text('field_stake_crypto_name','Tên','name'), $text('field_stake_crypto_symbol','Mã','symbol'), $text('field_stake_crypto_mark','Ký hiệu dự phòng','mark'),
-                array('key'=>'field_stake_crypto_icon_svg','label'=>'Mã SVG icon','name'=>'icon_svg','type'=>'textarea','rows'=>3,'new_lines'=>'','placeholder'=>'<svg viewBox="0 0 24 24">...</svg>')
+                $image('field_stake_crypto_icon_image','Ảnh icon','icon_image')
             )),
 
             $tab('field_stake_tab_header','11. Header'),
@@ -155,6 +148,14 @@ function stake_field($name, $default = '') {
         if ($value !== null && $value !== false && $value !== '') return $value;
     }
     return $default;
+}
+function stake_highlighted_title($title, $highlight = '') {
+    $title = (string) $title;
+    $highlight = trim((string) $highlight);
+    if ($highlight === '') return esc_html($title);
+    $position = stripos($title, $highlight);
+    if ($position === false) return esc_html($title).' <span>'.esc_html($highlight).'</span>';
+    return esc_html(substr($title, 0, $position)).'<span>'.esc_html(substr($title, $position, strlen($highlight))).'</span>'.esc_html(substr($title, $position + strlen($highlight)));
 }
 function stake_link($value, $title, $url = '#') {
     $value = is_array($value) ? $value : array();
