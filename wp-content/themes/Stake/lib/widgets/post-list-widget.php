@@ -58,7 +58,7 @@ class Caia_Post_List_Widget extends WP_Widget{
 			'height'  => 350,
 		);
 
-		$this->WP_Widget( 'caia-post-list', __( 'CAIA - Post List', 'caia' ), $widget_ops, $control_ops );
+		parent::__construct( 'caia-post-list', __( 'CAIA - Post List', 'caia' ), $widget_ops, $control_ops );
 	}
 
 	function widget( $args, $instance )

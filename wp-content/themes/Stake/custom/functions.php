@@ -10,6 +10,32 @@ if (file_exists(__DIR__ . '/metabox.php')) {
 
 // Thêm ACF Landing Page Configuration
 include __DIR__ . '/acf-stake-landing.php';
+include __DIR__ . '/blog.php';
+
+add_action('wp_enqueue_scripts', function () {
+    if (!is_page_template('page-blog-review.php') && !is_page_template('page-blog.php') && !(is_singular('post') && has_category('reviews'))) return;
+    $landing_css = '/assets/css/landing.css';
+    wp_enqueue_style('stake-site-chrome', get_stylesheet_directory_uri() . $landing_css, array('caia'), filemtime(get_stylesheet_directory() . $landing_css));
+    foreach (array('css', 'js') as $type) {
+        $asset = '/assets/' . $type . '/blog-review.' . $type;
+        $version = filemtime(get_stylesheet_directory() . $asset);
+        if ($type === 'css') {
+            wp_enqueue_style('stake-blog-review', get_stylesheet_directory_uri() . $asset, array('stake-site-chrome'), $version);
+        } else {
+            wp_enqueue_script('stake-blog-review', get_stylesheet_directory_uri() . $asset, array(), $version, true);
+        }
+    }
+}, 130);
+
+add_action('wp_enqueue_scripts', function () {
+    $dependencies = array();
+    foreach (array('stake-landing', 'stake-blog-review') as $handle) {
+        if (wp_style_is($handle, 'enqueued')) $dependencies[] = $handle;
+    }
+    if (!$dependencies) return;
+    $asset = '/assets/css/typography.css';
+    wp_enqueue_style('stake-typography', get_stylesheet_directory_uri() . $asset, $dependencies, filemtime(get_stylesheet_directory() . $asset));
+}, 140);
 
 // Thêm caiajs
 if (file_exists(__DIR__ . '/js/caiajs.php')) {
@@ -19,7 +45,10 @@ if (file_exists(__DIR__ . '/js/caiajs.php')) {
 // Thêm jquery
 add_action('wp_enqueue_scripts', 'caia_add_scripts_homes');
 function caia_add_scripts_homes(){
-	wp_enqueue_script('caia-slick', CHILD_URL.'/custom/js/slick.js', array('jquery'));
+	$slick_path = get_stylesheet_directory() . '/custom/js/slick.js';
+	if (file_exists($slick_path)) {
+		wp_enqueue_script('caia-slick', get_stylesheet_directory_uri() . '/custom/js/slick.js', array('jquery'), filemtime($slick_path), true);
+	}
 }
 
 function add_swiper_webcomponent_script() {
@@ -75,21 +104,11 @@ function caia_enqueue_student_landing_assets() {
         );
     }
 }
-//Cho phép upload ảnh định dạng Svg
+// Keep WordPress content and MIME validation for uploaded files.
 add_filter('upload_mimes', 'caia_mime_types', 1, 1);
 function caia_mime_types($mime_types){  
-	$mime_types['svg'] = 'image/svg+xml';
 	$mime_types['webp'] = 'image/webp';
 	return $mime_types;
-}
-
-add_filter( 'wp_check_filetype_and_ext', 'caia_disable_real_mime_check', 10, 4 );
-function caia_disable_real_mime_check( $data, $file, $filename, $mimes ) {
-	$wp_filetype = wp_check_filetype( $filename, $mimes );
-	$ext = $wp_filetype['ext'];
-	$type = $wp_filetype['type'];
-	$proper_filename = $data['proper_filename'];
-	return compact( 'ext', 'type', 'proper_filename' );
 }
 
 // Xóa các kích thước mặc định trong Wordpress
@@ -144,6 +163,12 @@ function caia_add_html_widget_title( $title ) {
 // Thêm font
 add_action('wp_head','caia_add_font_website');
 function caia_add_font_website(){
+	if (wp_style_is('stake-typography', 'enqueued')) {
+		echo '<link rel="preconnect" href="https://fonts.googleapis.com">';
+		echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>';
+		echo '<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">';
+		return;
+	}
 	?>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

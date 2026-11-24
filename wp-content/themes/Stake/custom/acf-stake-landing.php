@@ -2,6 +2,21 @@
 /** ACF fields and helpers for the Stake landing page. */
 if (!defined('ABSPATH')) exit;
 
+// Also show the editor for pages that use the landing shortcode.
+add_filter('acf/location/rule_types', function ($choices) {
+    $choices['Post']['stake_landing_shortcode'] = 'Stake landing shortcode';
+    return $choices;
+});
+add_filter('acf/location/rule_values/stake_landing_shortcode', function ($choices) {
+    $choices['landing_page'] = '[landing_page]';
+    return $choices;
+});
+add_filter('acf/location/rule_match/stake_landing_shortcode', function ($match, $rule, $screen) {
+    $post = !empty($screen['post_id']) ? get_post($screen['post_id']) : null;
+    $matches = $post && $post->post_type === 'page' && has_shortcode($post->post_content, 'landing_page');
+    return $rule['operator'] === '!=' ? !$matches : (bool) $matches;
+}, 10, 3);
+
 add_action('acf/init', 'stake_register_landing_fields');
 function stake_register_landing_fields() {
     if (!function_exists('acf_add_local_field_group')) return;
@@ -136,7 +151,10 @@ function stake_register_landing_fields() {
             $text('field_stake_footer_age','Nhãn độ tuổi','stake_footer_age','18'),
             $area('field_stake_footer_disclaimer','Nội dung disclaimer','stake_footer_disclaimer','All trademarks, brand names, and design elements featured on this website are the property of their respective owners and are used with permission from our official partner, Stake.com.'),
         ),
-        'location'=>array(array(array('param'=>'page_template','operator'=>'==','value'=>'page-landing.php'))),
+        'location'=>array(
+            array(array('param'=>'page_template','operator'=>'==','value'=>'page-landing.php')),
+            array(array('param'=>'stake_landing_shortcode','operator'=>'==','value'=>'landing_page'))
+        ),
         'position'=>'acf_after_title', 'style'=>'seamless', 'active'=>true,
         'description'=>'Toàn bộ nội dung các section của landing page được quản trị tại đây.'
     ));

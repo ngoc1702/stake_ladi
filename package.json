@@ -1,0 +1,13 @@
+{
+  "name": "stake-landing-wordpress",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local PHP development server for the Stake WordPress site",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "start": "npm run dev"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

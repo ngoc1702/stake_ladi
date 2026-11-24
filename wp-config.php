@@ -41,7 +41,15 @@ define( 'DB_COLLATE', '' );
 
 if ( ! defined( 'WP_CLI' ) && isset( $_SERVER['REQUEST_SCHEME'], $_SERVER['HTTP_HOST'] ) ) {
 	$host_name = preg_replace( '/:\d+$/', '', $_SERVER['HTTP_HOST'] );
-	$site_path = in_array( $host_name, array( 'localhost', '127.0.0.1' ), true ) ? '/student_casino' : '';
+	$site_path = '';
+	if ( in_array( $host_name, array( 'localhost', '127.0.0.1' ), true ) ) {
+		$document_root = isset( $_SERVER['DOCUMENT_ROOT'] ) ? realpath( $_SERVER['DOCUMENT_ROOT'] ) : false;
+		$install_root = str_replace( '\\', '/', __DIR__ );
+		$document_root = $document_root ? rtrim( str_replace( '\\', '/', $document_root ), '/' ) : '';
+		if ( $document_root !== '' && stripos( $install_root . '/', $document_root . '/' ) === 0 ) {
+			$site_path = substr( $install_root, strlen( $document_root ) );
+		}
+	}
 	$site_url  = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $site_path;
 
 	define( 'WP_SITEURL', $site_url );

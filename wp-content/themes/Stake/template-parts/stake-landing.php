@@ -28,15 +28,7 @@ $header_logo=stake_image_url(stake_field('stake_header_logo'));
 $header_login=stake_link(stake_field('stake_header_login'),'Log In');
 $header_register=stake_link(stake_field('stake_header_register'),'Registration');
 ?>
-<header class="stake-site-header">
- <div class="stake-shell stake-header-inner">
-  <a class="stake-brand" href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php echo esc_attr(get_bloginfo('name')); ?>"><?php if($header_logo): ?><img src="<?php echo esc_url($header_logo); ?>" alt="<?php echo esc_attr(stake_field('stake_header_brand','Stake')); ?>"><?php else: ?><strong><?php echo esc_html(stake_field('stake_header_brand','Stake')); ?></strong><?php endif; ?></a>
-  <div class="stake-header-right">
-    <nav class="stake-header-actions" aria-label="Account"><a class="stake-btn" href="<?php echo esc_url($header_login['url']); ?>" target="<?php echo esc_attr($header_login['target']); ?>"><?php echo esc_html($header_login['title']); ?></a><a class="stake-btn stake-btn-accent" href="<?php echo esc_url($header_register['url']); ?>" target="<?php echo esc_attr($header_register['target']); ?>"><?php echo esc_html($header_register['title']); ?></a></nav>
-    <div class="stake-header-translate"><?php echo do_shortcode('[gtranslate]'); ?></div>
-  </div>
- </div>
-</header>
+<?php get_template_part('template-parts/site-header', null, array('source_id'=>get_the_ID())); ?>
 <section class="stake-section stake-hero" aria-labelledby="stake-hero-title">
  <div class="stake-shell stake-hero-grid">
   <div class="stake-hero-copy">
@@ -113,19 +105,7 @@ $promotions=stake_field('stake_promotions',array(
 
 <?php $stake_faq_section = ob_get_clean(); ob_start(); ?>
 
-<?php
-$footer_logo=stake_image_url(stake_field('stake_footer_logo'))?:$header_logo;
-$footer_partner=stake_link(stake_field('stake_footer_partner_link'),'Stakebonus.com');
-?>
-<footer class="stake-site-footer"><div class="stake-shell">
- <div class="stake-footer-simple">
-  <a class="stake-footer-logo" href="<?php echo esc_url(home_url('/')); ?>"><?php if($footer_logo): ?><img src="<?php echo esc_url($footer_logo); ?>" alt="<?php echo esc_attr(stake_field('stake_footer_brand','StakeBonus')); ?>"><?php else: ?><strong><?php echo esc_html(stake_field('stake_footer_brand','StakeBonus')); ?></strong><?php endif; ?></a>
-  <p><?php echo esc_html(wp_strip_all_tags(stake_field('stake_footer_intro','StakeBonus is an official partner of Stake.com. All content is for informational purposes only and does not promote illegal gambling. Please play responsibly!'))); ?></p>
-  <p><?php echo esc_html(stake_field('stake_footer_copyright','©2026 · All rights reserved.')); ?></p>
-  <p><?php echo esc_html(stake_field('stake_footer_responsible','This site is not suitable for people under 18 years of age!')); ?> <span><?php echo esc_html(stake_field('stake_footer_age','18')); ?></span></p>
-  <p class="stake-footer-disclaimer"><?php echo esc_html(wp_strip_all_tags(stake_field('stake_footer_disclaimer','All trademarks, brand names, and design elements featured on this website are the property of their respective owners and are used with permission from our official partner, Stake.com.'))); ?></p>
- </div>
-</div></footer>
+<?php get_template_part('template-parts/site-footer', null, array('source_id'=>get_the_ID())); ?>
 <?php $stake_footer_section = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
@@ -152,9 +132,10 @@ $bonus_items=stake_field('stake_bonus_items',array(array('text'=>'Place sports b
 $bonus_title=stake_field('stake_bonus_title','Stake Welcome Bonus for Sports Bettors and Casino Players');
 $bonus_highlight=stake_field('stake_bonus_highlight','Welcome Bonus');
 $bonus_image=stake_image_url(stake_field('stake_bonus_image'));
+$bonus_button=stake_link(stake_field('stake_bonus_button'),'Get Started',$get_started_url);
 ?>
 <section class="stake-section stake-content-section" aria-labelledby="stake-bonus-title"><div class="stake-shell stake-content-grid">
- <div class="stake-content-copy"><h2 class="stake-heading" id="stake-bonus-title"><?php echo stake_highlighted_title($bonus_title,$bonus_highlight); ?></h2><div class="stake-richtext"><?php echo wp_kses_post(wpautop(stake_field('stake_bonus_intro','Every player can access ongoing promotions and a weekly lottery:'))); ?></div><ul class="stake-check-list"><?php foreach($bonus_items as $item): ?><li><?php echo esc_html($item['text']??''); ?></li><?php endforeach; ?></ul><div class="stake-richtext"><?php echo wp_kses_post(wpautop(stake_field('stake_bonus_note','Winners are selected during a live broadcast and winning tickets are determined by a random number generator.'))); ?></div><a class="stake-btn stake-btn-inline" href="<?php echo esc_url($get_started_url); ?>" target="<?php echo esc_attr($get_started_target); ?>">Get Started</a></div>
+ <div class="stake-content-copy"><h2 class="stake-heading" id="stake-bonus-title"><?php echo stake_highlighted_title($bonus_title,$bonus_highlight); ?></h2><div class="stake-richtext"><?php echo wp_kses_post(wpautop(stake_field('stake_bonus_intro','Every player can access ongoing promotions and a weekly lottery:'))); ?></div><ul class="stake-check-list"><?php foreach($bonus_items as $item): ?><li><?php echo esc_html($item['text']??''); ?></li><?php endforeach; ?></ul><div class="stake-richtext"><?php echo wp_kses_post(wpautop(stake_field('stake_bonus_note','Winners are selected during a live broadcast and winning tickets are determined by a random number generator.'))); ?></div><a class="stake-btn stake-btn-inline" href="<?php echo esc_url($bonus_button['url']); ?>" target="<?php echo esc_attr($bonus_button['target']); ?>"><?php echo esc_html($bonus_button['title']); ?></a></div>
  <div class="stake-content-visual visual-bonus<?php echo $bonus_image?' has-image':''; ?>"<?php echo $bonus_image?' style="background-image:url('.esc_url($bonus_image).')"':''; ?>><?php if(!$bonus_image): ?><div class="stake-visual-head"><b>Stake</b><strong>WELCOME<br>BONUS</strong></div><div class="stake-promo-row"><i>S</i><i>★</i><i>VIP</i></div><div class="stake-promo-row second"><i>◆</i><i>2×</i><i>RACE</i></div><?php endif; ?></div>
 </div></section>
 
