@@ -1,0 +1,2399 @@
+#main-landing {
+    --bg: #102735;
+    --bg-deep: #0b202d;
+    --panel: #1a3948;
+    --blue: #0f6fca;
+    --blue-light: #4d9fe8;
+    --green: #07933b;
+    --text: #f7fbff;
+    --muted: #b7d1ff;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 Montserrat, Arial, sans-serif;
+    width: 100%;
+    overflow: hidden
+}
+
+#main-landing * {
+    box-sizing: border-box
+}
+
+#main-landing p {
+    margin: 0 0 12px;
+    color: inherit
+}
+
+#main-landing a {
+    text-decoration: none
+}
+
+
+
+
+
+.stake-section {
+    padding: 58px 0;
+    background: var(--bg)
+}
+
+.stake-section.stake-soft {
+    background: var(--bg-deep)
+}
+
+.stake-shell {
+    width: min(1400px, calc(100% - 64px));
+    margin: auto
+}
+
+.stake-shell.stake-narrow {
+    width: min(1400px, calc(100% - 64px))
+}
+
+.stake-heading {
+    border-left: 3px solid var(--blue);
+    padding-left: 12px;
+    margin: 0 0 28px !important;
+    color: #fff !important;
+    font-size: 30px !important;
+    line-height: 1.25 !important;
+    font-weight: 700 !important
+}
+
+.stake-heading>span {
+    color: #43c84f
+}
+
+.stake-intro,
+.stake-lead {
+    color: #d4e2ff
+}
+
+.stake-intro {
+    margin: -12px 0 26px;
+    max-width: 1220px
+}
+
+.stake-intro p:last-child,
+.stake-lead p:last-child,
+.stake-note p:last-child {
+    margin-bottom: 0
+}
+
+.stake-hero {
+    padding: 40px 0 50px;
+    background: linear-gradient(135deg, var(--bg) 55%, var(--bg-deep))
+}
+
+.stake-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(380px, .8fr);
+    gap: 34px 55px;
+    align-items: center
+}
+
+.stake-hero-copy {
+    padding: 28px 34px;
+    background: rgba(7, 25, 36, .52);
+    border-radius: 14px
+}
+
+.stake-hero h1 {
+    font-size: 38px !important;
+    line-height: 1.15 !important;
+    color: #fff !important;
+    margin: 0 0 18px !important;
+    font-weight: 700 !important;
+    letter-spacing: -.5px
+}
+
+.stake-lead {
+    font-size: 17px
+}
+
+.stake-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 20px
+}
+
+.stake-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1078d6, #0c61b4);
+    color: #fff !important;
+    font-weight: 500;
+    box-shadow: 0 9px 24px rgba(7, 111, 222, .17);
+    transition: .2s;
+    font-family: "Montserrat", sans-serif;
+}
+
+.stake-btn.stake-btn-accent {
+    background: linear-gradient(135deg, #079f40, #067d35);
+    box-shadow: 0 9px 24px rgba(6, 125, 53, .25);
+}
+
+.stake-header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.stake-header-translate {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.stake-header-actions .stake-btn.stake-btn-accent {
+    background: linear-gradient(135deg, #079f40, #067d35);
+    box-shadow: 0 9px 24px rgba(6, 125, 53, .20);
+}
+
+.stake-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08)
+}
+
+.stake-hero-visual {
+    position: relative;
+    min-height: 390px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.stake-ui {
+    position: absolute;
+    border: 2px solid #c9d9e4;
+    border-radius: 9px;
+    background: #0b2433;
+    box-shadow: 0 12px 22px rgba(0, 0, 0, .35)
+}
+
+.stake-ui-back {
+    width: 76%;
+    height: 210px;
+    right: 1%;
+    top: 134px;
+    padding: 18px
+}
+
+.stake-ui-back span {
+    display: block;
+    height: 35px;
+    margin: 8px;
+    background: #193c4d;
+    border-radius: 4px
+}
+
+.stake-ui-front {
+    width: 78%;
+    height: 210px;
+    right: 8%;
+    top: 30px;
+    padding: 9px
+}
+
+.stake-ui-nav {
+    height: 32px;
+    padding: 5px 8px;
+    background: #122f3e;
+    font-size: 12px
+}
+
+.stake-ui-nav i {
+    float: right;
+    width: 52px;
+    height: 14px;
+    background: var(--blue);
+    border-radius: 2px
+}
+
+.stake-ui-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+    padding: 15px 8px
+}
+
+.stake-ui-cards b {
+    display: grid;
+    place-items: center;
+    height: 58px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #2176ac, #56c8ac);
+    font-size: 10px
+}
+
+.stake-ui-cards b:nth-child(2) {
+    background: linear-gradient(135deg, #6d3ac4, #f0579a)
+}
+
+.stake-ui-lines {
+    height: 56px;
+    margin: 0 8px;
+    background: repeating-linear-gradient(0deg, #193d4e 0 7px, transparent 7px 14px)
+}
+
+.stake-wordmark {
+    position: absolute;
+    right: 12%;
+    bottom: 5px;
+    font: italic 700 72px Georgia, serif;
+    color: #fff;
+    text-shadow: 0 5px 7px #000
+}
+
+.stake-social-wrap {
+    grid-column: 1/-1;
+    max-width: 100%;
+    margin-top: 16px;
+}
+
+.stake-social-wrap>span {
+    display: block;
+    margin-bottom: 16px;
+        color: #d4e2ff;
+}
+
+.stake-socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px
+}
+
+.stake-socials a {
+    width: auto;
+    min-height: 50px;
+    border: 1px solid #395565;
+    border-radius: 9px;
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    color: #fff !important;
+    background-color: #395565
+}
+
+.stake-socials i,
+.stake-socials img,
+.stake-social-svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: transparent;
+    color: #fff;
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 800
+}
+
+.stake-socials img {
+    display: block;
+    object-fit: contain
+}
+
+.stake-social-svg svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible
+}
+
+.stake-social-google .stake-social-svg {
+    color: #4285f4
+}
+
+.stake-social-facebook .stake-social-svg {
+    color: #1877f2
+}
+
+.stake-social-kick .stake-social-svg {
+    color: #53fc18
+}
+
+.stake-socials b {
+    margin-left: 9px;
+    font-size: 15px
+}
+
+.stake-social-google i {
+    background: conic-gradient(from -45deg, #4285f4 0 25%, #34a853 25% 43%, #fbbc05 43% 68%, #ea4335 68% 100%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text
+}
+
+.stake-social-facebook i {
+    color: #1877f2
+}
+
+.stake-social-kick i {
+    color: #53fc18
+}
+
+.stake-trending-section {
+    padding-top: 48px;
+    background: var(--bg-deep)
+}
+
+.stake-trending-section .stake-shell {
+    width: min(1400px, calc(100% - 64px))
+}
+
+.stake-promotions {
+    margin-bottom: 68px
+}
+
+.stake-promotions-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 18px
+}
+
+.stake-promotions-head h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 !important;
+    color: #fff !important;
+    font-size: 30px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important
+}
+
+.stake-promotions-head h2 i {
+    color: #a9c9d7;
+    font-size: 20px
+}
+
+.stake-promotions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px
+}
+
+.stake-promotion-card {
+    min-width: 0;
+    min-height: 200px;
+    padding: 22px 16px;
+    border-radius: 9px;
+    background: #1c3948;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 114px;
+    gap: 14px;
+    align-items: center
+}
+
+.stake-promotion-copy>span {
+    display: inline-flex;
+    width: fit-content;
+    padding: 4px 6px;
+    border-radius: 4px;
+    background: #eef3f6;
+    color: #142735;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1
+}
+
+.stake-promotion-copy h3 {
+    margin: 14px 0 4px !important;
+    color: #fff !important;
+    font-size: 19px !important;
+    line-height: 1.4 !important;
+    font-weight: 700 !important
+}
+
+.stake-promotion-copy p {
+    margin-bottom: 4px !important;
+    color: #a9c6d4 !important;
+    font-size: 14px
+}
+
+.stake-promotion-copy>a {
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.stake-promotion-image {
+    width: 114px;
+    height: 114px;
+    border: 2px solid #75e3ac;
+    border-radius: 13px;
+    background: linear-gradient(145deg, #0bc367, #07933b);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff0a9;
+    font-size: 52px
+}
+
+.stake-promotion-image.has-image i {
+    display: none
+}
+
+.stake-promotion-card.promo-2 .stake-promotion-image {
+    background-color: #173f68;
+    background-image: linear-gradient(145deg, #18a898, #245985)
+}
+
+.stake-promotion-card.promo-3 .stake-promotion-image {
+    background-color: #087944;
+    background-image: linear-gradient(145deg, #13be6e, #087944)
+}
+
+.stake-game-row+.stake-game-row {
+    margin-top: 66px
+}
+
+.stake-game-row-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px
+}
+
+.stake-game-row-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 !important;
+    color: #fff !important;
+    font-size: 30px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important
+}
+
+.stake-title-icon {
+    width: 26px;
+    height: 26px;
+    flex: 0 0 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1
+}
+
+.stake-title-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain
+}
+
+.stake-slider-arrows {
+    display: flex;
+    gap: 9px
+}
+
+.stake-slider-arrows button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid #344b5e;
+    border-radius: 50%;
+    background: #14283a;
+    color: #d9e6ef;
+    font-size: 13px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .2s, border-color .2s, opacity .2s
+}
+
+.stake-slider-arrows button:hover:not(:disabled) {
+    border-color: var(--blue-light);
+    background: #1b3951
+}
+
+.stake-slider-arrows button:disabled {
+    opacity: .36;
+    cursor: default
+}
+
+.stake-games {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none
+}
+
+.stake-games::-webkit-scrollbar {
+    display: none
+}
+
+.stake-game {
+    position: relative;
+    flex: 0 0 calc((100% - 144px)/7);
+    aspect-ratio: 3/4;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    color: #fff !important;
+    background: linear-gradient(145deg, #17275a, #6b35b6);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, .16);
+    scroll-snap-align: start;
+    isolation: isolate;
+    transition: transform .22s, box-shadow .22s
+}
+
+.stake-game:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: var(--game-image, linear-gradient(145deg, rgba(255,255,255,.14), transparent 48%));
+    background-position: center;
+    background-size: cover;
+    transition: transform .35s
+}
+
+.stake-game.game-2 { background: linear-gradient(145deg, #08786f, #14bd8d) }
+.stake-game.game-3 { background: linear-gradient(145deg, #254a10, #66be13) }
+.stake-game.game-4 { background: linear-gradient(145deg, #ae2d16, #ff5b19) }
+.stake-game.game-5 { background: linear-gradient(145deg, #7c4103, #eba90d) }
+.stake-game.game-6 { background: linear-gradient(145deg, #14712d, #0bc457) }
+
+.stake-game:hover {
+    /* transform: translateY(-4px); */
+    box-shadow: 0 18px 32px rgba(0, 0, 0, .28)
+}
+
+.stake-game:hover:before {
+    transform: scale(1.045)
+}
+
+.stake-game-rank {
+    position: absolute;
+    top: 12px;
+    left: 9px;
+    max-width: calc(100% - 18px);
+    padding: 4px 7px;
+    overflow: hidden;
+    border-radius: 6px;
+    background: rgba(6, 13, 25, .7);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.stake-all-games {
+    width: min(325px, 100%);
+    min-height: 42px;
+    margin: 70px auto 0;
+    background: linear-gradient(135deg, #079f40, #067d35)
+}
+
+.stake-all-games span {
+    margin-left: 12px
+}
+
+.stake-gallery {
+    margin-top: 34px;
+    padding: 18px;
+    border-radius: 14px;
+    background: var(--panel);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px
+}
+
+.stake-review-overview {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px;
+    align-items: stretch;
+    margin-top: 0
+}
+
+.stake-review-copy,
+.stake-review-visual {
+    display: flex;
+    min-width: 0;
+    flex-direction: column
+}
+
+.stake-review-copy>p {
+    max-width: 650px;
+    margin: 0 0 24px;
+    color: #c0d0da;
+    font-size: 16px;
+    line-height: 1.65
+}
+
+.stake-review-copy .stake-btn {
+    width: fit-content;
+    min-width: 250px;
+        background: linear-gradient(135deg, #079f40, #067d35);
+    color: #fff !important
+}
+
+.stake-review-copy .stake-btn i {
+    margin-left: 10px
+}
+
+.stake-community-rating {
+    max-width: 650px;
+    margin-top: auto;
+    padding: 20px;
+    border: 1px solid #253d4d;
+    border-radius: 10px;
+    background: #101f2e
+}
+
+.stake-community-rating>div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px
+}
+
+.stake-community-rating>div strong,
+.stake-community-rating>div b {
+    color: #fff;
+    font-size: 18px;
+}
+
+.stake-community-rating>div span {
+    color: #43c84f;
+    letter-spacing: 2px
+}
+
+.stake-community-rating>i {
+    display: block;
+    height: 6px;
+    margin: 14px 0 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #2b4150
+}
+
+.stake-community-rating>i span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: #43c84f
+}
+
+.stake-community-rating small {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.stake-review-visual figure,
+.stake-review-placeholder {
+    width: 100%;
+    margin: 0;
+    aspect-ratio: 1.62;
+    overflow: hidden;
+    border: 1px solid #294456;
+    border-radius: 12px;
+    background: #102333
+}
+
+.stake-review-visual figure img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.stake-review-placeholder {
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 54px;
+    font-weight: 800
+}
+
+.stake-review-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: -30px;
+    padding: 15px 12px;
+    border: 1px solid #253d4d;
+    border-radius: 10px;
+    background: #101f2e
+}
+
+.stake-review-stats>div {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center
+}
+
+.stake-review-stats strong {
+    color: #fff;
+    font-size: 17px
+}
+
+.stake-review-stats span {
+    color: var(--muted);
+    font-size: 13px
+}
+
+.stake-gallery figure {
+    margin: 0;
+    aspect-ratio: 1.55;
+    border-radius: 8px;
+    overflow: hidden
+}
+
+.stake-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.stake-gallery-ui {
+    aspect-ratio: 1.55;
+    padding: 8px;
+    border-radius: 7px;
+    background: #0c2432;
+    position: relative;
+    overflow: hidden
+}
+
+.stake-gallery-ui span {
+    font-size: 9px
+}
+
+.stake-gallery-ui i {
+    display: inline-block;
+    width: 26%;
+    height: 24%;
+    margin: 10% 2% 0;
+    background: linear-gradient(135deg, #117fe2, #4bd5c0);
+    border-radius: 3px
+}
+
+.stake-gallery-ui b {
+    display: block;
+    height: 20%;
+    margin: 8px 2%;
+    background: repeating-linear-gradient(0deg, #285066 0 3px, transparent 3px 7px)
+}
+
+.stake-features-section {
+    padding-bottom: 70px;
+    background: var(--bg) !important
+}
+
+.stake-features {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 36px
+}
+
+.stake-feature {
+    min-height: 220px;
+    padding: 26px;
+    border: 1px solid #243b4a;
+    border-radius: 10px;
+    background: #111f2e;
+    text-align: left
+}
+
+.stake-feature-icon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    background: #1c4735;
+    color: #43c84f;
+    font-size: 20px
+}
+
+.stake-feature-icon img {
+    display: block;
+    width: 24px;
+    height: 24px;
+    object-fit: contain
+}
+
+.stake-feature h3 {
+    margin: 0 0 12px !important;
+    font-size: 18px !important;
+    line-height: 1.35 !important;
+    font-weight: 700 !important;
+    color: #fff !important
+}
+
+.stake-feature p {
+    margin-bottom: 0;
+    color: var(--muted) !important;
+    font-size: 16px;
+    line-height: 1.6
+}
+
+.stake-content-section {
+    padding-block: 52px
+}
+
+.stake-content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(440px, 1fr);
+    gap: 42px;
+    align-items: start
+}
+
+.stake-content-copy {
+    min-width: 0
+}
+
+.stake-richtext {
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.55
+}
+
+.stake-richtext a {
+    color: var(--blue) !important;
+    text-decoration: underline !important
+}
+
+.stake-check-list {
+    list-style: none !important;
+    margin: 17px 0 !important;
+    padding: 0 !important
+}
+
+.stake-check-list li {
+    position: relative;
+    list-style: none !important;
+    margin: 0 0 12px !important;
+    padding: 0 0 0 29px !important;
+    color: #fff
+}
+
+.stake-check-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900
+}
+
+.stake-btn-inline {
+    display: inline-flex;
+    width: auto;
+    min-width: 175px;
+    padding: 0 28px;
+    margin-top: 8px
+}
+
+.stake-content-visual {
+    position: relative;
+    min-height: 480px;
+    border-radius: 13px;
+    /* background: #102633; */
+    overflow: hidden;
+    background-size: cover;
+    background-position: center
+}
+
+.stake-content-visual.has-image {
+    min-height: 0;
+    aspect-ratio: 1.44 / 1;
+    /* background-color: #0d2330; */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+.stake-visual-head {
+    height: 100px;
+    padding: 16px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 13px;
+    background: #122733;
+    box-shadow: 0 5px 3px rgba(0, 0, 0, .7);
+    position: relative;
+    z-index: 3
+}
+
+.stake-visual-head b {
+    font: italic 700 56px Georgia, serif;
+    text-shadow: 0 4px 4px #000
+}
+
+.stake-visual-head strong {
+    font-size: 27px;
+    line-height: .95;
+    text-align: right
+}
+
+.stake-visual-screen {
+    position: absolute;
+    inset: 125px 28px 25px;
+    padding: 20px 25px 20px 115px;
+    border: 4px solid #eaf5fa;
+    border-radius: 13px;
+    background: repeating-linear-gradient(0deg, #193b4a 0 45px, #102c39 45px 80px)
+}
+
+.stake-visual-screen i {
+    display: block;
+    width: 60%;
+    height: 8px;
+    margin: 20px 0;
+    background: #436171
+}
+
+.stake-visual-screen span {
+    position: absolute;
+    right: 25px;
+    top: 22px;
+    color: #e92238;
+    font-size: 50px;
+    font-weight: 900;
+    font-style: italic
+}
+
+.stake-promo-row {
+    position: absolute;
+    left: 35px;
+    right: 35px;
+    top: 135px;
+    height: 135px;
+    border: 4px solid #eef8fc;
+    border-radius: 13px;
+    display: flex;
+    gap: 12px;
+    padding: 14px;
+    background: #122e3c
+}
+
+.stake-promo-row.second {
+    top: 310px
+}
+
+.stake-promo-row i {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #04c76e, #167ce8);
+    font-size: 28px;
+    font-weight: 900;
+    font-style: normal
+}
+
+.stake-promo-row i:nth-child(2) {
+    background: linear-gradient(135deg, #f7c318, #30be69)
+}
+
+.stake-promo-row i:nth-child(3) {
+    background: linear-gradient(135deg, #2576df, #7c49df)
+}
+
+.stake-sports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 34px
+}
+
+.stake-sport-card {
+    padding-right: 28px;
+    border-right: 1px solid #d9e9f1
+}
+
+.stake-sport-card:nth-child(3n) {
+    border-right: 0;
+    padding-right: 0
+}
+
+.stake-sport-image {
+    height: 220px;
+    border-radius: 12px 12px 0 0;
+    background: linear-gradient(135deg, #0db667, #d7d626);
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center
+}
+
+.stake-sport-image:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .2))
+}
+
+.stake-sport-image.sport-2 {
+    background-color: #13abe2;
+    background-image: linear-gradient(135deg, #1ec7ed, #1173c9)
+}
+
+.stake-sport-image.sport-3 {
+    background-color: #ed542c;
+    background-image: linear-gradient(135deg, #f14838, #ff9c27)
+}
+
+.stake-sport-image.sport-4 {
+    background-image: linear-gradient(135deg, #4c38b5, #e14d8b)
+}
+
+.stake-sport-image.sport-5 {
+    background-image: linear-gradient(135deg, #ee184c, #792aa8)
+}
+
+.stake-sport-image.sport-6 {
+    background-image: linear-gradient(135deg, #e9b215, #ed4c28)
+}
+
+.stake-sport-image strong {
+    position: absolute;
+    right: 7px;
+    bottom: 0;
+    padding: 8px 15px;
+    border-radius: 14px 14px 0 0;
+    background: #122733;
+    color: #fff;
+    font-size: 25px;
+    text-transform: uppercase
+}
+
+.stake-sport-card>h3 {
+    margin: 14px 0 12px !important;
+    color: #fff !important;
+    font-size: 23px !important
+}
+
+.stake-check-list.is-compact {
+    margin: 12px 0 !important
+}
+
+.stake-check-list.is-compact li {
+    margin-bottom: 10px !important;
+    font-size: 14px
+}
+
+.stake-check-list.is-detailed li {
+    font-size: 14px;
+    line-height: 1.45;
+    margin-bottom: 9px !important
+}
+
+.stake-casino-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 14px
+}
+
+.stake-casino-card {
+    position: relative;
+    padding-top: 72px;
+    border: 1px solid #d9eaf2;
+    border-radius: 13px;
+    overflow: visible;
+    margin-top: 55px
+}
+
+.stake-casino-image {
+    position: absolute;
+    top: -55px;
+    left: 14px;
+    width: 58%;
+    height: 125px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #f2488b, #ffcc37);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 12px;
+    overflow: hidden
+}
+
+.stake-casino-image span {
+    font-weight: 900;
+    font-size: 20px;
+    text-shadow: 0 2px 4px #000
+}
+
+.stake-casino-image.casino-2 {
+    background-image: linear-gradient(135deg, #e1a249, #5637c0)
+}
+
+.stake-casino-image.casino-3 {
+    background-image: linear-gradient(135deg, #51bcfc, #f285d2)
+}
+
+.stake-casino-image.casino-4 {
+    background-image: linear-gradient(135deg, #b12464, #f0bd29)
+}
+
+.stake-casino-image.casino-5 {
+    background-image: linear-gradient(135deg, #261e27, #d18b21)
+}
+
+.stake-casino-image.casino-6 {
+    background-image: linear-gradient(135deg, #56231a, #d98b29)
+}
+
+.stake-casino-body {
+    padding: 16px
+}
+
+.stake-casino-body h3 {
+    color: #fff !important;
+    font-size: 20px !important;
+    margin: 8px 0 !important
+}
+
+.stake-stat-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px 12px;
+    list-style: none !important;
+    margin: 12px 0 !important;
+    padding: 0 !important
+}
+
+.stake-stat-list li {
+    position: relative;
+    margin: 0 !important;
+    padding: 0 0 0 25px !important;
+    list-style: none !important;
+    font-size: 13px
+}
+
+.stake-stat-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--blue);
+    font-size: 11px
+}
+
+.stake-casino-body .stake-btn {
+    margin-top: 14px
+}
+
+.stake-crypto-section {
+    background: var(--bg) !important
+}
+
+.stake-testimonials-section {
+    padding-block: 72px;
+    /* border-top: 1px solid rgba(77, 159, 232, .16);
+    border-bottom: 1px solid rgba(77, 159, 232, .16);
+    background:
+        radial-gradient(circle at 88% 8%, rgba(28, 130, 182, .16), transparent 34%),
+        linear-gradient(180deg, #102a38 0%, #0b1d2a 100%) */
+            background: var(--bg-deep)
+}
+
+.stake-testimonials-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 24px;
+    margin-bottom: 36px
+}
+
+.stake-testimonials-heading {
+    max-width: 820px;
+    margin: 0;
+    text-align: left
+}
+
+.stake-testimonials-heading h2 {
+    margin: 0 0 14px !important;
+    color: #fff !important;
+    font-size: 32px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important
+}
+
+.stake-testimonials-heading h2 span {
+    color: #43c84f
+}
+
+.stake-testimonials-heading p:last-child {
+    margin-bottom: 0
+}
+
+.stake-testimonial-arrows {
+    margin-top: 5px
+}
+
+.stake-testimonial-arrows button {
+    width: 38px;
+    height: 38px;
+    border-color: #3a596b;
+    background: #163545
+}
+
+.stake-testimonials-grid {
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none
+}
+
+.stake-testimonials-grid::-webkit-scrollbar {
+    display: none
+}
+
+.stake-testimonial-card {
+    flex: 0 0 calc((100% - 56px) / 3);
+    min-width: 0;
+    min-height: 292px;
+    padding: 28px;
+    border: 1px solid #315164;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #162d3d 0%, #102333 100%);
+    box-shadow: 0 16px 35px rgba(2, 13, 21, .2);
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start
+}
+
+.stake-testimonial-stars {
+    color: #43c84f;
+    letter-spacing: 1px;
+    line-height: 1
+}
+
+.stake-testimonial-stars .is-muted {
+    color: #43505e
+}
+
+.stake-testimonial-card blockquote {
+    width: auto !important;
+    max-width: none !important;
+    margin: 22px 0 26px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    color: #dcebf4 !important;
+    font-size: 16px;
+    font-style: normal !important;
+    line-height: 1.65;
+    quotes: none
+}
+
+.stake-testimonial-card>footer {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid #2c4657;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 13px
+}
+
+.stake-testimonial-avatar {
+    display: block;
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+    border: 2px solid #6ad59a;
+    border-radius: 50%;
+    background: #173a49;
+    object-fit: cover
+}
+
+.stake-testimonial-card>footer>span {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 4px
+}
+
+.stake-testimonial-card>footer strong {
+    color: #fff;
+    font-size: 16px
+}
+
+.stake-testimonial-card>footer time {
+    color: var(--muted);
+    font-size: 14px
+}
+
+.stake-crypto-heading {
+    max-width: 820px;
+    margin: 0 0 36px;
+    text-align: left
+}
+
+.stake-crypto-heading h2 {
+    margin: 0 0 18px !important;
+    color: #fff !important;
+    font-size: 32px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important
+}
+
+.stake-crypto-heading h2 span {
+    color: #43c84f
+}
+
+.stake-crypto-heading p:last-child {
+    margin-bottom: 0
+}
+
+.stake-crypto-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 18px
+}
+
+.stake-crypto-card {
+    min-width: 0;
+    min-height: 88px;
+    padding: 16px;
+    border: 1px solid #315164;
+    border-radius: 10px;
+    background: var(--bg-deep);
+    display: flex;
+    align-items: center;
+    gap: 13px
+}
+
+.stake-crypto-card strong {
+    min-width: 0;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.35
+}
+
+.stake-crypto-card small {
+    color: inherit;
+    font-size: inherit
+}
+
+.stake-crypto-icon {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    border-radius: 50%;
+    background: #1c4736;
+    color: #ffad23;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800
+}
+
+.stake-crypto-icon svg,
+.stake-crypto-icon img {
+    display: block;
+    width: 72%;
+    height: 72%;
+    object-fit: contain
+}
+
+.stake-crypto-icon.crypto-2 { background: #1b3440; color: #8896d8 }
+.stake-crypto-icon.crypto-3 { background: #29453e; color: #b8c4bd }
+.stake-crypto-icon.crypto-4 { background: #3d3e21; color: #f2cd36 }
+.stake-crypto-icon.crypto-5 { background: #173c3e; color: #26c7bd }
+.stake-crypto-icon.crypto-6 { background: #193e2c; color: #48d264 }
+
+.stake-site-header {
+    position: relative;
+    z-index: 1000;
+    height: 86px;
+    background: #081923;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, .03)
+}
+
+.stake-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.stake-brand {
+    display: inline-flex;
+    align-items: center;
+    color: #fff !important
+}
+
+.stake-brand img {
+    display: block;
+    max-width: 180px;
+    max-height: 64px;
+    object-fit: contain
+}
+
+.stake-brand strong {
+    font: italic 700 62px/1 Georgia, serif;
+    letter-spacing: -5px;
+    text-shadow: 0 4px 5px #000
+}
+
+.stake-brand span {
+    margin-left: 7px;
+    font-size: 21px;
+    letter-spacing: 0
+}
+
+.stake-header-actions {
+    display: flex;
+    gap: 10px
+}
+
+.stake-header-actions .stake-btn {
+    min-width: 95px;
+    height: 48px;
+    min-height: 48px;
+    padding: 0 22px
+}
+
+.stake-header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px
+}
+
+.stake-header-translate {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 48px
+}
+
+.stake-header-translate .gtranslate_wrapper {
+    display: flex !important;
+    align-items: center;
+    min-height: 48px
+}
+
+.stake-header-translate .gt_switcher {
+    width: 110px !important;
+    font-family: inherit !important;
+    overflow: visible !important
+}
+
+.stake-header-translate .gt_switcher .gt_selected {
+    background: transparent !important
+}
+
+.stake-header-translate .gt_switcher .gt_selected a,
+.stake-header-translate .gt_switcher-popup span,
+.stake-header-translate select.gt_selector {
+    box-sizing: border-box;
+    min-height: 40px !important;
+    height: 40px !important;
+    border: 1px solid #29495b !important;
+    border-radius: 10px !important;
+    background-color: #173544 !important;
+    color: #fff !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    font-weight: 700 !important
+}
+
+.stake-header-translate .gt_switcher .gt_selected a {
+    display: flex !important;
+    align-items: center;
+    position: relative;
+    width: 100% !important;
+    padding: 0 32px 0 13px !important;
+    background-image: none !important
+}
+
+.stake-header-translate .gt_switcher .gt_selected a::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid #d7e8f0;
+    border-bottom: 2px solid #d7e8f0;
+    transform: translateY(-70%) rotate(45deg)
+}
+
+.stake-header-translate .gt_switcher .gt_selected a:hover,
+.stake-header-translate .gt_switcher-popup span:hover,
+.stake-header-translate select.gt_selector:hover {
+    background-color: #1d4255 !important;
+    border-color: #3b6276 !important
+}
+
+.stake-header-translate .gt_switcher .gt_option {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    border: 1px solid #29495b !important;
+    border-top: 0 !important;
+    border-radius: 0 0 8px 8px !important;
+    background: #102a38 !important;
+    overflow: hidden !important
+}
+
+.stake-header-translate .gt_switcher .gt_option a {
+    color: #fff !important;
+    background: #102a38 !important;
+    font-family: inherit !important;
+    font-weight: 600 !important
+}
+
+.stake-header-translate .gt_switcher .gt_option a:hover {
+    background: #1d4255 !important
+}
+
+.stake-header-translate select.gt_selector {
+    width: 110px !important;
+    padding: 0 34px 0 12px !important
+}
+
+.stake-header-translate .gtranslate_wrapper>div,
+.stake-header-translate .gt_float_switcher,
+.stake-header-translate .gt_float_switcher .gt-selected,
+.stake-header-translate .gt_float_switcher .gt-current-lang,
+.stake-header-translate a.gt_switcher-popup {
+    border-color: #29495b !important;
+    border-radius: 10px !important;
+    background-color: #173544 !important;
+    color: #fff !important;
+    box-shadow: none !important
+}
+
+.stake-header-translate .gt_float_switcher .gt-current-lang {
+    min-height: 40px;
+    padding: 6px 10px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    line-height: 1.2 !important
+}
+
+.stake-header-translate .gt_float_switcher {
+    position: relative !important;
+    width: 96px !important;
+    border-radius: 10px !important;
+    overflow: visible !important
+}
+
+.stake-header-translate .gt_float_switcher .gt-selected {
+    position: relative !important;
+    width: 100% !important;
+    float: none !important;
+    overflow: hidden !important;
+    border-radius: 10px !important
+}
+
+.stake-header-translate .gt_float_switcher .gt-current-lang {
+    position: relative !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding-inline: 32px !important
+}
+
+.stake-header-translate .gt_float_switcher .gt-current-lang>img {
+    position: absolute !important;
+    top: calc(50% + 4px) !important;
+    left: 9px !important;
+    margin: 0 !important;
+    transform: translateY(-50%)
+}
+
+.stake-header-translate .gt_float_switcher .gt-current-lang .gt_float_switcher-arrow {
+    position: absolute !important;
+    top: 50% !important;
+    right: 7px !important;
+    margin: -8px 0 0 !important
+}
+
+.stake-header-translate .gt_float_switcher .gt_options {
+    position: absolute !important;
+    top: calc(100% + 6px) !important;
+    right: 0 !important;
+    bottom: auto !important;
+    left: auto !important;
+    z-index: 9999 !important;
+    width: 185px !important;
+    max-width: min(185px, calc(100vw - 24px)) !important;
+    max-height: 250px !important;
+    border: 1px solid #29495b !important;
+    border-radius: 10px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    transform: translateY(-6px) !important
+}
+
+.stake-header-translate .gt_float_switcher .gt_options.gt-open {
+    transform: translateY(0) !important
+}
+
+.stake-header-translate .gt_float_switcher .gt-current-lang img,
+.stake-header-translate .gt_float_switcher .gt_options img,
+.stake-header-translate .gt_switcher img,
+.stake-header-translate a.gt_switcher-popup img {
+    width: 24px !important;
+    height: auto !important;
+    margin-right: 6px !important
+}
+
+.stake-header-translate .gt_float_switcher .gt-lang-code {
+    display: inline-flex;
+    align-items: center;
+    position: relative !important;
+    top: 4px !important;
+    font-size: 14px !important;
+    line-height: 1 !important
+}
+
+.stake-header-translate .gt_float_switcher .gt_options,
+.stake-header-translate .gt_float_switcher .gt_options a {
+    background-color: #102a38 !important;
+    color: #fff !important;
+    font-family: inherit !important;
+    font-size: 14px !important
+}
+
+.stake-header-translate .gt_float_switcher .gt_options a {
+    display: flex !important;
+    min-height: 40px;
+    padding: 7px 10px !important;
+    align-items: center;
+    line-height: 1.2 !important
+}
+
+.stake-header-translate .gt_float_switcher .gt_options a:hover {
+    background-color: #1d4255 !important
+}
+
+.stake-faq-section {
+    padding: 64px 0 24px;
+    background: var(--bg) !important;
+}
+
+.stake-faq-wrap .stake-heading {
+    margin-bottom: 30px !important
+}
+
+.stake-accordion {
+    border-top: 1px solid #2b3946
+}
+
+.stake-faq-item {
+    border-bottom: 1px solid #2b3946
+}
+
+.stake-faq-item h3 {
+    margin: 0 !important
+}
+
+.stake-faq-item button {
+    width: 100%;
+    min-height: 66px;
+    padding: 14px 2px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    font: 600 17px/1.35 Montserrat, Arial, sans-serif;
+    cursor: pointer
+}
+
+.stake-faq-item button i {
+    flex: 0 0 9px;
+    width: 9px;
+    height: 9px;
+    margin: -5px 7px 0 24px;
+    border-right: 1.5px solid #dce7ed;
+    border-bottom: 1.5px solid #dce7ed;
+    color: transparent;
+    font-size: 0;
+    transform: rotate(45deg);
+    transition: transform .2s
+}
+
+.stake-faq-item button[aria-expanded=true] i {
+    margin-top: 5px;
+    transform: rotate(225deg)
+}
+
+.stake-faq-answer {
+    max-width: 1200px;
+    padding: 0 48px 18px 2px;
+    color: #a9bfcc
+}
+
+.stake-faq-answer p {
+    margin-bottom: 6px !important
+}
+
+.stake-site-footer {
+    background: #081923;
+    padding: 46px 0 42px;
+    border-top: 1px solid rgba(77, 159, 232, .18);
+    color: #fff
+}
+
+.stake-footer-simple {
+    max-width: 1180px;
+    margin: auto;
+    text-align: center
+}
+
+.stake-footer-logo {
+    display: inline-flex;
+    justify-content: center;
+    margin-bottom: 8px;
+    color: #fff !important
+}
+
+.stake-footer-logo img {
+    display: block;
+    max-width: 2000px;
+    max-height: 60px;
+    object-fit: contain;
+    margin-bottom: 12px
+}
+
+.stake-footer-logo strong {
+    font: italic 700 34px/1 Georgia, serif;
+    letter-spacing: -2px;
+    text-shadow: 0 3px 5px rgba(0, 0, 0, .5)
+}
+
+.stake-footer-simple p {
+    margin: 0 0 4px !important;
+    color: #b9d1ff !important;
+    font-size: 15px;
+    line-height: 1.45
+}
+
+.stake-footer-simple p a {
+    color: var(--blue-light) !important;
+    text-decoration: underline
+}
+
+.stake-footer-simple p span {
+    display: inline-grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    margin-left: 3px;
+    border-radius: 50%;
+    background: #ed2626;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800
+}
+
+.stake-footer-simple .stake-footer-disclaimer {
+    max-width: 1120px;
+    margin: 24px auto 0 !important
+}
+
+@media(max-width:1000px) {
+    .stake-hero-grid {
+        grid-template-columns: 1fr
+    }
+
+    .stake-hero-visual {
+        min-height: 340px
+    }
+
+    .stake-games {
+        gap: 22px
+    }
+
+    .stake-game {
+        flex-basis: calc((100% - 66px)/4)
+    }
+
+    .stake-gallery {
+        grid-template-columns: repeat(3, 1fr)
+    }
+
+    .stake-review-overview {
+        grid-template-columns: 1fr;
+        gap: 30px
+    }
+
+    .stake-review-copy>p,
+    .stake-community-rating {
+        max-width: none
+    }
+
+    .stake-features {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    .stake-content-grid {
+        grid-template-columns: 1fr
+    }
+
+    .stake-content-visual {
+        min-height: 440px
+    }
+
+    .stake-crypto-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+
+    .stake-sports-grid {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    .stake-sport-card:nth-child(3n) {
+        border-right: 1px solid #d9e9f1;
+        padding-right: 28px
+    }
+
+    .stake-sport-card:nth-child(2n) {
+        border-right: 0;
+        padding-right: 0
+    }
+
+    .stake-casino-grid {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+}
+
+@media(max-width:680px) {
+    .stake-section {
+        padding: 40px 0;
+        font-size: 14px
+    }
+
+    #main-landing .stake-section p,
+    #main-landing .stake-section li,
+    #main-landing .stake-section blockquote {
+        font-size: 14px !important;
+        line-height: 1.55
+    }
+
+    #main-landing .stake-section h3 {
+        font-size: 16px !important;
+        line-height: 1.4 !important
+    }
+
+    #main-landing .stake-section .stake-btn {
+        font-size: 13px;
+        margin-bottom: 16px
+    }
+
+    .stake-shell,
+    .stake-shell.stake-narrow {
+        width: calc(100% - 32px)
+    }
+
+    .stake-trending-section .stake-shell {
+        width: calc(100% - 32px)
+    }
+
+    .stake-promotions {
+        margin-bottom: 48px
+    }
+
+    .stake-promotions-head h2 {
+        font-size: 19px !important
+    }
+
+    .stake-promotions-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none
+    }
+
+    .stake-promotions-grid::-webkit-scrollbar {
+        display: none
+    }
+
+    .stake-promotion-card {
+        flex: 0 0 84%;
+        min-height: 170px;
+        grid-template-columns: minmax(0, 1fr) 88px;
+        scroll-snap-align: start
+    }
+
+    .stake-promotion-image {
+        width: 88px;
+        height: 88px;
+        font-size: 40px
+    }
+
+    .stake-heading {
+        font-size: 21px !important
+    }
+
+    .stake-hero {
+        padding-top: 16px
+    }
+
+    .stake-hero-copy {
+        padding: 20px 16px
+    }
+
+    .stake-hero h1 {
+        font-size: 26px !important
+    }
+
+    .stake-hero-visual {
+        min-height: 290px
+    }
+
+    .stake-ui-front {
+        width: 88%;
+        right: 6%
+    }
+
+    .stake-ui-back {
+        width: 85%
+    }
+
+    .stake-wordmark {
+        font-size: 52px
+    }
+
+    .stake-socials,
+    .stake-features {
+        grid-template-columns: 1fr
+    }
+
+    .stake-socials {
+        gap: 8px
+    }
+
+    .stake-game {
+        flex-basis: calc((100% - 14px)/2.15);
+        min-height: 0
+    }
+
+    .stake-games {
+        gap: 14px
+    }
+
+    .stake-game-row+.stake-game-row {
+        margin-top: 46px
+    }
+
+    .stake-game-row-head {
+        margin-bottom: 18px
+    }
+
+    .stake-game-row-title {
+        font-size: 18px !important
+    }
+
+    .stake-slider-arrows button {
+        width: 32px;
+        height: 32px
+    }
+
+    .stake-all-games {
+        margin-top: 48px
+    }
+
+    .stake-gallery {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory
+    }
+
+    .stake-gallery>* {
+        min-width: 78%;
+        scroll-snap-align: start
+    }
+
+    .stake-features {
+        gap: 16px;
+        margin-top: 30px
+    }
+
+    .stake-feature {
+        min-height: 0;
+        padding: 22px
+    }
+
+    .stake-review-copy .stake-btn {
+        width: 100%;
+        min-width: 0
+    }
+
+    .stake-review-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 8px
+    }
+
+    .stake-review-stats strong {
+        font-size: 15px
+    }
+
+    .stake-review-stats span,
+    .stake-community-rating small {
+        font-size: 11px
+    }
+
+    .stake-content-grid {
+        gap: 28px
+    }
+
+    .stake-content-visual {
+        min-height: 350px
+    }
+
+    .stake-visual-head {
+        height: 78px;
+        padding: 12px 18px
+    }
+
+    .stake-visual-head b {
+        font-size: 42px
+    }
+
+    .stake-visual-head strong {
+        font-size: 20px
+    }
+
+    .stake-visual-screen {
+        inset: 100px 18px 18px
+    }
+
+    .stake-promo-row {
+        left: 18px;
+        right: 18px;
+        top: 102px;
+        height: 95px
+    }
+
+    .stake-promo-row.second {
+        top: 220px
+    }
+
+    .stake-sports-grid {
+        grid-template-columns: 1fr
+    }
+
+    .stake-sport-card,
+    .stake-sport-card:nth-child(2n),
+    .stake-sport-card:nth-child(3n) {
+        border-right: 0;
+        padding-right: 0;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #36515e
+    }
+
+    .stake-sport-image {
+        height: 210px
+    }
+
+    .stake-casino-grid {
+        grid-template-columns: 1fr
+    }
+
+    .stake-casino-card {
+        margin-top: 45px
+    }
+
+    .stake-casino-image {
+        width: 70%
+    }
+
+    .stake-crypto-heading {
+        margin-bottom: 36px
+    }
+
+    .stake-crypto-heading h2 {
+        font-size: 21px !important
+    }
+
+    .stake-crypto-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px
+    }
+
+    .stake-crypto-card {
+        min-height: 78px;
+        padding: 12px;
+        gap: 10px
+    }
+
+    .stake-crypto-card strong {
+        font-size: 13px
+    }
+
+    .stake-crypto-icon {
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px
+    }
+
+    .stake-site-header {
+        height: auto;
+        min-height: 74px;
+        padding: 10px 0
+    }
+
+    .stake-header-inner {
+        flex-wrap: wrap;
+        gap: 10px
+    }
+
+    .stake-brand {
+        flex: 1 1 100%;
+        justify-content: center;
+        min-width: 0
+    }
+
+    .stake-brand img {
+        max-width: 145px;
+        max-height: 44px
+    }
+
+    .stake-brand strong {
+        font-size: 45px
+    }
+
+    .stake-brand span {
+        font-size: 17px
+    }
+
+    .stake-header-actions .stake-btn {
+        min-width: auto;
+        height: 42px;
+        min-height: 42px;
+        padding: 0 13px;
+        font-size: 14px
+    }
+
+    .stake-header-right {
+        width: 100%;
+        justify-content: center;
+        gap: 8px
+    }
+
+    .stake-header-actions {
+        gap: 8px
+    }
+
+    .stake-header-translate,
+    .stake-header-translate .gtranslate_wrapper {
+        min-height: 42px
+    }
+
+    .stake-header-translate .gt_switcher {
+        width: 94px !important
+    }
+
+    .stake-header-translate .gt_switcher .gt_selected a,
+    .stake-header-translate .gt_switcher-popup span,
+    .stake-header-translate select.gt_selector {
+        height: 36px !important;
+        min-height: 36px !important;
+        border-radius: 8px !important;
+        font-size: 12px !important
+    }
+
+    .stake-header-translate select.gt_selector {
+        width: 94px !important
+    }
+
+    .stake-header-translate .gt_float_switcher .gt-current-lang {
+        min-height: 36px;
+        padding: 5px 8px !important;
+        border-radius: 8px !important;
+        font-size: 12px !important
+    }
+
+    .stake-header-translate .gt_float_switcher,
+    .stake-header-translate a.gt_switcher-popup {
+        border-radius: 8px !important
+    }
+
+    .stake-header-translate .gt_float_switcher {
+        width: 84px !important
+    }
+
+    .stake-header-translate .gt_float_switcher .gt-selected {
+        border-radius: 8px !important
+    }
+
+    .stake-header-translate .gt_float_switcher .gt-current-lang {
+        padding-inline: 28px !important
+    }
+
+    .stake-header-translate .gt_float_switcher .gt-current-lang>img {
+        left: 7px !important
+    }
+
+    .stake-header-translate .gt_float_switcher .gt-current-lang .gt_float_switcher-arrow {
+        right: 5px !important
+    }
+
+    .stake-header-translate .gt_float_switcher .gt_options {
+        top: calc(100% + 5px) !important;
+        width: 170px !important;
+        max-width: min(170px, calc(100vw - 20px)) !important;
+        max-height: 220px !important;
+        border-radius: 8px !important
+    }
+
+    .stake-header-translate .gt_float_switcher .gt-current-lang img,
+    .stake-header-translate .gt_float_switcher .gt_options img,
+    .stake-header-translate .gt_switcher img,
+    .stake-header-translate a.gt_switcher-popup img {
+        width: 20px !important;
+        margin-right: 4px !important
+    }
+
+    .stake-header-translate .gt_float_switcher .gt-lang-code {
+        font-size: 12px !important
+    }
+
+    .stake-header-translate .gt_float_switcher .gt_options,
+    .stake-header-translate .gt_float_switcher .gt_options a {
+        font-size: 12px !important
+    }
+
+    .stake-header-translate .gt_float_switcher .gt_options a {
+        min-height: 36px;
+        padding: 6px 8px !important
+    }
+
+    .stake-faq-item button {
+        font-size: 14px
+    }
+
+    .stake-testimonials-section {
+        padding-block: 52px
+    }
+
+    .stake-testimonials-top {
+        gap: 12px;
+        margin-bottom: 30px
+    }
+
+    .stake-testimonials-heading {
+        margin: 0
+    }
+
+    .stake-testimonials-heading h2 {
+        font-size: 21px !important
+    }
+
+    .stake-testimonial-arrows {
+        gap: 7px;
+        margin-top: 1px
+    }
+
+    .stake-testimonial-arrows button {
+        width: 34px;
+        height: 34px
+    }
+
+    .stake-testimonials-grid {
+        gap: 16px
+    }
+
+    .stake-testimonial-card {
+        flex-basis: 86%;
+        min-height: 0;
+        padding: 24px 20px
+    }
+
+    .stake-site-footer {
+        padding-block: 24px 30px
+    }
+
+    .stake-footer-simple p {
+        font-size: 13px
+    }
+}
+
+@media(max-width:400px) {
+    .stake-header-actions .stake-btn {
+        padding-inline: 10px;
+        font-size: 13px
+    }
+
+    .stake-header-translate .gt_switcher,
+    .stake-header-translate select.gt_selector {
+        width: 88px !important
+    }
+
+    .stake-header-translate .gt_switcher .gt_selected a {
+        padding: 0 28px 0 9px !important
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    .stake-btn,
+    .stake-game {
+        transition: none !important
+    }
+}
+.stake-site-header .stake-header-blog,
+.stake-site-header .stake-header-blog:visited {
+    color: #f7fbff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.stake-site-header .stake-header-blog:hover,
+.stake-site-header .stake-header-blog:focus-visible {
+    color: #76dfb0;
+}
+.stake-site-header .stake-header-blog:focus-visible {
+    outline: 2px solid #76dfb0;
+    outline-offset: 5px;
+}
+@media (max-width: 600px) {
+    .stake-site-header .stake-header-blog { font-size: 13px; }
+}

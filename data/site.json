@@ -1,0 +1,16 @@
+{
+  "name": "Stake",
+  "url": "https://www.skybet.work",
+  "title": "Stake: Official Sport Betting",
+  "description": "Discover a complete entertainment platform with thousands of games, live sports and secure payment options.",
+  "logo": "/images/stake-full-tll7usoz.svg",
+  "favicon": "/images/favicon.webp",
+  "login": {
+    "title": "Login",
+    "url": "https://stake.com/"
+  },
+  "register": {
+    "title": "Registration",
+    "url": "https://stake.com/"
+  }
+}
