@@ -8,4 +8,5 @@
 .site-language-menu>a{display:block;padding:10px;font-size:11px;color:#b7cce0;border-top:1px solid #355564}
 .site-translate-engine{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .not-found{min-height:55vh;padding-block:70px}.not-found h1{font-size:38px}.not-found p{margin:20px 0}.not-found .stake-btn{display:inline-flex;padding:12px 24px}
+.review-article ol{padding-left:23px;margin:0 0 23px}
 @media(max-width:680px){.site-language-button{min-height:40px;padding:0 8px;font-size:13px}.site-language-button img{width:21px;height:15px}.site-language-button i{display:none}}
